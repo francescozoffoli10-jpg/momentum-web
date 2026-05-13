@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Tenant } from '@/data/types'
+import { isOpenNow } from '@/lib/hours'
 
 interface LogoGridProps {
   tenants: Tenant[]
@@ -12,67 +13,12 @@ interface LogoGridProps {
   siteId: string
 }
 
+type SortOption = 'az' | 'za' | 'open'
+
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
 function getSubcategory(category: string) {
   return category.split(' · ')[1] ?? category.split(' · ')[0] ?? ''
-}
-
-function isOpenNow(tenant: Tenant): boolean | null {
-  if (!tenant.hours?.length) return null
-  // Costa Rica is UTC-6 (no DST)
-  const now = new Date(Date.now() - 6 * 60 * 60 * 1000) // rough UTC-6
-  const day = now.getUTCDay()   // 0=Sun, 1=Mon … 6=Sat
-  const hour = now.getUTCHours()
-  const minute = now.getUTCMinutes()
-  const currentMins = hour * 60 + minute
-
-  const DAYS: Record<string, number[]> = {
-    lun: [1], mar: [2], mié: [3], mie: [3], jue: [4], vie: [5], sáb: [6], sab: [6], dom: [0],
-    'lun – vie': [1,2,3,4,5], 'lun – sáb': [1,2,3,4,5,6], 'lun – dom': [0,1,2,3,4,5,6],
-    'lun - vie': [1,2,3,4,5], 'lun - sáb': [1,2,3,4,5,6], 'lun - dom': [0,1,2,3,4,5,6],
-  }
-
-  const parseTime = (t: string): number => {
-    const lower = t.toLowerCase().replace(/\s/g, '')
-    const pm = lower.includes('p.m.') || lower.includes('pm')
-    const am = lower.includes('a.m.') || lower.includes('am')
-    const clean = lower.replace(/a\.m\.|p\.m\.|am|pm/g, '').replace(':', '.')
-    const parts = clean.split('.')
-    let h = parseInt(parts[0] ?? '0', 10)
-    const m = parseInt(parts[1] ?? '0', 10)
-    if (pm && h !== 12) h += 12
-    if (am && h === 12) h = 0
-    return h * 60 + m
-  }
-
-  for (const row of tenant.hours) {
-    const dayKey = row.days.toLowerCase().trim()
-    const matchedDays = DAYS[dayKey] ?? null
-
-    if (!matchedDays) continue
-    if (!matchedDays.includes(day)) continue
-
-    const hoursStr = row.hours.toLowerCase()
-    if (hoursStr.includes('24 hora') || hoursStr.includes('abierto')) return true
-
-    const rangeParts = hoursStr.split(/–|-|a/)
-    if (rangeParts.length < 2) continue
-
-    try {
-      const open = parseTime(rangeParts[0])
-      const close = parseTime(rangeParts[rangeParts.length - 1])
-      if (open < close) {
-        if (currentMins >= open && currentMins < close) return true
-      } else {
-        // Overnight
-        if (currentMins >= open || currentMins < close) return true
-      }
-    } catch {
-      // ignore parse errors
-    }
-  }
-  return false
 }
 
 // ── Search bar ────────────────────────────────────────────────────────────────
@@ -243,6 +189,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
 export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [sortBy, setSortBy] = useState<SortOption>('az')
 
   // Build unique category list
   const categories = useMemo(() => {
@@ -268,6 +215,24 @@ export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
     })
   }, [tenants, query, activeCategory])
 
+  // Sort logic
+  const sorted = useMemo(() => {
+    const arr = [...filtered]
+    if (sortBy === 'za') {
+      arr.sort((a, b) => b.name.localeCompare(a.name, 'es'))
+    } else if (sortBy === 'open') {
+      arr.sort((a, b) => {
+        const oa = isOpenNow(a) === true ? 0 : 1
+        const ob = isOpenNow(b) === true ? 0 : 1
+        if (oa !== ob) return oa - ob
+        return a.name.localeCompare(b.name, 'es')
+      })
+    } else {
+      arr.sort((a, b) => a.name.localeCompare(b.name, 'es'))
+    }
+    return arr
+  }, [filtered, sortBy])
+
   const hasFilters = !!query || !!activeCategory
 
   return (
@@ -284,8 +249,8 @@ export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
         }}>
           <SearchBar value={query} onChange={setQuery} />
 
-          {/* Result count */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, alignSelf: 'center' }}>
+          {/* Right controls: count + clear + sort */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, alignSelf: 'center', flexWrap: 'wrap' }}>
             <span style={{ fontSize: 11, color: 'var(--mt)', fontWeight: 300 }}>
               {filtered.length} {filtered.length === 1 ? 'resultado' : 'resultados'}
             </span>
@@ -295,12 +260,36 @@ export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
                 style={{
                   fontSize: 10, color: 'var(--a)', background: 'none', border: 'none',
                   cursor: 'pointer', fontFamily: 'inherit', letterSpacing: '0.06em',
-                  paddingLeft: 6,
                 }}
               >
-                Limpiar filtros ×
+                Limpiar ×
               </button>
             )}
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value as SortOption)}
+              style={{
+                padding: '6px 28px 6px 10px',
+                fontSize: 11,
+                border: '0.5px solid var(--brd)',
+                borderRadius: 4,
+                background: '#fff',
+                color: 'var(--mt)',
+                fontFamily: 'inherit',
+                cursor: 'pointer',
+                outline: 'none',
+                letterSpacing: '0.04em',
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A6A6A' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 10px center',
+              }}
+            >
+              <option value="az">A–Z</option>
+              <option value="za">Z–A</option>
+              <option value="open">Abiertos primero</option>
+            </select>
           </div>
         </div>
 
@@ -337,7 +326,7 @@ export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
                 gap: 16,
               }}
             >
-              {filtered.map((tenant, i) => (
+              {sorted.map((tenant, i) => (
                 <TenantCard
                   key={tenant.slug}
                   tenant={tenant}
