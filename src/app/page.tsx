@@ -289,15 +289,15 @@ export default function LandingPage() {
               marginBottom: 36,
             }}
           >
-            <div style={{ width: 24, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
+            <div style={{ width: 32, height: '0.5px', background: 'rgba(255,255,255,0.35)' }} />
             <span style={{
-              fontSize: 9, fontWeight: 500,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.3)',
+              fontSize: 10, fontWeight: 500,
+              letterSpacing: '0.24em', textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.6)',
             }}>
               Costa Rica · Premium Lifestyle Ecosystem
             </span>
-            <div style={{ width: 24, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
+            <div style={{ width: 32, height: '0.5px', background: 'rgba(255,255,255,0.35)' }} />
           </motion.div>
 
           {/* Logo */}
@@ -524,7 +524,7 @@ export default function LandingPage() {
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.08em' }}>
           © {new Date().getFullYear()} Momentum Costa Rica
         </span>
-        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
+        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', fontWeight: 500 }}>
           Lindora · Escazú · Pinares
         </span>
       </footer>
