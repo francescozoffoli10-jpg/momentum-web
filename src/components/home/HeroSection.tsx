@@ -212,19 +212,36 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
       <motion.div
         style={{
           opacity: scrollO,
-          position: 'absolute', bottom: 36, left: '50%',
+          position: 'absolute', bottom: 44, left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+          zIndex: 20,
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span style={{ fontSize: 8, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.16)', textTransform: 'uppercase' }}>Scroll</span>
+        <motion.span
+          animate={{ opacity: [0.65, 1, 0.65] }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+          style={{
+            fontSize: 13, letterSpacing: '0.32em',
+            color: 'rgba(255,255,255,0.95)',
+            textTransform: 'uppercase',
+            fontWeight: 500,
+            textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
+          }}
+        >
+          Scroll
+        </motion.span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, rgba(255,255,255,0.18), transparent)' }}
+          style={{
+            width: 1.5, height: 42,
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), transparent)',
+            boxShadow: '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2)',
+          }}
         />
       </motion.div>
     </section>
