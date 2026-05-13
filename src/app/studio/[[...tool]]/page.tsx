@@ -5,7 +5,6 @@
  * Access: http://localhost:3000/studio  (dev)
  *         https://your-domain.com/studio (prod — protect with Vercel auth or middleware)
  */
-'use client'
 
 import { NextStudio } from 'next-sanity/studio'
 import config from '@/sanity/config'
