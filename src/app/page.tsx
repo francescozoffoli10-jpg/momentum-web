@@ -349,35 +349,45 @@ export default function LandingPage() {
             ))}
           </motion.div>
 
-          {/* Scroll CTA */}
-          <motion.button
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            onClick={() => cardsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+        </div>
+
+        {/* Scroll CTA — anchored to bottom of hero */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.5 }}
+          onClick={() => cardsRef.current?.scrollIntoView({ behavior: 'smooth' })}
+          style={{
+            position: 'absolute', bottom: 44, left: '50%', transform: 'translateX(-50%)',
+            zIndex: 20,
+            display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+            background: 'none', border: 'none', cursor: 'pointer', color: 'inherit',
+            padding: '0 20px',
+          }}
+        >
+          <motion.span
+            animate={{ opacity: [0.65, 1, 0.65] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             style={{
-              marginTop: 48,
-              display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-              background: 'none', border: 'none', cursor: 'pointer', color: 'inherit',
+              fontSize: 13, letterSpacing: '0.32em',
+              color: 'rgba(255,255,255,0.95)',
+              textTransform: 'uppercase',
+              fontWeight: 500,
+              textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
             }}
           >
-            <span style={{
-              fontSize: 8, letterSpacing: '0.28em',
-              color: 'rgba(255,255,255,0.18)',
-              textTransform: 'uppercase',
-            }}>
-              Descubrir
-            </span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              style={{
-                width: 1, height: 32,
-                background: 'linear-gradient(to bottom, rgba(255,255,255,0.18), transparent)',
-              }}
-            />
-          </motion.button>
-        </div>
+            Descubrir
+          </motion.span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              width: 1.5, height: 42,
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), transparent)',
+              boxShadow: '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2)',
+            }}
+          />
+        </motion.button>
       </section>
 
       {/* ── Destination cards ── */}
