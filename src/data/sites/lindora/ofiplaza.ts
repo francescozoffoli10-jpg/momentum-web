@@ -1,0 +1,43 @@
+import type { Tenant } from '@/data/types'
+
+export const ofiplaza: Tenant[] = [
+  {
+    slug: 'desarrolladores506',
+    name: 'Desarrolladores 506',
+    section: 'ofiplaza',
+    category: 'Ofiplaza · Desarrollo Urbano',
+    tagline: 'Más de 49 años de experiencia',
+    description: 'Más de 49 años de experiencia en el área de desarrollo urbano y construcción en Costa Rica. Proyectos residenciales y comerciales con visión, calidad y compromiso.',
+    logo: 'desarrolladores506.png',
+    hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 6:00 pm' }],
+    phone: '2582-0505',
+    local: 'L58',
+    instagram: 'desarrolladores506',
+    website: 'http://www.desarrolladores506.com',
+  },
+  {
+    slug: 'macondo',
+    name: 'Macondo',
+    section: 'ofiplaza',
+    category: 'Ofiplaza · Administración de Condominios',
+    tagline: 'Mantenimiento & Administración',
+    description: 'Especialistas en el mantenimiento y administración profesional de condominios. Tranquilidad, orden y eficiencia para tu propiedad.',
+    logo: 'macondo.png',
+    hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 5:00 pm' }],
+    phone: '2282-2422',
+    local: 'L54',
+    website: 'http://www.macondocr.com',
+  },
+  {
+    slug: 'sales-xcelerator',
+    name: 'Sales Xcelerator',
+    section: 'ofiplaza',
+    category: 'Ofiplaza · Ventas & Consultoría',
+    tagline: 'El Poder Transformador de la Venta',
+    description: 'Formación, consultoría y estrategia de ventas para impulsar el crecimiento empresarial. En un mundo impulsado por la conexión, las ventas son la piedra angular del éxito.',
+    logo: 'sales-xcelerator.png',
+    hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 6:00 pm' }],
+    phone: '7215-8335',
+    instagram: 'salesxcelerator.io',
+  },
+]
