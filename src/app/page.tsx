@@ -414,7 +414,7 @@ export default function LandingPage() {
             fontWeight: 300, letterSpacing: '-0.02em',
             color: '#fff', lineHeight: 1.15, margin: 0,
           }}>
-            Elige tu destino Momentum
+            Elegí tu destino Momentum
           </h2>
         </motion.div>
 
