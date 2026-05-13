@@ -88,13 +88,13 @@ function DestinationCard({ d, index }: { d: typeof destinations[0]; index: numbe
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             className="object-cover destination-img"
-            style={{ filter: 'brightness(0.38)' }}
+            style={{ filter: 'brightness(0.52)' }}
           />
 
           {/* Base gradient */}
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, transparent 40%, rgba(0,0,0,0.62) 75%, rgba(0,0,0,0.92) 100%)',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, transparent 40%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.78) 100%)',
           }} />
 
           {/* Hover color accent overlay */}
@@ -260,7 +260,7 @@ export default function LandingPage() {
         {/* Unified gradient over triptych */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(8,8,8,0.3) 0%, rgba(8,8,8,0.1) 40%, rgba(8,8,8,0.75) 85%, #080808 100%)',
+          background: 'linear-gradient(to bottom, rgba(8,8,8,0.15) 0%, rgba(8,8,8,0.05) 40%, rgba(8,8,8,0.55) 85%, #080808 100%)',
         }} />
 
         {/* Subtle vertical dividers */}
