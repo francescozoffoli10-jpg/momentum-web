@@ -251,7 +251,7 @@ export default function LandingPage() {
                 fill
                 priority
                 className="object-cover"
-                style={{ filter: 'brightness(0.22)' }}
+                style={{ filter: 'brightness(0.55)' }}
               />
             </div>
           ))}
