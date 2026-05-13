@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation'
 import { allTenants, getTenant } from '@/data/sites/pinares/all'
 import { pinaresSite } from '@/data/sites/pinares/index'
 import TenantDetailPage from '@/components/pages/TenantDetailPage'
+import { buildTenantSchema } from '@/lib/schema'
+
+const CANONICAL_BASE = 'https://momentumpinares.com'
 
 export async function generateStaticParams() {
   return allTenants.map((t) => ({ slug: t.slug }))
@@ -36,13 +39,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     })
     .slice(0, 4)
 
+  const jsonLd = buildTenantSchema(tenant, pinaresSite, CANONICAL_BASE)
+
   return (
-    <TenantDetailPage
-      tenant={tenant}
-      relatedTenants={related}
-      siteId="pinares"
-      basePath="/pinares"
-      site={pinaresSite}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <TenantDetailPage
+        tenant={tenant}
+        relatedTenants={related}
+        siteId="pinares"
+        basePath="/pinares"
+        site={pinaresSite}
+      />
+    </>
   )
 }

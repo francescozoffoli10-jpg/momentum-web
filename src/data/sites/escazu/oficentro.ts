@@ -49,7 +49,7 @@ export const oficentro: Tenant[] = [
     tagline: 'Wedding Center',
     description: 'Centro especializado en la organización de bodas y eventos especiales. Diseño, logística y producción de eventos únicos con atención al detalle y pasión por los momentos que perduran.',
     logo: 'impegno.png',
-    hours: [],
+    hours: [{ days: 'Lunes a Viernes', hours: '9:00 am – 6:00 pm' }],
     phone: '7026-0226',
     instagram: 'impegnocr',
     local: 'CM31',

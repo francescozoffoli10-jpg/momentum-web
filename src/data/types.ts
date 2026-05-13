@@ -57,9 +57,10 @@ export interface Tenant {
 
 export interface RegionCard {
   id: string
-  flag: string            // cuisine label e.g. "Italiana"
+  flag: string            // cuisine label e.g. "Italiana" or "Pilates & Fitness"
   title: string           // display title e.g. "La Fabbrica"
-  restaurants: string[]   // tenant slugs
+  restaurants: string[]   // tenant slugs (used for count)
+  href?: string           // override link; defaults to {basePath}/gastronomia
   image?: string          // optional background image
   color?: string          // fallback gradient color
 }

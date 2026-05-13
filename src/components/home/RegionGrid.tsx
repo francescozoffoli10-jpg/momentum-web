@@ -11,7 +11,7 @@ const PALETTE = [
   '#181008',
 ]
 
-function Card({ card, basePath, index }: { card: RegionCard; basePath: string; index: number }) {
+function Card({ card, basePath, index }: { card: RegionCard; basePath: string; index: number; }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
 
@@ -23,7 +23,7 @@ function Card({ card, basePath, index }: { card: RegionCard; basePath: string; i
       transition={{ duration: 0.65, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
-        href={`${basePath}/gastronomia`}
+        href={card.href ?? `${basePath}/gastronomia`}
         style={{
           display: 'block',
           position: 'relative',
@@ -101,9 +101,12 @@ function Card({ card, basePath, index }: { card: RegionCard; basePath: string; i
 interface RegionGridProps {
   cards: RegionCard[]
   basePath: string
+  gridTitle?: string      // defaults to "Explora por cocina"
+  sectionLabel?: string   // CTA text, defaults to "Ver gastronomía"
+  sectionHref?: string    // CTA href, defaults to {basePath}/gastronomia
 }
 
-export default function RegionGrid({ cards, basePath }: RegionGridProps) {
+export default function RegionGrid({ cards, basePath, gridTitle, sectionLabel, sectionHref }: RegionGridProps) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -131,7 +134,7 @@ export default function RegionGrid({ cards, basePath }: RegionGridProps) {
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: 'clamp(26px, 3.5vw, 40px)', fontWeight: 300, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
             >
-              Explora por cocina
+              {gridTitle ?? 'Explora por cocina'}
             </motion.h2>
           </div>
           <motion.div
@@ -140,12 +143,12 @@ export default function RegionGrid({ cards, basePath }: RegionGridProps) {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Link
-              href={`${basePath}/gastronomia`}
+              href={sectionHref ?? `${basePath}/gastronomia`}
               style={{ fontSize: 11, color: 'var(--mt)', letterSpacing: '0.1em', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 6, transition: 'color 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--a)'}
               onMouseLeave={e => e.currentTarget.style.color = 'var(--mt)'}
             >
-              Ver gastronomía
+              {sectionLabel ?? 'Ver gastronomía'}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

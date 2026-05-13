@@ -35,11 +35,13 @@ export const gastronomia: Tenant[] = [
 ]
 
 export const regionCards: RegionCard[] = [
+  // Gastronomy
   {
     id: 'restaurante-autor',
     flag: 'Cocina de Autor',
     title: 'Entrecote',
     restaurants: ['entrecote'],
+    href: '/escazu/gastronomia',
     color: '#1A1010',
   },
   {
@@ -47,6 +49,41 @@ export const regionCards: RegionCard[] = [
     flag: 'Café & Restaurante',
     title: 'Paladixo',
     restaurants: ['paladixo'],
+    href: '/escazu/gastronomia',
     color: '#101A10',
+  },
+  // Wellness
+  {
+    id: 'pilates-fitness',
+    flag: 'Pilates & Fitness',
+    title: 'Contrology · Gyrotonic',
+    restaurants: ['contrology-pilates', 'gyrotronic'],
+    href: '/escazu/servicios',
+    color: '#0A1018',
+  },
+  {
+    id: 'estetica-spa',
+    flag: 'Estética & Spa',
+    title: 'Ambrosía · Estética Nadira',
+    restaurants: ['ambrosia-estetica', 'estetica-nadira'],
+    href: '/escazu/servicios',
+    color: '#120A18',
+  },
+  // Medical
+  {
+    id: 'medicina-preventiva',
+    flag: 'Medicina Preventiva',
+    title: 'GoodMed · Age Metrics',
+    restaurants: ['goodmed-escazu', 'age-metrics-medical'],
+    href: '/escazu/servicios',
+    color: '#0A1A12',
+  },
+  {
+    id: 'especialistas',
+    flag: 'Especialistas',
+    title: 'Dermatología · Oncología · Reumatología',
+    restaurants: ['skin-care-physicians', 'centro-oncologico', 'caira-reumatologia'],
+    href: '/escazu/servicios',
+    color: '#0A1218',
   },
 ]

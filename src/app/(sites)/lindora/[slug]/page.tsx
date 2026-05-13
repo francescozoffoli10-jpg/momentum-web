@@ -3,6 +3,9 @@ import { notFound } from 'next/navigation'
 import { allTenants, getTenant } from '@/data/sites/lindora/all'
 import { lindoraSite } from '@/data/sites/lindora/index'
 import TenantDetailPage from '@/components/pages/TenantDetailPage'
+import { buildTenantSchema } from '@/lib/schema'
+
+const CANONICAL_BASE = 'https://momentumlindora.com'
 
 export async function generateStaticParams() {
   return allTenants.map((t) => ({ slug: t.slug }))
@@ -30,20 +33,27 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const related = allTenants
     .filter(t => t.slug !== slug && t.section === tenant.section)
     .sort((a, b) => {
-      // Same subcategory first
       const sameA = a.category === tenant.category ? 0 : 1
       const sameB = b.category === tenant.category ? 0 : 1
       return sameA - sameB || a.name.localeCompare(b.name, 'es')
     })
     .slice(0, 4)
 
+  const jsonLd = buildTenantSchema(tenant, lindoraSite, CANONICAL_BASE)
+
   return (
-    <TenantDetailPage
-      tenant={tenant}
-      relatedTenants={related}
-      siteId="lindora"
-      basePath="/lindora"
-      site={lindoraSite}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <TenantDetailPage
+        tenant={tenant}
+        relatedTenants={related}
+        siteId="lindora"
+        basePath="/lindora"
+        site={lindoraSite}
+      />
+    </>
   )
 }
