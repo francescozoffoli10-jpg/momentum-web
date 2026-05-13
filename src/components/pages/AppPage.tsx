@@ -13,7 +13,7 @@ const FEATURES = [
       </svg>
     ),
     title: 'Acceso QR al parqueo',
-    desc: 'Genera tu código QR directamente desde la app. Sin tickets, sin fricción.',
+    desc: 'Generá tu código QR directamente desde la app. Sin tickets, sin fricción.',
   },
   {
     icon: (
