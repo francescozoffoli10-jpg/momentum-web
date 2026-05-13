@@ -10,6 +10,7 @@ const SECTION_LABELS: Record<string, string> = {
   servicios: 'Servicios',
   ofiplaza: 'Ofiplaza',
   mediplaza: 'Mediplaza',
+  oficentro: 'Oficentro',
 }
 
 interface FooterProps {
@@ -22,7 +23,7 @@ export default function Footer({ site, basePath }: FooterProps) {
     <footer style={{ background: 'var(--dk)', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px 40px' }}>
 
-        <div style={{
+        <div className="footer-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1.6fr 1fr 1fr',
           gap: 48,
@@ -104,9 +105,15 @@ export default function Footer({ site, basePath }: FooterProps) {
               Información
             </div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {['Horarios', 'Cómo llegar', 'Ofertas', 'Eventos', 'App Momentum'].map(function(item) { return (
+              {([
+                ['Eventos',      `${basePath}/eventos`],
+                ['App Momentum', `${basePath}/app`],
+                ['Cómo llegar',  '#'],
+                ['Alquiler / Venta', '#'],
+                ['Contacto',     '#'],
+              ] as [string, string][]).map(function([item, href]) { return (
                 <li key={item}>
-                  <Link href="#"
+                  <Link href={href}
                     style={{ fontSize: 13, color: 'rgba(255,255,255,0.38)', fontWeight: 300, letterSpacing: '0.01em', transition: 'color 0.2s' }}
                     onMouseEnter={function(e) { e.currentTarget.style.color='#fff' }}
                     onMouseLeave={function(e) { e.currentTarget.style.color='rgba(255,255,255,0.38)' }}
@@ -120,7 +127,7 @@ export default function Footer({ site, basePath }: FooterProps) {
         {/* Bottom */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.02em' }}>
-            © 2025 {site.name}. Todos los derechos reservados.
+            © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
           </span>
           <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.06em' }}>Costa Rica 🇨🇷</span>
         </div>

@@ -133,9 +133,9 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
               </AnimatePresence>
             </li>
 
-            {(['Eventos', 'App'] as const).map(label => (
+            {([['Eventos', 'eventos'], ['App', 'app']] as const).map(([label, slug]) => (
               <li key={label}>
-                <Link href="#"
+                <Link href={`${basePath}/${slug}`}
                   style={{ color: 'rgba(255,255,255,0.65)', fontSize: 13, fontWeight: 300, letterSpacing: '0.02em', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
@@ -341,13 +341,13 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                   </Link>
                 </motion.div>
               ))}
-              {['Eventos', 'App'].map((label, i) => (
+              {([['Eventos', 'eventos'], ['App', 'app']] as [string, string][]).map(([label, slug], i) => (
                 <motion.div key={label}
                   initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: (site.sections.length + i) * 0.05 + 0.1 }}
                 >
-                  <Link href="#"
+                  <Link href={`${basePath}/${slug}`}
                     onClick={() => setMobileOpen(false)}
                     style={{
                       display: 'block',
