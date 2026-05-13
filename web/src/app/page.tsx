@@ -362,13 +362,14 @@ export default function LandingPage() {
             }}
           >
             <motion.span
-              animate={{ opacity: [0.55, 1, 0.55] }}
+              animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
               style={{
-                fontSize: 9, letterSpacing: '0.30em',
-                color: 'rgba(255,255,255,0.85)',
+                fontSize: 11, letterSpacing: '0.35em',
+                color: 'rgba(255,255,255,0.97)',
                 textTransform: 'uppercase',
-                textShadow: '0 0 12px rgba(255,255,255,0.5)',
+                fontWeight: 500,
+                textShadow: '0 0 18px rgba(255,255,255,0.7), 0 0 40px rgba(255,255,255,0.3)',
               }}
             >
               Descubrir
@@ -377,9 +378,9 @@ export default function LandingPage() {
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
               style={{
-                width: 1, height: 36,
-                background: 'linear-gradient(to bottom, rgba(255,255,255,0.75), transparent)',
-                boxShadow: '0 0 6px rgba(255,255,255,0.3)',
+                width: 1.5, height: 42,
+                background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), transparent)',
+                boxShadow: '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2)',
               }}
             />
           </motion.button>
