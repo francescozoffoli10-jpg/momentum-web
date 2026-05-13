@@ -75,7 +75,7 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
                   width={100}
                   height={40}
                   className="object-contain"
-                  style={{ maxHeight: 30, width: 'auto', height: 'auto', filter: 'brightness(10)' }}
+                  style={{ maxHeight: 30, width: 'auto', height: 'auto' }}
                 />
               </div>
             </>
