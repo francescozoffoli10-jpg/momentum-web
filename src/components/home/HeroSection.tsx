@@ -232,7 +232,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
             textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
           }}
         >
-          Scroll
+          Descubrir
         </motion.span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
