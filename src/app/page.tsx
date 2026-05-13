@@ -277,7 +277,7 @@ export default function LandingPage() {
         </div>
 
         {/* Content */}
-        <div style={{ position: 'relative', zIndex: 10, padding: '0 24px' }}>
+        <div style={{ position: 'relative', zIndex: 10, padding: '0 24px', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
           {/* Pre-label */}
           <motion.div
