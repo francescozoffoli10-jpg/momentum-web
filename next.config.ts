@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  generateBuildId: async () => 'build-20260513224403',  // cache bust
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 2592000, // 30 days for optimized images
@@ -10,6 +9,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       // Sanity CDN — for images served via sanityClient queries
       { protocol: 'https', hostname: 'cdn.sanity.io' },
+      // Unsplash — for curated tenant stock photos
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
   // Long-lived caching for static assets
