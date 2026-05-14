@@ -40,7 +40,7 @@ export default function ComoLlegarPage({ site }: ComoLlegarPageProps) {
   return (
     <div style={{ background: 'var(--dk)', minHeight: '100vh', paddingTop: 120 }}>
       {/* Header */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 56px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 56px' }} className="como-llegar-outer">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function ComoLlegarPage({ site }: ComoLlegarPageProps) {
       </div>
 
       {/* Map + Info */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }} className="como-llegar-outer">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -213,6 +213,10 @@ export default function ComoLlegarPage({ site }: ComoLlegarPageProps) {
         @media (max-width: 768px) {
           .como-llegar-grid {
             grid-template-columns: 1fr !important;
+          }
+          .como-llegar-outer {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
           }
         }
       `}</style>
