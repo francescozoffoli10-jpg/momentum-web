@@ -8,7 +8,7 @@ export const escazuSite: SiteConfig = {
   city: 'San José, Costa Rica',
   phone: '+506 2289 0000',
   email: 'info@momentumescazu.com',
-  instagram: 'momentumescazu',
+  instagram: 'momentumcostarica',
   facebook: 'momentumescazu',
   heroImage: '/sites/escazu/banners/escazu-hero.webp',
   logo: '/brand/momentum-white.png',
