@@ -9,6 +9,7 @@ export const ofiplaza: Tenant[] = [
     tagline: 'Espacios de oficina premium en Curridabat',
     description: 'El Oficentro de Momentum Pinares ofrece espacios de oficina de alto nivel en una ubicación estratégica en Curridabat. Ideal para empresas y profesionales que buscan imagen, comunidad y conectividad.',
     logo: 'oficentro-pinares.png',
+    photo: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 6:00 pm' }],
     featured: true,
   },
