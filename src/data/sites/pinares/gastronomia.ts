@@ -266,6 +266,45 @@ export const gastronomia: Tenant[] = [
     website: 'https://www.terraza97.com',
     featured: false,
   },
+  {
+    slug: 'tacobar',
+    name: 'Tacobar Killer Fish Tacos',
+    section: 'gastronomia',
+    category: 'Gastronomía · Mexicana',
+    tagline: 'Killer Fish Tacos',
+    description: 'Los mejores tacos de pescado en Momentum Pinares. Tortillas de maíz, ingredientes frescos y salsas artesanales en un ambiente relajado y vibrante.',
+    logo: 'tacobar.png',
+    hours: [
+      { days: 'Lunes a Sábado', hours: '11:00 am – 10:00 pm' },
+      { days: 'Domingos', hours: '11:00 am – 9:00 pm' },
+    ],
+    featured: false,
+  },
+  {
+    slug: 'teatro-espressivo',
+    name: 'Teatro Espressivo',
+    section: 'gastronomia',
+    category: 'Gastronomía · Café & Bar',
+    tagline: 'Café de especialidad y coctelería',
+    description: 'Un espacio donde el café de especialidad se encuentra con la coctelería de autor. Teatro Espressivo fusiona arte, cultura y gastronomía en un ambiente único en Pinares.',
+    logo: 'teatro-espressivo.png',
+    hours: [
+      { days: 'Lunes a Jueves', hours: '7:00 am – 10:00 pm' },
+      { days: 'Viernes y Sábado', hours: '7:00 am – 11:00 pm' },
+    ],
+    featured: false,
+  },
+  {
+    slug: 'bbq-chicken',
+    name: 'BBQ Chicken',
+    section: 'gastronomia',
+    category: 'Gastronomía · Pollo & BBQ',
+    tagline: 'Pollo a las brasas y sabores BBQ',
+    description: 'Pollo al carbón y opciones BBQ preparadas con marinadas artesanales. Un clásico de los sabores ahumados en Momentum Pinares con opciones para comer en el local o llevar.',
+    logo: 'bbq-chicken.png',
+    hours: [{ days: 'Lunes a Domingo', hours: '10:00 am – 10:00 pm' }],
+    featured: false,
+  },
 ]
 
 export const regionCards: RegionCard[] = [
