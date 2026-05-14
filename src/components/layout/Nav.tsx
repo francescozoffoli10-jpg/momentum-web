@@ -14,12 +14,14 @@ const SITE_SWITCHER = [
 ]
 
 const SECTION_LABELS: Record<string, string> = {
-  gastronomia: 'Gastronomía',
-  comercios: 'Comercios',
-  servicios: 'Servicios',
-  ofiplaza: 'Ofiplaza',
-  mediplaza: 'Mediplaza',
-  oficentro: 'Oficentro',
+  gastronomia:      'Gastronomía',
+  comercios:        'Comercios',
+  servicios:        'Servicios',
+  ofiplaza:         'Ofiplaza',
+  mediplaza:        'Mediplaza',
+  oficentro:        'Oficentro',
+  'torre-medica':   'Torre Médica',
+  'centro-medico':  'Centro Médico',
 }
 
 interface NavProps {
