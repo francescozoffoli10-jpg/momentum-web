@@ -1,7 +1,7 @@
 import { gastronomia, regionCards } from './gastronomia'
 import { comercios } from './comercios'
 import { servicios } from './servicios'
-import { mediplaza } from './mediplaza'
+import { torreMedica } from './torre-medica'
 import { ofiplaza } from './ofiplaza'
 import type { Tenant, DirectorySection } from '@/data/types'
 
@@ -11,7 +11,7 @@ export const allTenants: Tenant[] = [
   ...gastronomia,
   ...comercios,
   ...servicios,
-  ...mediplaza,
+  ...torreMedica,
   ...ofiplaza,
 ]
 
@@ -19,7 +19,7 @@ export const tenantsBySection: Partial<Record<DirectorySection, Tenant[]>> = {
   gastronomia,
   comercios,
   servicios,
-  mediplaza,
+  'torre-medica': torreMedica,
   ofiplaza,
 }
 
