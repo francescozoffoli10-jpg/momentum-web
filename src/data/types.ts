@@ -9,6 +9,8 @@ export type DirectorySection =
   | 'ofiplaza'
   | 'mediplaza'
   | 'oficentro'
+  | 'torre-medica'
+  | 'centro-medico'
 
 export interface SiteConfig {
   id: SiteId
@@ -21,10 +23,10 @@ export interface SiteConfig {
   instagram: string
   facebook: string
   heroImage: string
-  logo: string             // path to site logo PNG (white version for dark backgrounds)
+  logo: string
   accentColor: string
   sections: DirectorySection[]
-  hasEvents?: boolean      // show Eventos tab in nav (default: true)
+  hasEvents?: boolean
 }
 
 // ─── Site Event ───────────────────────────────────────────────────────────────
@@ -32,20 +34,18 @@ export interface SiteConfig {
 export interface SiteEvent {
   id: string
   title: string
-  subtitle?: string
+  date: string
+  time?: string
+  location?: string
   description: string
-  date: string             // ISO date string e.g. "2026-06-14"
-  timeLabel?: string       // e.g. "6:00 pm – 9:00 pm"
-  image?: string           // filename in /public/sites/[siteId]/events/ or full path
-  tag?: string             // e.g. "Gastronomía", "Bienestar", "Música"
-  ctaLabel?: string
-  ctaUrl?: string
-  featured?: boolean
+  image?: string
+  tags?: string[]
+  link?: string
 }
 
 // ─── Tenant ───────────────────────────────────────────────────────────────────
 
-export interface HoursRow {
+export interface TenantHours {
   days: string
   hours: string
 }
@@ -54,31 +54,18 @@ export interface Tenant {
   slug: string
   name: string
   section: DirectorySection
-  category: string        // e.g. "Gastronomía · Italiana"
-  tagline: string         // short descriptor shown in hero
-  description: string     // longer description for detail page
-  logo: string            // filename in /public/sites/[siteId]/logos/
-  photo?: string          // filename in /public/sites/[siteId]/photos/ — 800×440px landscape
-  gallery?: string[]      // additional filenames in /public/sites/[siteId]/photos/ for lightbox
-  hours: HoursRow[]
+  category: string
+  tagline: string
+  description: string
+  logo: string
+  photo?: string
+  hours?: TenantHours[]
   phone?: string
-  local?: string
-  website?: string
-  facebook?: string
-  instagram?: string
   whatsapp?: string
-  menuUrl?: string
-  featured?: boolean      // show in homepage highlights
+  website?: string
+  instagram?: string
+  menu?: string
+  featured?: boolean
+  tags?: string[]
 }
 
-// ─── Region Card (homepage gastronomy grid) ───────────────────────────────────
-
-export interface RegionCard {
-  id: string
-  flag: string            // cuisine label e.g. "Italiana" or "Pilates & Fitness"
-  title: string           // display title e.g. "La Fabbrica"
-  restaurants: string[]   // tenant slugs (used for count)
-  href?: string           // override link; defaults to {basePath}/gastronomia
-  image?: string          // optional background image
-  color?: string          // fallback gradient color
-}
