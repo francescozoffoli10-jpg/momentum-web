@@ -431,15 +431,15 @@ function RelatedCard({ tenant, siteId, basePath }: { tenant: Tenant; siteId: str
       }}
     >
       <div style={{
-        height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: 16, background: 'var(--bg)', borderBottom: '0.5px solid var(--brd)',
+        height: 110, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: 16, background: '#0a0a0a', borderBottom: '0.5px solid rgba(255,255,255,0.06)',
       }}>
         <Image
           src={`/sites/${siteId}/logos/${tenant.logo}`}
           alt={tenant.name}
-          width={100} height={50}
+          width={140} height={70}
           className="object-contain"
-          style={{ maxHeight: 44, width: 'auto' }}
+          style={{ maxHeight: 64, width: 'auto', maxWidth: '85%' }}
         />
       </div>
       <div style={{ padding: '10px 12px 12px' }}>
@@ -502,19 +502,20 @@ export default function TenantDetailPage({
             <div
               className="tenant-hero-logo"
               style={{
-                width: 180, height: 180,
-                background: 'rgba(255,255,255,0.03)',
+                width: 220, height: 220,
+                background: '#0a0a0a',
                 border: '0.5px solid rgba(255,255,255,0.08)',
                 borderRadius: 8,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                padding: 24,
+                padding: 16,
               }}
             >
               <Image
                 src={`/sites/${siteId}/logos/${tenant.logo}`}
                 alt={tenant.name}
-                width={130} height={130}
+                width={180} height={180}
                 className="object-contain"
+                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto' }}
               />
             </div>
 
