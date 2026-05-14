@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     siteName: 'Momentum Pinares',
     title: 'Momentum Pinares',
     description: 'Variedad, dinamismo y todo en un solo lugar en Curridabat, San José, Costa Rica.',
-    url: 'https://momentum-preview-coral.vercel.app/pinares',
+    url: 'https://momentumcr.vercel.app/pinares',
     type: 'website',
     locale: 'es_CR',
     images: [{ url: '/sites/pinares/banners/pinares-hero.webp', width: 1440, height: 810, alt: 'Momentum Pinares' }],
   },
   twitter: { card: 'summary_large_image', title: 'Momentum Pinares', description: 'Variedad, dinamismo y todo en un solo lugar en Curridabat, San José.' },
-  metadataBase: new URL('https://momentum-preview-coral.vercel.app'),
+  metadataBase: new URL('https://momentumcr.vercel.app'),
 }
 
 export default function PinaresLayout({ children }: { children: React.ReactNode }) {
