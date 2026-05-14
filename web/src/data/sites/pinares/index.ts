@@ -13,5 +13,5 @@ export const pinaresSite: SiteConfig = {
   heroImage: '/sites/pinares/banners/pinares-hero.webp',
   logo: '/brand/momentum-white.png',
   accentColor: '#4F5B3E',
-  sections: ['gastronomia', 'comercios', 'servicios', 'mediplaza', 'ofiplaza'],
+  sections: ['gastronomia', 'comercios', 'servicios', 'torre-medica', 'ofiplaza'],
 }
