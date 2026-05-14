@@ -181,7 +181,7 @@ function PhotoGallery({
             onClick={() => setLightboxIndex(0)}
           >
             <Image
-              src={`/sites/${siteId}/photos/${mainPhoto}`}
+              src={mainPhoto.startsWith('http') ? mainPhoto : `/sites/${siteId}/photos/${mainPhoto}`}
               alt={`${tenantName} — foto`}
               fill
               className="object-cover"
@@ -233,7 +233,7 @@ function PhotoGallery({
                   }}
                 >
                   <Image
-                    src={`/sites/${siteId}/photos/${photo}`}
+                    src={photo.startsWith('http') ? photo : `/sites/${siteId}/photos/${photo}`}
                     alt={`${tenantName} foto ${i + 1}`}
                     fill
                     className="object-cover"
@@ -304,7 +304,7 @@ function PhotoGallery({
             }}
           >
             <Image
-              src={`/sites/${siteId}/photos/${allPhotos[lightboxIndex]}`}
+              src={allPhotos[lightboxIndex].startsWith('http') ? allPhotos[lightboxIndex] : `/sites/${siteId}/photos/${allPhotos[lightboxIndex]}`}
               alt={`${tenantName} foto ${lightboxIndex + 1}`}
               fill
               className="object-contain"
