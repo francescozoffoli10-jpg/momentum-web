@@ -42,7 +42,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Sabores mediterráneos en Escazú',
     description: 'Capri Escazú trae los sabores del Mediterráneo a Momentum. Una propuesta gastronómica elegante y acogedora, ideal para almuerzos de trabajo y cenas especiales.',
     logo: 'capri.png',
-    photo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format&q=80',
+    photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Viernes', hours: '11:00 am – 10:00 pm' },
       { days: 'Sábados', hours: '12:00 md – 10:30 pm' },
