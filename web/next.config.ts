@@ -13,19 +13,14 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-  // Cross-site redirects
+  // Legacy URL redirects
   async redirects() {
     return [
-      // /pinares/torre-medica → /torre-medica (convenience alias)
+      // /pinares/mediplaza → /pinares/torre-medica (renamed section)
       {
-        source: '/pinares/torre-medica/:path*',
-        destination: '/torre-medica/:path*',
-        permanent: false,
-      },
-      {
-        source: '/pinares/torre-medica',
-        destination: '/torre-medica',
-        permanent: false,
+        source: '/pinares/mediplaza',
+        destination: '/pinares/torre-medica',
+        permanent: true,
       },
     ]
   },
