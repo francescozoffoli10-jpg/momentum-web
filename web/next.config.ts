@@ -13,6 +13,23 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
+  // Cross-site redirects
+  async redirects() {
+    return [
+      // /pinares/torre-medica → /torre-medica (convenience alias)
+      {
+        source: '/pinares/torre-medica/:path*',
+        destination: '/torre-medica/:path*',
+        permanent: false,
+      },
+      {
+        source: '/pinares/torre-medica',
+        destination: '/torre-medica',
+        permanent: false,
+      },
+    ]
+  },
+
   // Long-lived caching for static assets
   async headers() {
     return [
