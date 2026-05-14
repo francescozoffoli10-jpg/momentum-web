@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     siteName: 'Momentum Escazú',
     title: 'Momentum Escazú',
     description: 'Calma, bienestar y experiencia premium en Escazú, San José, Costa Rica.',
-    url: 'https://momentum-preview-coral.vercel.app/escazu',
+    url: 'https://momentumcr.vercel.app/escazu',
     type: 'website',
     locale: 'es_CR',
     images: [{ url: '/sites/escazu/banners/escazu-hero.webp', width: 1440, height: 810, alt: 'Momentum Escazú' }],
   },
   twitter: { card: 'summary_large_image', title: 'Momentum Escazú', description: 'Calma, bienestar y experiencia premium en Escazú, San José.' },
-  metadataBase: new URL('https://momentum-preview-coral.vercel.app'),
+  metadataBase: new URL('https://momentumcr.vercel.app'),
 }
 
 export default function EscazuLayout({ children }: { children: React.ReactNode }) {
