@@ -9,6 +9,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Pasión por Italia',
     description: 'Alta cocina italiana en un ambiente íntimo y sofisticado. Pastas frescas, risottos y una carta de vinos seleccionada con la misma pasión con que se prepara cada plato.',
     logo: 'bottega.png',
+    photo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Sábado', hours: '12:00 md – 10:00 pm' },
       { days: 'Domingo', hours: '12:00 md – 9:00 pm' },
@@ -27,6 +28,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Beer Garden',
     description: 'El mejor beer garden de Pinares. Cervezas artesanales, cocteles de autor y una carta de comida que acompaña perfectamente cada trago en un ambiente relajado y vibrante.',
     logo: 'bostons.png',
+    photo: 'https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Sábados', hours: '11:45 am – 10:45 pm' },
       { days: 'Domingos', hours: '11:45 am – 9:00 pm' },
@@ -44,6 +46,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante Venezolano',
     description: 'La auténtica sazón venezolana en Momentum Pinares. Pabellón criollo, tequeños, arepas y lo mejor de la gastronomía venezolana preparado con sabor de hogar.',
     logo: 'chamo-gourmet.png',
+    photo: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes', hours: '12:00 md – 9:00 pm' },
       { days: 'Martes a Jueves', hours: '12:00 md – 10:00 pm' },
@@ -62,6 +65,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'El mejor gelato de Costa Rica',
     description: 'El mejor gelato artesanal de Costa Rica. Preparado diariamente con ingredientes de primera calidad, Da Noi trae la tradición heladera italiana directamente a Pinares.',
     logo: 'da-noi.png',
+    photo: 'https://images.unsplash.com/photo-1560008581-09826d1de69e?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Domingo', hours: '11:00 am – 9:00 pm' }],
     phone: '2272-6131',
     instagram: 'danoi_cr',
@@ -75,6 +79,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Tu Diner, Tu Lugar',
     description: 'El diner americano de toda la vida, abierto las 24 horas los 365 días del año. Pancakes, omelettes, burgers y todo lo que hace grande a Denny\'s.',
     logo: 'dennys.png',
+    photo: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Todos los días', hours: 'Abierto 24 horas' }],
     phone: '2271-9090',
     instagram: 'dennyscostarica',
@@ -88,6 +93,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Parrillada Rioplatense',
     description: 'Parrillada con influencia argentina y uruguaya. Cortes al punto, chorizos artesanales y ese sabor rioplatense que convierte cada visita en una celebración.',
     logo: 'el-caminito.png',
+    photo: 'https://images.unsplash.com/photo-1432139509613-5c4255815697?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Domingo', hours: '11:00 am – 9:30 pm' },
       { days: 'Lunes a Jueves', hours: '11:00 am – 11:00 pm' },
@@ -105,6 +111,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Buen comer, arte y espressión',
     description: 'El bistró del Teatro Espressivo: buen comer, arte y espressión. Un espacio donde la gastronomía se fusiona con la cultura para crear una experiencia única.',
     logo: 'espressivo-bistro.png',
+    photo: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Jueves', hours: '10:00 am – 8:00 pm' },
       { days: 'Viernes', hours: '10:00 am – 11:00 pm' },
@@ -123,6 +130,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante de Mariscos – Seafood',
     description: 'El mejor restaurante de mariscos en Pinares. Frescura del mar en cada plato: ceviche, camarones, langosta y todo el sabor del Pacífico costarricense.',
     logo: 'fishermans.png',
+    photo: 'https://images.unsplash.com/photo-1544025162-d76538b5f90f?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Jueves', hours: '12:00 md – 10:00 pm' },
       { days: 'Viernes y Sábado', hours: '12:00 md – 11:00 pm' },
@@ -141,6 +149,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Auténtica Comida Mexicana',
     description: 'Auténtica cocina mexicana en el corazón de Pinares. Enchiladas, mole, tacos de comal y el sabor de México preparado con recetas tradicionales.',
     logo: 'la-fonda-azteca.png',
+    photo: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Jueves', hours: '11:30 am – 10:00 pm' },
       { days: 'Viernes y Sábados', hours: '11:30 am – 12:00 mn' },
@@ -158,6 +167,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Cocina japonesa, sushi, teppanyaki y fusión',
     description: 'La referencia de la cocina japonesa en Pinares. Sushi, sashimi, teppanyaki en vivo y fusión japonesa preparada con la más alta técnica y productos frescos.',
     logo: 'matsuri.png',
+    photo: 'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Viernes', hours: '11:00 am – 10:00 pm' },
       { days: 'Sábado y Domingo', hours: '11:00 am – 10:30 pm' },
@@ -174,6 +184,7 @@ export const gastronomia: Tenant[] = [
     tagline: '¡Me Encanta!',
     description: 'El restaurante más visitado del mundo, ahora en Momentum Pinares. Desayunos, burgers, McNuggets y todo lo que hace a McDonald\'s inconfundible.',
     logo: 'mcdonalds.png',
+    photo: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Domingo a Jueves', hours: '7:00 am – 12:00 mn' },
       { days: 'Viernes y Sábado', hours: '7:00 am – 3:00 am' },
@@ -192,6 +203,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'An Ethnic Indian Restaurant',
     description: 'La auténtica cocina india en Pinares. Curries aromáticos, tandoori, biryanis y naans recién salidos del horno preparados con especias importadas directamente de India.',
     logo: 'naans-curries.png',
+    photo: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Domingo', hours: '12:00 md – 11:00 pm' }],
     phone: '2271-7777',
     instagram: 'naanscurriespinares',
@@ -207,6 +219,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante Fusión Peruano',
     description: 'Fusión peruana de autor con los mejores sabores de Lima adaptados a la cocina contemporánea. Ceviches, causas, tiraditos y una experiencia gastronómica de primer nivel.',
     logo: 'pikeos.png',
+    photo: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Miércoles', hours: '11:30 am – 10:00 pm' },
       { days: 'Jueves', hours: '11:30 am – 11:00 pm' },
@@ -227,6 +240,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Cocina Costarricense',
     description: 'El sabor auténtico de Costa Rica en Momentum Pinares. Desayunos ticos, casados, gallo pinto y todo el repertorio de la cocina nacional preparado con amor.',
     logo: 'sazon-tico.png',
+    photo: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Viernes', hours: '11:00 am – 10:00 pm' },
       { days: 'Sábados', hours: '8:00 am – 10:00 pm' },
@@ -244,6 +258,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Come Fresco',
     description: 'Sándwiches frescos personalizados con ingredientes de tu elección. Con servicio express para quienes buscan comer bien y rápido en Momentum Pinares.',
     logo: 'subway.png',
+    photo: 'https://images.unsplash.com/photo-1481070414801-51fd723f6cf2?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Domingo', hours: '7:00 am – 10:00 pm' }],
     phone: '2271-4875',
     instagram: 'subwaycr',
@@ -257,6 +272,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante con terraza',
     description: 'Un restaurante con personalidad propia y una terraza que invita a quedarse. Cocina de autor, ambiente sofisticado y una carta que sorprende en cada visita.',
     logo: 'terraza-97.png',
+    photo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Jueves', hours: '12:00 md – 10:00 pm' },
       { days: 'Viernes a Domingo', hours: '12:00 md – 11:00 pm' },
@@ -274,6 +290,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Killer Fish Tacos',
     description: 'Los mejores tacos de pescado en Momentum Pinares. Tortillas de maíz, ingredientes frescos y salsas artesanales en un ambiente relajado y vibrante.',
     logo: 'tacobar.png',
+    photo: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Sábado', hours: '11:00 am – 10:00 pm' },
       { days: 'Domingos', hours: '11:00 am – 9:00 pm' },
@@ -288,6 +305,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Café de especialidad y coctelería',
     description: 'Un espacio donde el café de especialidad se encuentra con la coctelería de autor. Teatro Espressivo fusiona arte, cultura y gastronomía en un ambiente único en Pinares.',
     logo: 'teatro-espressivo.png',
+    photo: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Jueves', hours: '7:00 am – 10:00 pm' },
       { days: 'Viernes y Sábado', hours: '7:00 am – 11:00 pm' },
@@ -302,6 +320,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Pollo a las brasas y sabores BBQ',
     description: 'Pollo al carbón y opciones BBQ preparadas con marinadas artesanales. Un clásico de los sabores ahumados en Momentum Pinares con opciones para comer en el local o llevar.',
     logo: 'bbq-chicken.png',
+    photo: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Domingo', hours: '10:00 am – 10:00 pm' }],
     featured: false,
   },
