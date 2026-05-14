@@ -146,7 +146,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
               transition: 'opacity 0.4s ease',
             }}>
               <Image
-                src={`/sites/${siteId}/photos/${tenant.photo}`}
+                src={tenant.photo!.startsWith('http') ? tenant.photo! : `/sites/${siteId}/photos/${tenant.photo}`}
                 alt={tenant.name}
                 fill
                 sizes="200px"
