@@ -131,7 +131,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
       >
         {/* Logo / photo area */}
         <div style={{
-          height: 120,
+          height: 140,
           position: 'relative', overflow: 'hidden',
           background: hovered && hasPhoto ? '#111' : 'var(--bg)',
           borderBottom: '0.5px solid var(--brd)',
@@ -164,18 +164,20 @@ function TenantCard({ tenant, basePath, siteId, index }: {
             position: 'relative', zIndex: 1,
             transition: 'filter 0.3s, transform 0.3s',
             transform: hovered && hasPhoto ? 'scale(0.9)' : 'scale(1)',
-            padding: hovered && hasPhoto ? '6px 12px' : 0,
+            padding: hovered && hasPhoto ? '8px 14px' : 0,
             background: hovered && hasPhoto ? 'rgba(0,0,0,0.45)' : 'transparent',
             backdropFilter: hovered && hasPhoto ? 'blur(8px)' : 'none',
             borderRadius: 3,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            width: '80%', maxWidth: 160,
           }}>
             <Image
               src={`/sites/${siteId}/logos/${tenant.logo}`}
               alt={tenant.name}
-              width={120} height={60}
+              width={160} height={80}
               className="object-contain"
               style={{
-                maxHeight: 48, width: 'auto',
+                maxHeight: 72, width: 'auto', maxWidth: '100%',
                 filter: hovered && hasPhoto ? 'brightness(10)' : 'none',
                 transition: 'filter 0.3s',
               }}
