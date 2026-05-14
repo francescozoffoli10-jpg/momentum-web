@@ -476,18 +476,18 @@ export default function TenantDetailPage({
   return (
     <>
       {/* ── Breadcrumb ─────────────────────────────────────────────────────── */}
-      <div style={{ background: '#fff', borderBottom: '0.5px solid var(--brd)', paddingTop: 80 }}>
+      <div style={{ background: 'var(--dk)', borderBottom: '0.5px solid rgba(255,255,255,0.06)', paddingTop: 80 }}>
         <div className="max-w-screen-xl mx-auto px-8 py-4">
           <Link
             href={backHref}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 6,
               fontSize: 11, fontWeight: 500, letterSpacing: '0.08em',
-              textTransform: 'uppercase', color: 'var(--mt)',
+              textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)',
               transition: 'color 0.15s',
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'var(--a)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'var(--mt)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.38)' }}
           >
             ← {backLabel}
           </Link>
