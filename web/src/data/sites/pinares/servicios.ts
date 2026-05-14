@@ -1,0 +1,42 @@
+import type { Tenant } from '@/data/types'
+
+export const servicios: Tenant[] = [
+  {
+    slug: 'orange-theory',
+    name: 'Orangetheory Fitness',
+    section: 'servicios',
+    category: 'Servicios · Fitness',
+    tagline: 'More Life',
+    description: 'Entrena con ciencia: el método Orangetheory combina cardio, fuerza y entrenamiento a intervalos monitoreado en tiempo real. Resultados medibles y una comunidad que te impulsa a superar tus límites.',
+    logo: 'orange-theory.png',
+    hours: [
+      { days: 'Lunes a Viernes', hours: '5:30 am – 8:00 pm' },
+      { days: 'Sábados y Domingos', hours: '7:00 am – 12:00 md' },
+    ],
+    instagram: 'orangetheoryfitnesscr',
+    featured: true,
+  },
+  {
+    slug: 'surgical-center',
+    name: 'Surgical Center',
+    section: 'servicios',
+    category: 'Servicios · Centro Quirúrgico',
+    tagline: 'Excelencia quirúrgica en Pinares',
+    description: 'Centro quirúrgico especializado en cirugías ambulatorias y procedimientos de alta complejidad. Infraestructura de primer nivel y un equipo médico comprometido con tu recuperación.',
+    logo: 'surgical-center.png',
+    hours: [{ days: 'Lunes a Viernes', hours: '7:00 am – 5:00 pm' }],
+    featured: false,
+  },
+  {
+    slug: 'larisa-paez',
+    name: 'Larisa Páez Wellness Center',
+    section: 'servicios',
+    category: 'Servicios · Bienestar & Nutrición',
+    tagline: 'Wellness Center',
+    description: 'Centro de bienestar integral dirigido por Larisa Páez. Nutrición, hábitos saludables y programas personalizados de wellness para mejorar tu calidad de vida desde adentro hacia afuera.',
+    logo: 'larisa-paez.png',
+    hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 5:00 pm' }],
+    instagram: 'larisapaezwellness',
+    featured: false,
+  },
+]
