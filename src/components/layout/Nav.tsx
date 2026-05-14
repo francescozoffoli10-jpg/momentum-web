@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { SiteConfig } from '@/data/types'
 
 const SITE_SWITCHER = [
-  { id: 'lindora', name: 'Lindora', color: '#932D2B', href: '/lindora' },
-  { id: 'escazu',  name: 'Escazú',  color: '#56717A', href: '/escazu'  },
-  { id: 'pinares', name: 'Pinares', color: '#4F5B3E', href: '/pinares' },
+  { id: 'lindora',      name: 'Lindora',       color: '#932D2B', href: '/lindora'      },
+  { id: 'escazu',       name: 'Escazú',        color: '#56717A', href: '/escazu'       },
+  { id: 'pinares',      name: 'Pinares',       color: '#4F5B3E', href: '/pinares'      },
+  { id: 'torre-medica', name: 'Torre Médica',  color: '#1B5E8A', href: '/torre-medica' },
 ]
 
 const SECTION_LABELS: Record<string, string> = {
