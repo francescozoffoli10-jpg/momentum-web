@@ -281,7 +281,7 @@ export const servicios: Tenant[] = [
     ],
     instagram: 'gyrotonic_escazu',
     local: 'Edificio fitness, Piso 3',
-    featured: true,
+    featured: false,
   },
   {
     slug: 'centro-medico-momentum',
