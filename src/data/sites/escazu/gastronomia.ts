@@ -32,6 +32,20 @@ export const gastronomia: Tenant[] = [
     instagram: 'paladixo',
     featured: false,
   },
+  {
+    slug: 'capri',
+    name: 'Capri Escazú',
+    section: 'gastronomia',
+    category: 'Gastronomía · Restaurante',
+    tagline: 'Sabores mediterráneos en Escazú',
+    description: 'Capri Escazú trae los sabores del Mediterráneo a Momentum. Una propuesta gastronómica elegante y acogedora, ideal para almuerzos de trabajo y cenas especiales.',
+    logo: 'capri.png',
+    hours: [
+      { days: 'Lunes a Viernes', hours: '11:00 am – 10:00 pm' },
+      { days: 'Sábados', hours: '12:00 md – 10:30 pm' },
+    ],
+    featured: false,
+  },
 ]
 
 export const regionCards: RegionCard[] = [
