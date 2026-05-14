@@ -11,33 +11,33 @@ const ACCENT_LIGHT = '#2272AE'
 const BENEFITS = [
   {
     icon: '🏥',
-    title: 'Infraestructura médica premium',
-    description: 'Consultorios equipados con instalaciones de primer nivel, diseñados para la práctica médica moderna.',
+    title: 'Consultorios desde 33 m²',
+    description: 'Cada piso cuenta con 14 consultorios. Ofrecemos espacios desde los 33 m², diseñados con instalaciones de primer nivel para la práctica médica moderna.',
   },
   {
     icon: '📍',
-    title: 'Ubicación estratégica',
-    description: 'En el corazón de Curridabat, dentro del Centro Comercial Momentum Pinares, con amplio estacionamiento.',
+    title: 'Mercado de 380.000 habitantes',
+    description: 'Ubicada en Curridabat, dentro de Momentum Pinares, con acceso a un mercado potencial de más de 380.000 habitantes en el este de San José.',
   },
   {
     icon: '🔬',
     title: 'Ecosistema médico completo',
-    description: 'Rodeado de laboratorio, radiología, cirugía ambulatoria y decenas de especialistas.',
+    description: 'Rodeado de laboratorio (Labin), radiología (Imagen Test), cirugía ambulatoria (M Surgical Center) y más de 47 especialidades activas en el edificio.',
   },
   {
     icon: '📅',
     title: 'Horario extendido',
-    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar su disponibilidad.',
+    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar su disponibilidad de agenda y la conveniencia de sus pacientes.',
   },
   {
     icon: '💻',
     title: 'Plataforma Huli incluida',
-    description: 'Acceso a directorio médico digital, agendamiento en línea y gestión de pacientes.',
+    description: 'Acceso al directorio médico digital en directorio.torremedicamomentum.com, agendamiento en línea y gestión integral de pacientes.',
   },
   {
     icon: '🅿️',
     title: 'Estacionamiento gratuito',
-    description: 'Amplio estacionamiento disponible para médicos y pacientes dentro del centro comercial.',
+    description: 'Amplio estacionamiento gratuito disponible para médicos y pacientes dentro del Centro Comercial Momentum Pinares.',
   },
 ]
 
@@ -115,8 +115,11 @@ export default function AlquileresPage() {
         <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
           ¿Le interesa un consultorio?
         </h2>
-        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', margin: '0 0 32px' }}>
+        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', margin: '0 0 8px' }}>
           Contáctenos para conocer disponibilidad, precios y condiciones de arrendamiento.
+        </p>
+        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
+          info@torremedicamomentum.com
         </p>
         <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
@@ -133,6 +136,19 @@ export default function AlquileresPage() {
             Llamar: 4702-0577
           </a>
           <a
+            href="mailto:info@torremedicamomentum.com"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              background: 'rgba(255,255,255,0.15)', color: '#fff',
+              border: '0.5px solid rgba(255,255,255,0.35)',
+              fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
+              padding: '13px 26px', borderRadius: 4,
+              textDecoration: 'none', transition: 'background 0.2s',
+            }}
+          >
+            Enviar email
+          </a>
+          <a
             href="/torre-medica/contacto"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -142,7 +158,7 @@ export default function AlquileresPage() {
               textDecoration: 'none', transition: 'opacity 0.2s',
             }}
           >
-            Enviar consulta
+            Formulario de contacto
           </a>
         </div>
       </div>
