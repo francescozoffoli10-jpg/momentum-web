@@ -9,6 +9,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante de autor',
     description: 'Restaurante de autor en Momentum Escazú. Cocina de mercado con ingredientes frescos y una carta que combina técnica y sabor en un ambiente sofisticado y acogedor.',
     logo: 'entrecote.png',
+    photo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Martes a Jueves', hours: '12:00 md – 10:30 pm' },
       { days: 'Viernes y Sábados', hours: '12:00 md – 11:00 pm' },
@@ -27,6 +28,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Restaurante y café',
     description: 'Restaurante y café en Momentum Escazú con un ambiente tranquilo y una carta variada para disfrutar desde el desayuno hasta la hora del almuerzo.',
     logo: 'paladixo.png',
+    photo: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [{ days: 'Lunes a Sábado', hours: '7:00 am – 7:00 pm' }],
     phone: '7205-5358',
     instagram: 'paladixo',
@@ -40,6 +42,7 @@ export const gastronomia: Tenant[] = [
     tagline: 'Sabores mediterráneos en Escazú',
     description: 'Capri Escazú trae los sabores del Mediterráneo a Momentum. Una propuesta gastronómica elegante y acogedora, ideal para almuerzos de trabajo y cenas especiales.',
     logo: 'capri.png',
+    photo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=500&fit=crop&auto=format&q=80',
     hours: [
       { days: 'Lunes a Viernes', hours: '11:00 am – 10:00 pm' },
       { days: 'Sábados', hours: '12:00 md – 10:30 pm' },
