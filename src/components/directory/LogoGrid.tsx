@@ -133,8 +133,8 @@ function TenantCard({ tenant, basePath, siteId, index }: {
         <div style={{
           height: 140,
           position: 'relative', overflow: 'hidden',
-          background: hovered && hasPhoto ? '#111' : 'var(--bg)',
-          borderBottom: '0.5px solid var(--brd)',
+          background: '#0a0a0a',
+          borderBottom: '0.5px solid rgba(0,0,0,0.15)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'background 0.3s',
         }}>
@@ -178,8 +178,8 @@ function TenantCard({ tenant, basePath, siteId, index }: {
               className="object-contain"
               style={{
                 maxHeight: 72, width: 'auto', maxWidth: '100%',
-                filter: hovered && hasPhoto ? 'brightness(10)' : 'none',
-                transition: 'filter 0.3s',
+                opacity: hovered ? 1 : 0.88,
+                transition: 'opacity 0.3s',
               }}
             />
           </div>
