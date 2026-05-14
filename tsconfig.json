@@ -33,6 +33,7 @@
   "exclude": [
     "node_modules",
     "src/sanity",
-    "src/app/studio"
+    "src/app/studio",
+    "src/src"
   ]
 }
