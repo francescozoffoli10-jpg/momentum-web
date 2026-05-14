@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     siteName: 'Momentum Lindora',
     title: 'Momentum Lindora',
     description: 'Gastronomía, comercios, servicios médicos y oficinas premium en Lindora, Santa Ana, Costa Rica.',
-    url: 'https://momentum-preview-coral.vercel.app/lindora',
+    url: 'https://momentumcr.vercel.app/lindora',
     type: 'website',
     locale: 'es_CR',
     images: [{ url: '/sites/lindora/banners/lindora-hero.webp', width: 1440, height: 810, alt: 'Momentum Lindora' }],
   },
   twitter: { card: 'summary_large_image', title: 'Momentum Lindora', description: 'Gastronomía, comercios, servicios médicos y oficinas premium en Lindora, Santa Ana.' },
-  metadataBase: new URL('https://momentum-preview-coral.vercel.app'),
+  metadataBase: new URL('https://momentumcr.vercel.app'),
 }
 
 export default function LindoraLayout({ children }: { children: React.ReactNode }) {
