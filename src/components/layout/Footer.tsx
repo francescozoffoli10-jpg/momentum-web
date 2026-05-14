@@ -122,11 +122,11 @@ export default function Footer({ site, basePath }: FooterProps) {
             </div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               {([
-                ['Eventos',      `${basePath}/eventos`],
-                ['App Momentum', `${basePath}/app`],
-                ['Cómo llegar',  '#'],
-                ['Alquiler / Venta', '#'],
-                ['Contacto',     '#'],
+                ['Eventos',          `${basePath}/eventos`],
+                ['App Momentum',     `${basePath}/app`],
+                ['Cómo llegar',      `${basePath}/como-llegar`],
+                ['Alquiler / Venta', `${basePath}/alquiler`],
+                ['Contacto',         `${basePath}/contacto`],
               ] as [string, string][]).map(function([item, href]) { return (
                 <li key={item}>
                   <Link href={href}
