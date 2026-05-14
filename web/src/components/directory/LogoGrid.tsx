@@ -172,7 +172,6 @@ function TenantCard({ tenant, basePath, siteId, index }: {
               className="object-contain"
               style={{
                 maxHeight: 72, width: 'auto', maxWidth: '100%',
-                mixBlendMode: 'screen',
                 opacity: hovered ? 1 : 0.85,
                 transition: 'opacity 0.3s',
               }}
