@@ -57,7 +57,7 @@ export default function AlquilerPage({ site }: { site: SiteConfig }) {
 
   return (
     <div style={{ background: 'var(--dk)', minHeight: '100vh', paddingTop: 120 }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }} className="alquiler-outer">
 
         {/* Header */}
         <motion.div
@@ -84,7 +84,7 @@ export default function AlquilerPage({ site }: { site: SiteConfig }) {
         </motion.div>
 
         {/* Rental blocks */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 24, marginBottom: 64 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: 24, marginBottom: 64 }} className="alquiler-grid">
           {data.blocks.map((block, i) => (
             <motion.div
               key={block.type}
@@ -151,6 +151,15 @@ export default function AlquilerPage({ site }: { site: SiteConfig }) {
             </motion.div>
           ))}
         </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .alquiler-outer {
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+            }
+          }
+        `}</style>
 
         {/* Bottom note */}
         <motion.div
