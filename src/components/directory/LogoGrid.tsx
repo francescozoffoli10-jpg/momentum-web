@@ -162,12 +162,6 @@ function TenantCard({ tenant, basePath, siteId, index }: {
           {/* Logo — always visible, floats on photo when hovered */}
           <div style={{
             position: 'relative', zIndex: 1,
-            transition: 'filter 0.3s, transform 0.3s',
-            transform: hovered && hasPhoto ? 'scale(0.9)' : 'scale(1)',
-            padding: hovered && hasPhoto ? '8px 14px' : 0,
-            background: hovered && hasPhoto ? 'rgba(0,0,0,0.45)' : 'transparent',
-            backdropFilter: hovered && hasPhoto ? 'blur(8px)' : 'none',
-            borderRadius: 3,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             width: '80%', maxWidth: 160,
           }}>
@@ -178,7 +172,8 @@ function TenantCard({ tenant, basePath, siteId, index }: {
               className="object-contain"
               style={{
                 maxHeight: 72, width: 'auto', maxWidth: '100%',
-                opacity: hovered ? 1 : 0.88,
+                mixBlendMode: 'screen',
+                opacity: hovered ? 1 : 0.85,
                 transition: 'opacity 0.3s',
               }}
             />
