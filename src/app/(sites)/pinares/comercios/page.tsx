@@ -18,8 +18,11 @@ export default function ComerciosPage() {
         count={comercios.length}
         countLabel="comercios"
         sectionLinks={[
-    { href: "/pinares/gastronomia", label: "Gastronomía", active: false },
-    { href: "/pinares/comercios", label: "Comercios", active: true },
+          { href: '/pinares/gastronomia', label: 'Gastronomía', active: false },
+          { href: '/pinares/comercios',   label: 'Comercios',   active: true },
+          { href: '/pinares/servicios',   label: 'Servicios',   active: false },
+          { href: '/pinares/mediplaza',   label: 'Mediplaza',   active: false },
+          { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
       />
       <LogoGrid tenants={comercios} basePath="/pinares" siteId="pinares" />
