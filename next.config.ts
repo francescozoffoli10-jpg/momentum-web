@@ -11,13 +11,22 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 828, 1080, 1200, 1920],
     imageSizes: [64, 96, 128, 256, 384],
     remotePatterns: [
-      // Sanity CDN — for images served via sanityClient queries
       { protocol: 'https', hostname: 'cdn.sanity.io' },
-      // Unsplash — for curated tenant stock photos
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-  // Long-lived caching for static assets
+
+  async redirects() {
+    return [
+      // /pinares/mediplaza → /pinares/torre-medica (renamed section)
+      {
+        source: '/pinares/mediplaza',
+        destination: '/pinares/torre-medica',
+        permanent: true,
+      },
+    ]
+  },
+
   async headers() {
     return [
       {
@@ -37,4 +46,3 @@ const nextConfig: NextConfig = {
 }
 
 export default nextConfig
-
