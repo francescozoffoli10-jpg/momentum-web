@@ -21,7 +21,7 @@ export default function GastronomiaPage() {
           { href: '/pinares/gastronomia', label: 'Gastronomía', active: true },
           { href: '/pinares/comercios',   label: 'Comercios',   active: false },
           { href: '/pinares/servicios',   label: 'Servicios',   active: false },
-          { href: '/pinares/mediplaza',   label: 'Mediplaza',   active: false },
+          { href: '/pinares/torre-medica', label: 'Torre Médica', active: false },
           { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
       />
