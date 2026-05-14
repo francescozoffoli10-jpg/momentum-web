@@ -8,7 +8,8 @@ export const specialties: Specialty[] = [
   // Cirugía
   { name: 'Cirugía Estética',                      category: 'Cirugía' },
   { name: 'Cirugía General',                        category: 'Cirugía' },
-  { name: 'Cirugía Oral y Maxilofacial',            category: 'Cirugía' },
+  { name: 'Cirugía Oral',                             category: 'Cirugía' },
+  { name: 'Maxilofacial',                            category: 'Cirugía' },
   { name: 'Cirugía Pediátrica',                     category: 'Cirugía' },
   { name: 'Cirugía Plástica',                       category: 'Cirugía' },
   { name: 'Coloproctología',                        category: 'Cirugía' },
