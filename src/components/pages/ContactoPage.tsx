@@ -6,7 +6,7 @@ import type { SiteConfig } from '@/data/types'
 export default function ContactoPage({ site }: { site: SiteConfig }) {
   return (
     <div style={{ background: 'var(--dk)', minHeight: '100vh', paddingTop: 120 }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px 80px' }} className="contacto-outer">
 
         {/* Header */}
         <motion.div
@@ -172,6 +172,15 @@ export default function ContactoPage({ site }: { site: SiteConfig }) {
             </div>
           </motion.a>
         </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .contacto-outer {
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+            }
+          }
+        `}</style>
 
         {/* Address */}
         <motion.div
