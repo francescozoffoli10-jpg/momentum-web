@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-  // Legacy URL redirects
+  // Legacy URL redirects — updated 2026-05-14
   async redirects() {
     return [
       // /pinares/mediplaza → /pinares/torre-medica (renamed section)
