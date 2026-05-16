@@ -54,22 +54,6 @@ const destinations = [
     tagline: 'Gastronomía · Comercio · Vida',
     href: '/pinares',
   },
-  {
-    id: 'torre-medica',
-    name: 'Torre Médica',
-    full: 'Torre Médica Momentum',
-    location: 'Curridabat · San José',
-    color: '#1B5E8A',
-    colorLight: '#2272AE',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=1000&fit=crop&auto=format&q=80',
-    stats: [
-      { label: 'Especialidades', value: '47+' },
-      { label: 'Servicios', value: '7' },
-      { label: 'Pisos', value: '8' },
-    ],
-    tagline: 'Salud · Especialistas · Diagnóstico',
-    href: '/torre-medica',
-  },
 ]
 
 function DestinationCard({ d, index }: { d: typeof destinations[0]; index: number }) {
@@ -289,8 +273,6 @@ export default function LandingPage() {
           <div style={{ flex: 1 }} />
           <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
           <div style={{ flex: 1 }} />
-          <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
-          <div style={{ flex: 1 }} />
         </div>
 
         {/* Content */}
@@ -347,7 +329,7 @@ export default function LandingPage() {
               lineHeight: 1.8,
             }}
           >
-            Cuatro destinos. Un ecosistema.
+            Tres destinos. Un ecosistema.
           </motion.p>
 
           {/* Three colored dots */}
@@ -542,7 +524,7 @@ export default function LandingPage() {
           © {new Date().getFullYear()} Momentum Costa Rica
         </span>
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
-          Lindora · Escazú · Pinares · Torre Médica
+          Lindora · Escazú · Pinares
         </span>
       </footer>
     </main>
