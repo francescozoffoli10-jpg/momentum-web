@@ -78,7 +78,7 @@ export default function AppBadge() {
           </p>
 
           <div style={{ display: 'flex', gap: 8 }}>
-            <a href="#" style={{
+            <a href="https://apps.apple.com/es/app/momentum/id1524496370?l=en-GB" target="_blank" rel="noopener noreferrer" style={{
               flex: 1, textAlign: 'center',
               padding: '8px 0',
               background: 'var(--a)',
@@ -94,7 +94,7 @@ export default function AppBadge() {
             >
               App Store
             </a>
-            <a href="#" style={{
+            <a href="https://play.google.com/store/apps/details?id=com.baum.loyalty.momemtum&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" style={{
               flex: 1, textAlign: 'center',
               padding: '8px 0',
               border: '0.5px solid rgba(255,255,255,0.14)',
