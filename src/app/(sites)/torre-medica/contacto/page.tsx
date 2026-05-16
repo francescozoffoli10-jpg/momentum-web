@@ -1,5 +1,3 @@
-'use client'
-
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -13,6 +11,11 @@ const ACCENT_LIGHT = '#2272AE'
 export default function ContactoPage() {
   return (
     <>
+      <style>{`
+        .tm-phone-link:hover { color: #1B5E8A !important; }
+        .tm-social-link:hover { border-color: #1B5E8A !important; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
         <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
@@ -49,13 +52,12 @@ export default function ContactoPage() {
                 </div>
                 <a
                   href="tel:+50647020577"
+                  className="tm-phone-link"
                   style={{
                     fontSize: 28, fontWeight: 300, color: '#0A1018',
                     textDecoration: 'none', letterSpacing: '-0.02em', display: 'block',
                     transition: 'color 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.color = ACCENT}
-                  onMouseLeave={e => e.currentTarget.style.color = '#0A1018'}
                 >
                   4702-0577
                 </a>
@@ -113,14 +115,13 @@ export default function ContactoPage() {
                   href="https://www.facebook.com/TorreMedicaMomentum"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="tm-social-link"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     fontSize: 14, color: '#3A4D5C', textDecoration: 'none',
                     padding: '8px 16px', border: '0.5px solid #E2EAF0', borderRadius: 4,
                     transition: 'border-color 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = ACCENT}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = '#E2EAF0'}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill={ACCENT}>
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
