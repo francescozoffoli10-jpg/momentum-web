@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AppBadge from '@/components/ui/AppBadge'
+import WhatsAppBadge from '@/components/ui/WhatsAppBadge'
 import { pinaresSite } from '@/data/sites/pinares'
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function PinaresLayout({ children }: { children: React.ReactNode 
       <main>{children}</main>
       <Footer site={pinaresSite} basePath="/pinares" />
       <AppBadge />
+      <WhatsAppBadge phone={pinaresSite.phone} />
     </>
   )
 }
