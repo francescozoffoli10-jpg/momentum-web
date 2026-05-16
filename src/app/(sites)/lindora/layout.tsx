@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AppBadge from '@/components/ui/AppBadge'
+import WhatsAppBadge from '@/components/ui/WhatsAppBadge'
 import { lindoraSite } from '@/data/sites/lindora'
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function LindoraLayout({ children }: { children: React.ReactNode 
       <main>{children}</main>
       <Footer site={lindoraSite} basePath="/lindora" />
       <AppBadge />
+      <WhatsAppBadge phone={lindoraSite.phone} />
     </>
   )
 }
