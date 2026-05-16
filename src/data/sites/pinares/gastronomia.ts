@@ -333,6 +333,7 @@ export const regionCards: RegionCard[] = [
     title: 'Bottega Privée · Da Noi',
     restaurants: ['bottega', 'da-noi'],
     color: '#2C1810',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'japonesa',
@@ -340,6 +341,7 @@ export const regionCards: RegionCard[] = [
     title: 'Matsuri',
     restaurants: ['matsuri'],
     color: '#0D0D1A',
+    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'peruana',
@@ -347,6 +349,7 @@ export const regionCards: RegionCard[] = [
     title: 'Pikeos',
     restaurants: ['pikeos'],
     color: '#1A0A0A',
+    image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'argentina',
@@ -354,6 +357,7 @@ export const regionCards: RegionCard[] = [
     title: 'El Caminito',
     restaurants: ['el-caminito'],
     color: '#0A1210',
+    image: 'https://images.unsplash.com/photo-1544025162-d76538b5f90f?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'mexicana',
@@ -361,6 +365,7 @@ export const regionCards: RegionCard[] = [
     title: 'La Fonda Azteca',
     restaurants: ['la-fonda-azteca'],
     color: '#1A1208',
+    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'mariscos',
@@ -368,6 +373,7 @@ export const regionCards: RegionCard[] = [
     title: "Fisherman's",
     restaurants: ['fishermans'],
     color: '#0A1018',
+    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'venezolana',
@@ -375,6 +381,7 @@ export const regionCards: RegionCard[] = [
     title: 'CHAMO GOURMET',
     restaurants: ['chamo-gourmet'],
     color: '#18100A',
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&h=600&fit=crop&auto=format&q=75',
   },
   {
     id: 'india',
@@ -382,5 +389,6 @@ export const regionCards: RegionCard[] = [
     title: 'Naans & Curries',
     restaurants: ['naans-curries-pinares'],
     color: '#1A1008',
+    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&h=600&fit=crop&auto=format&q=75',
   },
 ]
