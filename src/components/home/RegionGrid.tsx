@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { RegionCard } from '@/data/types'
 
 const PALETTE = [
@@ -44,10 +45,23 @@ function Card({ card, basePath, index }: { card: RegionCard; basePath: string; i
           if (inner) inner.style.opacity = '0'
         }}
       >
+        {/* Background image */}
+        {card.image && (
+          <Image
+            src={card.image}
+            alt={card.title}
+            fill
+            sizes="(max-width: 768px) 50vw, 33vw"
+            style={{ objectFit: 'cover', opacity: 0.75, transition: 'opacity 0.4s, transform 0.6s' }}
+          />
+        )}
+
         {/* Gradient */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(139,40,40,0.15) 0%, transparent 60%, rgba(0,0,0,0.4) 100%)',
+          background: card.image
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%)'
+            : 'linear-gradient(135deg, rgba(139,40,40,0.15) 0%, transparent 60%, rgba(0,0,0,0.4) 100%)',
         }} />
 
         {/* Hover overlay */}
@@ -112,6 +126,11 @@ export default function RegionGrid({ cards, basePath, gridTitle, sectionLabel, s
 
   return (
     <section style={{ background: 'var(--bg)', padding: '100px 0' }}>
+      <style>{`
+        @media (max-width: 600px) {
+          .region-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
 
         {/* Header */}
@@ -157,7 +176,7 @@ export default function RegionGrid({ cards, basePath, gridTitle, sectionLabel, s
         </div>
 
         {/* 3×3 Grid */}
-        <div className="region-grid" style={{ display: 'grid', gap: 16 }}>
+        <div className="region-grid" style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(3, 1fr)' }}>
           {cards.slice(0, 9).map((card, i) => (
             <Card key={card.id} card={card} basePath={basePath} index={i} />
           ))}
