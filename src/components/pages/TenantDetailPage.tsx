@@ -184,8 +184,7 @@ function PhotoGallery({
               src={mainPhoto.startsWith('http') ? mainPhoto : `/sites/${siteId}/photos/${mainPhoto}`}
               alt={`${tenantName} — foto`}
               fill
-              className="object-cover"
-              style={{ objectPosition: 'center 40%' }}
+              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             />
             <div style={{
               position: 'absolute', inset: 0,
@@ -236,7 +235,7 @@ function PhotoGallery({
                     src={photo.startsWith('http') ? photo : `/sites/${siteId}/photos/${photo}`}
                     alt={`${tenantName} foto ${i + 1}`}
                     fill
-                    className="object-cover"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div style={{
                     position: 'absolute', inset: 0,
