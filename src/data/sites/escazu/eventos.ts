@@ -1,0 +1,58 @@
+import type { SiteEvent } from '@/data/types'
+
+export const eventos: SiteEvent[] = [
+  // ── Junio 2026 ─────────────────────────────────────────────────────────────
+  {
+    id: 'feria-bienestar-jun-2026',
+    title: 'Feria de Bienestar',
+    subtitle: 'Junio 2026 · Momentum Escazú',
+    description: 'Una tarde dedicada al bienestar integral. Yoga, meditación, gastronomía saludable y productos de vida sana se reúnen en el corazón de Momentum Escazú. Entrada libre para toda la familia.',
+    date: '2026-06-07',
+    timeLabel: '9:00 am – 4:00 pm',
+    tag: 'Bienestar',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200&h=700&fit=crop&auto=format&q=80',
+    ctaLabel: 'Más información',
+    ctaUrl: 'https://instagram.com/momentumcostarica',
+    featured: true,
+  },
+  {
+    id: 'yoga-aire-libre-jun-2026',
+    title: 'Yoga al Aire Libre',
+    subtitle: 'Sesión Matutina · Junio 2026',
+    description: 'Iniciá la semana con energía. Sesión de yoga al aire libre en el espacio central de Momentum Escazú. Llevá tu mat y unite a la comunidad. Apta para todos los niveles.',
+    date: '2026-06-14',
+    timeLabel: '8:00 am – 9:30 am',
+    tag: 'Bienestar',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&h=700&fit=crop&auto=format&q=80',
+    ctaLabel: 'Seguir novedades',
+    ctaUrl: 'https://instagram.com/momentumcostarica',
+    featured: false,
+  },
+  {
+    id: 'noche-jazz-jun-2026',
+    title: 'Noche de Jazz',
+    subtitle: 'Música en Vivo · Escazú',
+    description: 'Una velada de jazz en vivo con los mejores músicos de la escena costarricense. Combiná buena música, gastronomía de primer nivel y el ambiente único de Momentum Escazú.',
+    date: '2026-06-27',
+    timeLabel: '6:00 pm – 10:00 pm',
+    tag: 'Música & Arte',
+    image: 'https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=1200&h=700&fit=crop&auto=format&q=80',
+    ctaLabel: 'Más información',
+    ctaUrl: 'https://instagram.com/momentumcostarica',
+    featured: false,
+  },
+  // ── Julio 2026 ─────────────────────────────────────────────────────────────
+  {
+    id: 'arte-diseno-jul-2026',
+    title: 'Arte & Diseño',
+    subtitle: 'Exposición Local · Julio 2026',
+    description: 'Artistas y diseñadores independientes de Costa Rica exhiben y venden su trabajo en Momentum Escazú. Una celebración de la creatividad local con gastronomía y música de fondo.',
+    date: '2026-07-11',
+    timeLabel: '10:00 am – 6:00 pm',
+    tag: 'Comunidad',
+    image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&h=700&fit=crop&auto=format&q=80',
+    ctaLabel: 'Seguir novedades',
+    ctaUrl: 'https://instagram.com/momentumcostarica',
+    featured: false,
+  },
+]
