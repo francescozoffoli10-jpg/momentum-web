@@ -53,7 +53,7 @@ export default function ServiciosPage() {
                     alt={service.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(7,13,20,0.7) 100%)' }} />
                   <div style={{
