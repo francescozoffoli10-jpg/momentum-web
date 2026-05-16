@@ -13,6 +13,6 @@ export const escazuSite: SiteConfig = {
   heroImage: '/sites/escazu/banners/escazu-hero.webp',
   logo: '/brand/momentum-white.png',
   accentColor: '#56717A',
-  sections: ['gastronomia', 'servicios', 'oficentro'],
-  hasEvents: false,
+  sections: ['gastronomia', 'servicios', 'centro-medico', 'oficentro'],
+  hasEvents: true,
 }
