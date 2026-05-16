@@ -54,6 +54,22 @@ const destinations = [
     tagline: 'Gastronomía · Comercio · Vida',
     href: '/pinares',
   },
+  {
+    id: 'torre-medica',
+    name: 'Torre Médica',
+    full: 'Torre Médica Momentum',
+    location: 'Curridabat · San José',
+    color: '#1B5E8A',
+    colorLight: '#2272AE',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=1000&fit=crop&auto=format&q=80',
+    stats: [
+      { label: 'Especialidades', value: '47+' },
+      { label: 'Servicios', value: '7' },
+      { label: 'Pisos', value: '8' },
+    ],
+    tagline: 'Salud · Especialistas · Diagnóstico',
+    href: '/torre-medica',
+  },
 ]
 
 function DestinationCard({ d, index }: { d: typeof destinations[0]; index: number }) {
@@ -250,8 +266,7 @@ export default function LandingPage() {
                 alt={d.full}
                 fill
                 priority
-                className="object-cover"
-                style={{ filter: 'brightness(0.55)' }}
+                style={{ objectFit: 'cover', filter: 'brightness(0.55)' }}
               />
             </div>
           ))}
@@ -274,6 +289,8 @@ export default function LandingPage() {
           <div style={{ flex: 1 }} />
           <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
           <div style={{ flex: 1 }} />
+          <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
+          <div style={{ flex: 1 }} />
         </div>
 
         {/* Content */}
@@ -289,15 +306,15 @@ export default function LandingPage() {
               marginBottom: 36,
             }}
           >
-            <div style={{ width: 32, height: '0.5px', background: 'rgba(255,255,255,0.35)' }} />
+            <div style={{ width: 24, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
             <span style={{
-              fontSize: 10, fontWeight: 500,
-              letterSpacing: '0.24em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.6)',
+              fontSize: 9, fontWeight: 500,
+              letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.3)',
             }}>
               Costa Rica · Premium Lifestyle Ecosystem
             </span>
-            <div style={{ width: 32, height: '0.5px', background: 'rgba(255,255,255,0.35)' }} />
+            <div style={{ width: 24, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
           </motion.div>
 
           {/* Logo */}
@@ -330,7 +347,7 @@ export default function LandingPage() {
               lineHeight: 1.8,
             }}
           >
-            Tres destinos. Un ecosistema.
+            Cuatro destinos. Un ecosistema.
           </motion.p>
 
           {/* Three colored dots */}
@@ -414,7 +431,7 @@ export default function LandingPage() {
             fontWeight: 300, letterSpacing: '-0.02em',
             color: '#fff', lineHeight: 1.15, margin: 0,
           }}>
-            Elegí tu destino Momentum
+            Elige tu destino Momentum
           </h2>
         </motion.div>
 
@@ -524,8 +541,8 @@ export default function LandingPage() {
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.08em' }}>
           © {new Date().getFullYear()} Momentum Costa Rica
         </span>
-        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', fontWeight: 500 }}>
-          Lindora · Escazú · Pinares
+        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
+          Lindora · Escazú · Pinares · Torre Médica
         </span>
       </footer>
     </main>
