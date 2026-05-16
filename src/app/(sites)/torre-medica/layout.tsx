@@ -27,6 +27,12 @@ export default function TorreMedicaLayout({ children }: { children: React.ReactN
       <TorreMedicaNav />
       <main>{children}</main>
       <TorreMedicaFooter />
+      <style>{`
+        @media (max-width: 768px) {
+          .tm-inner { padding-left: 20px !important; padding-right: 20px !important; }
+          .tm-contact-grid { gap: 32px !important; }
+        }
+      `}</style>
     </>
   )
 }
