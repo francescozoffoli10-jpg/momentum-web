@@ -144,7 +144,7 @@ export default function Footer({ site, basePath }: FooterProps) {
         {OTHER_SITES[site.id] && (
           <div style={{ marginBottom: 28, paddingBottom: 28, borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
             <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 14 }}>
-              Descubre el ecosistema Momentum
+              Descubrí el ecosistema Momentum
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {OTHER_SITES[site.id].map(function(s) { return (
