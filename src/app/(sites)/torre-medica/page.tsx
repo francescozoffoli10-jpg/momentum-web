@@ -24,8 +24,7 @@ function Hero() {
           src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&h=900&fit=crop&auto=format&q=80"
           alt="Torre Médica Momentum"
           fill
-          className="object-cover"
-          style={{ opacity: 0.18 }}
+          style={{ objectFit: 'cover', opacity: 0.18 }}
           priority
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,13,20,0.95) 40%, rgba(27,94,138,0.2) 100%)' }} />
@@ -341,8 +340,7 @@ function ServicesSection() {
                     alt={service.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                    style={{ opacity: 0.6 }}
+                    style={{ objectFit: 'cover', opacity: 0.6 }}
                   />
                   <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 30%, rgba(7,13,20,0.85) 100%)` }} />
                   <div style={{
