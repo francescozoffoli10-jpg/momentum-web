@@ -1,0 +1,21 @@
+export const torreMedicaSite = {
+  id: 'torre-medica' as const,
+  name: 'Torre Médica Momentum',
+  subtitle: 'Pinares',
+  tagline: 'Su mejor opción de salud en el este',
+  address: 'Centro Comercial Momentum Pinares, Curridabat',
+  city: 'San José, Costa Rica',
+  phone: '+506 4702-0577',
+  callCenter: '4702-0577',
+  facebook: 'TorreMedicaMomentum',
+  huliDirectoryUrl: 'https://directorio.torremedicamomentum.com',
+  heroImage: '/sites/pinares/banners/pinares-hero.webp',
+  logo: '/brand/torre-medica-white.png',
+  logoFallback: '/sites/pinares/logos/torre-medica.png',
+  accentColor: '#1B5E8A',
+  hours: [
+    { days: 'Lunes a Viernes', hours: '8:00 am – 8:00 pm' },
+    { days: 'Sábados', hours: '8:00 am – 4:00 pm' },
+    { days: 'Domingos', hours: 'Cerrado' },
+  ],
+}
