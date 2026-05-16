@@ -375,7 +375,7 @@ export default function LandingPage() {
               textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
             }}
           >
-            Descubrir
+            Descubrí
           </motion.span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -413,7 +413,7 @@ export default function LandingPage() {
             fontWeight: 300, letterSpacing: '-0.02em',
             color: '#fff', lineHeight: 1.15, margin: 0,
           }}>
-            Elige tu destino Momentum
+            Elegí tu destino Momentum
           </h2>
         </motion.div>
 
