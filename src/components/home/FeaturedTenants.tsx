@@ -10,6 +10,10 @@ interface FeaturedTenantsProps {
   tenants: Tenant[]
   basePath: string
   siteId: string
+  sectionLabel?: string
+  title?: string
+  viewAllHref?: string
+  viewAllLabel?: string
 }
 
 function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; basePath: string; siteId: string; index: number }) {
@@ -57,8 +61,7 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
                 alt={tenant.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 25vw"
-                className="object-cover"
-                style={{ opacity: 0.82 }}
+                style={{ objectFit: 'cover', opacity: 0.82 }}
               />
               <div style={{
                 position: 'absolute', inset: 0,
@@ -126,7 +129,16 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
   )
 }
 
-export default function FeaturedTenants({ tenants, basePath, siteId }: FeaturedTenantsProps) {
+export default function FeaturedTenants({
+  tenants,
+  basePath,
+  siteId,
+  sectionLabel = 'Gastronomía',
+  title = 'Donde comer hoy',
+  viewAllHref,
+  viewAllLabel = 'Ver todos',
+}: FeaturedTenantsProps) {
+  const resolvedHref = viewAllHref ?? `${basePath}/gastronomia`
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -145,7 +157,7 @@ export default function FeaturedTenants({ tenants, basePath, siteId }: FeaturedT
             >
               <div style={{ width: 20, height: '0.5px', background: 'var(--a)' }} />
               <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--a)' }}>
-                Gastronomía
+                {sectionLabel}
               </span>
             </motion.div>
             <motion.h2
@@ -154,7 +166,7 @@ export default function FeaturedTenants({ tenants, basePath, siteId }: FeaturedT
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: 'clamp(26px, 3.5vw, 40px)', fontWeight: 300, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
             >
-              Donde comer hoy
+              {title}
             </motion.h2>
           </div>
           <motion.div
@@ -163,7 +175,7 @@ export default function FeaturedTenants({ tenants, basePath, siteId }: FeaturedT
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <Link
-              href={`${basePath}/gastronomia`}
+              href={resolvedHref}
               style={{
                 fontSize: 11, color: 'var(--mt)', letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -173,7 +185,7 @@ export default function FeaturedTenants({ tenants, basePath, siteId }: FeaturedT
               onMouseEnter={e => e.currentTarget.style.color = 'var(--a)'}
               onMouseLeave={e => e.currentTarget.style.color = 'var(--mt)'}
             >
-              Ver todos
+              {viewAllLabel}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
