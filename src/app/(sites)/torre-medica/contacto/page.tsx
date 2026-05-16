@@ -13,7 +13,7 @@ export default function ContactoPage() {
     <>
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <div style={{ width: 20, height: '1px', background: ACCENT }} />
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: ACCENT_LIGHT }}>
@@ -31,8 +31,8 @@ export default function ContactoPage() {
 
       {/* Content */}
       <div style={{ background: '#fff', padding: '80px 0' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64 }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+          <div className="tm-contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64 }}>
 
             {/* Info column */}
             <div>
