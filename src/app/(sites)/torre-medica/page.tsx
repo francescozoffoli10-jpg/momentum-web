@@ -37,7 +37,7 @@ function Hero() {
         background: `linear-gradient(to bottom, transparent, ${ACCENT}, transparent)`,
       }} />
 
-      <div style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '120px 32px 80px' }}>
+      <div className="tm-inner" style={{ position: 'relative', maxWidth: 1280, margin: '0 auto', padding: '120px 32px 80px' }}>
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           animate={{ opacity: 1, x: 0 }}
@@ -162,7 +162,7 @@ function SpecialtiesSection() {
 
   return (
     <section id="especialidades" style={{ background: '#fff', padding: '100px 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+      <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         <div ref={ref} style={{ marginBottom: 64 }}>
           <motion.div
             initial={{ opacity: 0, x: -16 }}
@@ -271,7 +271,7 @@ function ServicesSection() {
 
   return (
     <section style={{ background: '#070D14', padding: '100px 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+      <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
         <div ref={ref} style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 56, flexWrap: 'wrap', gap: 16 }}>
           <div>
             <motion.div
@@ -385,7 +385,7 @@ function ContactStrip() {
 
   return (
     <section style={{ background: ACCENT, padding: '72px 0' }}>
-      <div ref={ref} style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32 }}>
+      <div ref={ref} className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32 }}>
         <motion.div initial={{ opacity: 0, x: -20 }} animate={inView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
           <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
             Ubicación
