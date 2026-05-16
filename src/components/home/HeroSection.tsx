@@ -43,8 +43,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
           priority
           sizes="100vw"
           quality={90}
-          className="object-cover"
-          style={{ filter: 'brightness(0.44)' }}
+          style={{ objectFit: 'cover', filter: 'brightness(0.44)' }}
         />
       </motion.div>
 
@@ -202,7 +201,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.42)'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; e.currentTarget.style.color = 'rgba(255,255,255,0.52)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              Descargá la App
+              Descarga la App
             </Link>
           </motion.div>
         </motion.div>
@@ -212,36 +211,19 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
       <motion.div
         style={{
           opacity: scrollO,
-          position: 'absolute', bottom: 44, left: '50%',
+          position: 'absolute', bottom: 36, left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
-          zIndex: 20,
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <motion.span
-          animate={{ opacity: [0.65, 1, 0.65] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            fontSize: 13, letterSpacing: '0.32em',
-            color: 'rgba(255,255,255,0.95)',
-            textTransform: 'uppercase',
-            fontWeight: 500,
-            textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
-          }}
-        >
-          Descubrir
-        </motion.span>
+        <span style={{ fontSize: 8, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.16)', textTransform: 'uppercase' }}>Scroll</span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          style={{
-            width: 1.5, height: 42,
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), transparent)',
-            boxShadow: '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2)',
-          }}
+          style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, rgba(255,255,255,0.18), transparent)' }}
         />
       </motion.div>
     </section>
