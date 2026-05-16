@@ -1,8 +1,5 @@
-'use client'
-
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { medicalServices } from '@/data/sites/torre-medica/services'
 
 export const metadata: Metadata = {
@@ -16,6 +13,10 @@ const ACCENT_LIGHT = '#2272AE'
 export default function ServiciosPage() {
   return (
     <>
+      <style>{`
+        .tm-cta-btn:hover { opacity: 0.85; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
         <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
@@ -79,6 +80,7 @@ export default function ServiciosPage() {
                     href={service.huliUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="tm-cta-btn"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 8,
                       background: ACCENT, color: '#fff',
@@ -86,8 +88,6 @@ export default function ServiciosPage() {
                       padding: '10px 20px', borderRadius: 4,
                       textDecoration: 'none', transition: 'opacity 0.2s',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
                     Ver perfil y agendar
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
