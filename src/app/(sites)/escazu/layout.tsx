@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import AppBadge from '@/components/ui/AppBadge'
+import WhatsAppBadge from '@/components/ui/WhatsAppBadge'
 import { escazuSite } from '@/data/sites/escazu'
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function EscazuLayout({ children }: { children: React.ReactNode }
       <main>{children}</main>
       <Footer site={escazuSite} basePath="/escazu" />
       <AppBadge />
+      <WhatsAppBadge phone={escazuSite.phone} />
     </>
   )
 }
