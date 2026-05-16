@@ -1,5 +1,3 @@
-'use client'
-
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -46,6 +44,11 @@ const BENEFITS = [
 export default function AlquileresPage() {
   return (
     <>
+      <style>{`
+        .tm-benefit-card { transition: border-color 0.3s, box-shadow 0.3s; }
+        .tm-benefit-card:hover { border-color: rgba(27,94,138,0.27) !important; box-shadow: 0 8px 32px rgba(27,94,138,0.08) !important; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
         <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
@@ -84,19 +87,11 @@ export default function AlquileresPage() {
             {BENEFITS.map((b) => (
               <div
                 key={b.title}
+                className="tm-benefit-card"
                 style={{
                   padding: '28px 28px 32px',
                   border: '0.5px solid #E2EAF0',
                   borderRadius: 6,
-                  transition: 'border-color 0.3s, box-shadow 0.3s',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = `${ACCENT}44`
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(27,94,138,0.08)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = '#E2EAF0'
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                 }}
               >
                 <div style={{ fontSize: 28, marginBottom: 16 }}>{b.icon}</div>
@@ -132,7 +127,7 @@ export default function AlquileresPage() {
               border: '0.5px solid rgba(255,255,255,0.35)',
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'background 0.2s',
+              textDecoration: 'none',
             }}
           >
             Llamar: 4702-0577
@@ -145,7 +140,7 @@ export default function AlquileresPage() {
               border: '0.5px solid rgba(255,255,255,0.35)',
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'background 0.2s',
+              textDecoration: 'none',
             }}
           >
             Enviar email
@@ -157,7 +152,7 @@ export default function AlquileresPage() {
               background: '#fff', color: ACCENT,
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'opacity 0.2s',
+              textDecoration: 'none',
             }}
           >
             Formulario de contacto
