@@ -7,21 +7,21 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { SiteConfig } from '@/data/types'
 
 const SITE_SWITCHER = [
-  { id: 'lindora',      name: 'Lindora',       color: '#932D2B', href: '/lindora'      },
-  { id: 'escazu',       name: 'Escazú',        color: '#56717A', href: '/escazu'       },
-  { id: 'pinares',      name: 'Pinares',       color: '#4F5B3E', href: '/pinares'      },
-  { id: 'torre-medica', name: 'Torre Médica',  color: '#1B5E8A', href: '/torre-medica' },
+  { id: 'lindora',      name: 'Lindora',      color: '#932D2B', href: '/lindora',      sub: { label: 'Mediplaza',     href: '/lindora/mediplaza'    } },
+  { id: 'escazu',       name: 'Escazú',       color: '#56717A', href: '/escazu',       sub: { label: 'Centro Médico', href: '/escazu/centro-medico' } },
+  { id: 'pinares',      name: 'Pinares',      color: '#4F5B3E', href: '/pinares',      sub: { label: 'Torre Médica',  href: '/pinares/torre-medica' } },
+  { id: 'torre-medica', name: 'Torre Médica', color: '#1B5E8A', href: '/torre-medica' },
 ]
 
 const SECTION_LABELS: Record<string, string> = {
-  gastronomia:      'Gastronomía',
-  comercios:        'Comercios',
-  servicios:        'Servicios',
-  ofiplaza:         'Ofiplaza',
-  mediplaza:        'Mediplaza',
-  oficentro:        'Oficentro',
-  'torre-medica':   'Torre Médica',
-  'centro-medico':  'Centro Médico',
+  gastronomia:    'Gastronomía',
+  comercios:      'Comercios',
+  servicios:      'Servicios',
+  ofiplaza:       'Ofiplaza',
+  mediplaza:      'Mediplaza',
+  oficentro:      'Oficentro',
+  'centro-medico': 'Centro Médico',
+  'torre-medica':  'Torre Médica',
 }
 
 interface NavProps {
@@ -205,37 +205,63 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                       boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
                     }}>
                       {SITE_SWITCHER.map(s => (
-                        <Link key={s.id} href={s.href}
-                          style={{
-                            display: 'flex', alignItems: 'center', gap: 9,
-                            padding: '9px 16px',
-                            opacity: site.id === s.id ? 1 : 0.6,
-                            transition: 'opacity 0.15s, background 0.15s',
-                          }}
-                          onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
-                          onMouseLeave={e => { e.currentTarget.style.opacity = site.id === s.id ? '1' : '0.6'; e.currentTarget.style.background = 'transparent' }}
-                        >
-                          <span style={{
-                            width: 5, height: 5, borderRadius: '50%',
-                            background: s.color, flexShrink: 0,
-                            boxShadow: site.id === s.id ? `0 0 6px ${s.color}` : 'none',
-                          }} />
-                          <span style={{
-                            fontSize: 12, fontWeight: site.id === s.id ? 500 : 300,
-                            color: site.id === s.id ? '#fff' : 'rgba(255,255,255,0.6)',
-                            letterSpacing: '0.02em',
-                          }}>
-                            {s.name}
-                          </span>
-                          {site.id === s.id && (
+                        <div key={s.id}>
+                          <Link href={s.href}
+                            style={{
+                              display: 'flex', alignItems: 'center', gap: 9,
+                              padding: '9px 16px',
+                              opacity: site.id === s.id ? 1 : 0.6,
+                              transition: 'opacity 0.15s, background 0.15s',
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+                            onMouseLeave={e => { e.currentTarget.style.opacity = site.id === s.id ? '1' : '0.6'; e.currentTarget.style.background = 'transparent' }}
+                          >
                             <span style={{
-                              marginLeft: 'auto', fontSize: 9,
-                              color: s.color, letterSpacing: '0.1em',
+                              width: 5, height: 5, borderRadius: '50%',
+                              background: s.color, flexShrink: 0,
+                              boxShadow: site.id === s.id ? `0 0 6px ${s.color}` : 'none',
+                            }} />
+                            <span style={{
+                              fontSize: 12, fontWeight: site.id === s.id ? 500 : 300,
+                              color: site.id === s.id ? '#fff' : 'rgba(255,255,255,0.6)',
+                              letterSpacing: '0.02em',
                             }}>
-                              ●
+                              {s.name}
                             </span>
+                            {site.id === s.id && (
+                              <span style={{
+                                marginLeft: 'auto', fontSize: 9,
+                                color: s.color, letterSpacing: '0.1em',
+                              }}>
+                                ●
+                              </span>
+                            )}
+                          </Link>
+                          {'sub' in s && s.sub && (
+                            <Link href={s.sub.href}
+                              style={{
+                                display: 'flex', alignItems: 'center', gap: 7,
+                                padding: '5px 16px 7px 30px',
+                                opacity: 0.45,
+                                transition: 'opacity 0.15s, background 0.15s',
+                              }}
+                              onMouseEnter={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)' }}
+                              onMouseLeave={e => { e.currentTarget.style.opacity = '0.45'; e.currentTarget.style.background = 'transparent' }}
+                            >
+                              <span style={{
+                                width: 3, height: 3, borderRadius: '50%',
+                                background: s.color, flexShrink: 0, opacity: 0.7,
+                              }} />
+                              <span style={{
+                                fontSize: 10, fontWeight: 300,
+                                color: 'rgba(255,255,255,0.55)',
+                                letterSpacing: '0.03em',
+                              }}>
+                                {s.sub.label}
+                              </span>
+                            </Link>
                           )}
-                        </Link>
+                        </div>
                       ))}
                       <div style={{ height: '0.5px', background: 'rgba(255,255,255,0.06)', margin: '4px 0' }} />
                       <Link href="/"
@@ -404,22 +430,38 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                 </p>
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                   {SITE_SWITCHER.filter(s => s.id !== site.id).map(s => (
-                    <Link key={s.id} href={s.href}
-                      onClick={() => setMobileOpen(false)}
-                      style={{
-                        display: 'inline-flex', alignItems: 'center', gap: 7,
-                        padding: '8px 14px',
-                        border: `0.5px solid ${s.color}44`,
-                        borderRadius: 100,
-                        background: `${s.color}11`,
-                        textDecoration: 'none',
-                      }}
-                    >
-                      <span style={{ width: 5, height: 5, borderRadius: '50%', background: s.color }} />
-                      <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em' }}>
-                        {s.name}
-                      </span>
-                    </Link>
+                    <div key={s.id} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <Link href={s.href}
+                        onClick={() => setMobileOpen(false)}
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', gap: 7,
+                          padding: '8px 14px',
+                          border: `0.5px solid ${s.color}44`,
+                          borderRadius: 100,
+                          background: `${s.color}11`,
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <span style={{ width: 5, height: 5, borderRadius: '50%', background: s.color }} />
+                        <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em' }}>
+                          {s.name}
+                        </span>
+                      </Link>
+                      {'sub' in s && s.sub && (
+                        <Link href={s.sub.href}
+                          onClick={() => setMobileOpen(false)}
+                          style={{
+                            display: 'inline-flex', alignItems: 'center', gap: 6,
+                            paddingLeft: 14, opacity: 0.5, textDecoration: 'none',
+                          }}
+                        >
+                          <span style={{ width: 3, height: 3, borderRadius: '50%', background: s.color, opacity: 0.7 }} />
+                          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em' }}>
+                            {s.sub.label}
+                          </span>
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
