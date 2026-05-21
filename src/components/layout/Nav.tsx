@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { SiteConfig } from '@/data/types'
 
 const SITE_SWITCHER = [
-  { id: 'lindora',      name: 'Lindora',      color: '#932D2B', href: '/lindora',      sub: { label: 'Mediplaza',     href: '/lindora/mediplaza'    } },
-  { id: 'escazu',       name: 'Escazú',       color: '#56717A', href: '/escazu',       sub: { label: 'Centro Médico', href: '/escazu/centro-medico' } },
-  { id: 'pinares',      name: 'Pinares',      color: '#4F5B3E', href: '/pinares',      sub: { label: 'Torre Médica',  href: '/pinares/torre-medica' } },
-  { id: 'torre-medica', name: 'Torre Médica', color: '#1B5E8A', href: '/torre-medica' },
+  { id: 'lindora', name: 'Lindora', color: '#932D2B', href: '/lindora', sub: { label: 'Mediplaza',     href: '/lindora/mediplaza'    } },
+  { id: 'escazu',  name: 'Escazú',  color: '#56717A', href: '/escazu',  sub: { label: 'Centro Médico', href: '/escazu/centro-medico' } },
+  { id: 'pinares', name: 'Pinares', color: '#4F5B3E', href: '/pinares', sub: { label: 'Torre Médica',  href: '/pinares/torre-medica' } },
 ]
 
 const SECTION_LABELS: Record<string, string> = {
