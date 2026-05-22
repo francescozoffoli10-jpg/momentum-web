@@ -12,8 +12,8 @@ const FEATURES = [
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
       </svg>
     ),
-    title: 'Acceso QR al parqueo',
-    desc: 'Genera tu código QR directamente desde la app. Sin tickets, sin fricción.',
+    title: 'Parqueo con QR',
+    desc: 'Generá tu código QR desde la app para entrar y salir del parqueo sin ticket físico.',
   },
   {
     icon: (
@@ -22,7 +22,7 @@ const FEATURES = [
       </svg>
     ),
     title: 'Ofertas y promociones',
-    desc: 'Descuentos exclusivos para usuarios de la app en restaurantes, comercios y servicios.',
+    desc: 'Accedé a las ofertas y novedades de los locales del centro directamente desde tu teléfono.',
   },
   {
     icon: (
@@ -30,8 +30,8 @@ const FEATURES = [
         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
       </svg>
     ),
-    title: 'Anuncios y novedades',
-    desc: 'Recibí notificaciones de eventos, aperturas y noticias de tu destino Momentum.',
+    title: 'Novedades y eventos',
+    desc: 'Enterate de lo que pasa en el centro: eventos, aperturas y comunicados del destino.',
   },
   {
     icon: (
@@ -39,8 +39,8 @@ const FEATURES = [
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
-    title: 'Horarios en tiempo real',
-    desc: 'Consultá horarios actualizados de todos los locales desde un solo lugar.',
+    title: 'Horarios del centro',
+    desc: 'Consultá los horarios de atención del centro y sus principales locales.',
   },
   {
     icon: (
@@ -48,17 +48,17 @@ const FEATURES = [
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
       </svg>
     ),
-    title: 'Mapa del destino',
-    desc: 'Encontrá cualquier local en segundos con el mapa interactivo del centro.',
+    title: 'Plano del centro',
+    desc: 'Ubicá los locales dentro del centro con el plano por nivel.',
   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     ),
-    title: 'Programa de fidelidad',
-    desc: 'Acumulá puntos con cada visita y canjeálos en tus locales favoritos.',
+    title: 'Comunicados directos',
+    desc: 'Recibí avisos y comunicados del centro directamente en tu teléfono.',
   },
 ]
 
@@ -114,7 +114,7 @@ export default function AppPage({ site, basePath }: AppPageProps) {
               transition={{ duration: 0.65, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: 16, color: 'rgba(255,255,255,0.38)', fontWeight: 300, lineHeight: 1.85, marginBottom: 48 }}
             >
-              La app de Momentum integra acceso al parqueo, ofertas exclusivas, mapa del centro, horarios y notificaciones en una sola experiencia diseñada para tu visita.
+              Gestioná tu parqueo con código QR, consultá horarios y locales, y mantente al tanto de lo que pasa en el centro.
             </motion.p>
 
             <motion.div
