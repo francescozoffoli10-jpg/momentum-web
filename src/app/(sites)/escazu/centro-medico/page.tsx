@@ -28,7 +28,7 @@ export default function CentroMedicoPage() {
       <HuliSearchbox
         dataSite="momentum-escazu"
         accentColor="#56717A"
-        label="Busca tu especialista médico"
+        label="Buscá tu especialista médico"
         sublabel="Consultá perfiles, horarios y agendá tu cita en línea a través de nuestra plataforma Huli."
       />
       <LogoGrid tenants={centroMedico} basePath="/escazu" siteId="escazu" />
