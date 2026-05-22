@@ -68,7 +68,7 @@ export default function AppBadge() {
                 App Momentum
               </div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.38)', marginTop: 1 }}>
-                Descarga gratis
+                Descargá gratis
               </div>
             </div>
           </div>
