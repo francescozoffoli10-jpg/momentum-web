@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 }
 
 export default function EscazuHomePage() {
-  // Pull a diverse cross-section: gastronomy + wellness + medical
-  const featured = allTenants.filter((t) => t.featured)
+  // Curated cross-section: food + wellness + medical — 4 strong picks
+  const featured = allTenants.filter((t) => t.featured).slice(0, 4)
   const featuredTenants = featured.length >= 4 ? featured : allTenants.slice(0, 4)
 
   return (
@@ -24,13 +24,21 @@ export default function EscazuHomePage() {
       <HeroSection site={escazuSite} basePath="/escazu" />
       <MarqueeStrip />
       <StatsBar site={escazuSite} />
-      <FeaturedTenants tenants={featuredTenants} basePath="/escazu" siteId="escazu" />
+      <FeaturedTenants
+        tenants={featuredTenants}
+        basePath="/escazu"
+        siteId="escazu"
+        sectionLabel="Lo Mejor de Escazú"
+        title="Experiencias que destacan"
+        viewAllHref="/escazu/servicios"
+        viewAllLabel="Ver directorio"
+      />
       <EditorialSection basePath="/escazu" site={escazuSite} />
       <MarqueeStrip inverted />
       <RegionGrid
         cards={regionCards}
         basePath="/escazu"
-        gridTitle="Explora el directorio"
+        gridTitle="Explorá el directorio"
         sectionLabel="Ver todos los servicios"
         sectionHref="/escazu/servicios"
       />
