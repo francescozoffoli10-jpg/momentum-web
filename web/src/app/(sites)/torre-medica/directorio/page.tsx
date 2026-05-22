@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import HuliSearchbox from '@/components/huli/HuliSearchbox'
 
 export const metadata: Metadata = {
   title: 'Directorio Médico',
@@ -28,46 +29,13 @@ export default function DirectorioPage() {
         </div>
       </div>
 
-      {/* Iframe embed */}
-      <div style={{ background: '#F8FAFB', minHeight: '80vh' }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-          <iframe
-            src="https://directorio.torremedicamomentum.com"
-            style={{
-              width: '100%',
-              minHeight: '85vh',
-              border: 'none',
-              display: 'block',
-            }}
-            title="Directorio Médico Torre Médica Momentum"
-            loading="lazy"
-          />
-        </div>
-      </div>
-
-      {/* Fallback CTA below iframe */}
-      <div style={{ background: '#fff', padding: '48px 32px', textAlign: 'center', borderTop: '0.5px solid #E8EFF4' }}>
-        <p style={{ fontSize: 14, color: '#5A6B78', marginBottom: 20 }}>
-          ¿Problemas para ver el directorio? Acceda directamente:
-        </p>
-        <a
-          href="https://directorio.torremedicamomentum.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: ACCENT, color: '#fff',
-            fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
-            padding: '12px 24px', borderRadius: 4,
-            textDecoration: 'none',
-          }}
-        >
-          Abrir Directorio en nueva pestaña
-          <svg width="13" height="13" viewBox="0 0 12 12" fill="none">
-            <path d="M2.5 9.5l7-7M5 2.5h4.5V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
-      </div>
+      {/* Huli searchbox widget */}
+      <HuliSearchbox
+        dataSite="torre-medica-momentum"
+        accentColor={ACCENT}
+        label="Busque su especialista médico"
+        sublabel="Consulte perfiles, horarios y agende su cita en línea a través de nuestra plataforma Huli."
+      />
     </>
   )
 }

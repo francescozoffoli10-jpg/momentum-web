@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -82,10 +84,8 @@ export default function TorreMedicaFooter() {
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: 16, marginTop: 0 }}>
               Encuentre y agende cita con su médico especialista en línea.
             </p>
-            <a
-              href="https://directorio.torremedicamomentum.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/torre-medica/directorio"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 background: ACCENT, color: '#fff',
@@ -100,7 +100,50 @@ export default function TorreMedicaFooter() {
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M2.5 9.5l7-7M5 2.5h4.5V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
+            </Link>
+          </div>
+        </div>
+
+        {/* Ecosystem strip */}
+        <div style={{
+          borderTop: '0.5px solid rgba(255,255,255,0.07)', marginBottom: 20,
+          paddingTop: 28, paddingBottom: 24,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16,
+        }}>
+          <div>
+            <div style={{ fontSize: 9, fontWeight: 600, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>
+              Parte del ecosistema
+            </div>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <Link
+                href="/pinares"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  fontSize: 12, color: 'rgba(255,255,255,0.55)', textDecoration: 'none',
+                  padding: '7px 14px', border: '0.5px solid rgba(255,255,255,0.1)', borderRadius: 4,
+                  transition: 'border-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.55)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
+              >
+                Momentum Pinares
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M5 2.5h4.5V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </Link>
+              <Link
+                href="/"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  fontSize: 12, color: 'rgba(255,255,255,0.35)', textDecoration: 'none',
+                  padding: '7px 14px', border: '0.5px solid rgba(255,255,255,0.07)', borderRadius: 4,
+                  transition: 'border-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)' }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.35)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)' }}
+              >
+                Ecosistema Momentum
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5l7-7M5 2.5h4.5V7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -120,14 +163,6 @@ export default function TorreMedicaFooter() {
             >
               Facebook
             </a>
-            <Link
-              href="/pinares"
-              style={{ color: 'rgba(255,255,255,0.3)', textDecoration: 'none', fontSize: 12, transition: 'color 0.2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#fff'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}
-            >
-              Momentum Pinares →
-            </Link>
           </div>
         </div>
       </div>

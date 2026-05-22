@@ -29,7 +29,7 @@ export default function ContactoPage() {
             Contacto
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6 }}>
-            Estamos aquí para atenderte. Llamanos o visitanos en Momentum Pinares.
+            Estamos aquí para atenderle. Llámenos o visítenos en Momentum Pinares.
           </p>
         </div>
       </div>

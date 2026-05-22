@@ -72,7 +72,7 @@ function Hero() {
             fontWeight: 300, lineHeight: 1.5, margin: '0 0 48px', maxWidth: 480,
           }}
         >
-          Tu mejor opción de salud en el este.<br />
+          Su mejor opción de salud en el este.<br />
           47 especialidades médicas bajo un mismo techo.
         </motion.p>
 
@@ -178,7 +178,7 @@ function SpecialtiesSection() {
             transition={{ duration: 0.65, delay: 0.1 }}
             style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 300, color: '#0A1018', letterSpacing: '-0.02em', lineHeight: 1.1, margin: 0, maxWidth: 560 }}
           >
-            47 especialidades médicas a tu disposición
+            47 especialidades médicas a su disposición
           </motion.h2>
         </div>
 
@@ -231,10 +231,10 @@ function SpecialtiesSection() {
             Directorio Médico
           </div>
           <h3 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 300, color: '#0A1018', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
-            Encontrá al especialista que necesitás
+            Encuentre al especialista que necesita
           </h3>
           <p style={{ fontSize: 14, color: '#5A6B78', marginBottom: 28, maxWidth: 420, margin: '0 auto 28px' }}>
-            Consultá el directorio completo de médicos, agendá tu cita en línea y accedé a los perfiles de cada especialista.
+            Consulte el directorio completo de médicos, agende su cita en línea y acceda a los perfiles de cada especialista.
           </p>
           <Link
             href="/torre-medica/directorio"
@@ -428,7 +428,7 @@ function ContactStrip() {
             onMouseEnter={e => (e.currentTarget.style.opacity = '0.88')}
             onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
           >
-            Contactanos
+            Contáctenos
           </Link>
         </motion.div>
       </div>

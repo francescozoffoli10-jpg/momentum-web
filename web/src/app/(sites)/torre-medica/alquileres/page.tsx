@@ -27,7 +27,7 @@ const BENEFITS = [
   {
     icon: '📅',
     title: 'Horario extendido',
-    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar tu disponibilidad de agenda y la conveniencia de tus pacientes.',
+    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar su disponibilidad de agenda y la conveniencia de sus pacientes.',
   },
   {
     icon: '💻',
@@ -63,7 +63,7 @@ export default function AlquileresPage() {
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
             Consultorios y espacios médicos en una de las torres de salud más completas del este de San José.
-            Uníte al ecosistema médico de Momentum Pinares.
+            Únase al ecosistema médico de Momentum Pinares.
           </p>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function AlquileresPage() {
               </span>
             </div>
             <h2 style={{ fontSize: 'clamp(26px, 3.5vw, 38px)', fontWeight: 300, color: '#0A1018', letterSpacing: '-0.02em', margin: 0 }}>
-              El mejor entorno para tu práctica médica
+              El mejor entorno para su práctica médica
             </h2>
           </div>
 
@@ -110,10 +110,10 @@ export default function AlquileresPage() {
       {/* Contact CTA */}
       <div style={{ background: ACCENT, padding: '72px 32px', textAlign: 'center' }}>
         <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
-          ¿Te interesa un consultorio?
+          ¿Le interesa un consultorio?
         </h2>
         <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', margin: '0 0 8px' }}>
-          Contactanos para conocer disponibilidad, precios y condiciones de arrendamiento.
+          Contáctenos para conocer disponibilidad, precios y condiciones de arrendamiento.
         </p>
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
           info@torremedicamomentum.com

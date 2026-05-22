@@ -30,7 +30,7 @@ export default function ServiciosPage() {
             Servicios Médicos
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, maxWidth: 520, lineHeight: 1.6 }}>
-            Los múltiples servicios de salud te brindan la atención que merecés, con la calidad que necesitás.
+            Los múltiples servicios de salud le brindan la atención que usted merece, con la calidad que necesita.
           </p>
         </div>
       </div>
@@ -104,7 +104,7 @@ export default function ServiciosPage() {
       {/* Back to directory */}
       <div style={{ background: '#F4F8FB', padding: '48px 32px', textAlign: 'center', borderTop: '0.5px solid #DDE8F0' }}>
         <p style={{ fontSize: 15, color: '#3A4D5C', marginBottom: 20 }}>
-          ¿Buscás un médico especialista específico?
+          ¿Busca un médico especialista específico?
         </p>
         <a
           href="/torre-medica/directorio"
