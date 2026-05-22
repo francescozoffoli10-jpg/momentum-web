@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Restaurantes y opciones gastronómicas en Momentum Pinares.',
 }
 
-export default function GastronomiaPage() {
+export default function GastronomiaPage({ searchParams }: { searchParams: { cat?: string } }) {
   return (
     <>
       <PageHeader
@@ -25,7 +25,7 @@ export default function GastronomiaPage() {
           { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
       />
-      <LogoGrid tenants={gastronomia} basePath="/pinares" siteId="pinares" />
+      <LogoGrid tenants={gastronomia} basePath="/pinares" siteId="pinares" initialCategory={searchParams.cat} />
     </>
   )
 }

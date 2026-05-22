@@ -11,6 +11,7 @@ interface LogoGridProps {
   tenants: Tenant[]
   basePath: string
   siteId: string
+  initialCategory?: string
 }
 
 type SortOption = 'az' | 'za' | 'open'
@@ -234,9 +235,9 @@ function TenantCard({ tenant, basePath, siteId, index }: {
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
+export default function LogoGrid({ tenants, basePath, siteId, initialCategory }: LogoGridProps) {
   const [query, setQuery] = useState('')
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [activeCategory, setActiveCategory] = useState<string | null>(initialCategory ?? null)
   const [sortBy, setSortBy] = useState<SortOption>('az')
 
   // Build unique category list
