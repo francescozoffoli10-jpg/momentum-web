@@ -75,21 +75,14 @@ function Card({ card, basePath, index }: { card: RegionCard; basePath: string; i
         {/* Content */}
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '16px 16px' }}>
           <div style={{
-            fontSize: 8, fontWeight: 600, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)',
-            marginBottom: 5,
+            fontSize: 'clamp(13px, 1.4vw, 16px)', fontWeight: 500,
+            color: '#fff', letterSpacing: '0.01em',
+            lineHeight: 1.2, textTransform: 'capitalize',
           }}>
             {card.flag}
           </div>
           <div style={{
-            fontSize: 'clamp(13px, 1.4vw, 16px)', fontWeight: 400,
-            color: '#fff', letterSpacing: '-0.01em',
-            lineHeight: 1.2,
-          }}>
-            {card.title}
-          </div>
-          <div style={{
-            fontSize: 10, color: 'rgba(255,255,255,0.3)',
+            fontSize: 10, color: 'rgba(255,255,255,0.35)',
             marginTop: 4, letterSpacing: '0.02em',
           }}>
             {card.restaurants.length} {card.restaurants.length === 1 ? 'opción' : 'opciones'}
@@ -153,7 +146,7 @@ export default function RegionGrid({ cards, basePath, gridTitle, sectionLabel, s
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: 'clamp(26px, 3.5vw, 40px)', fontWeight: 300, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}
             >
-              {gridTitle ?? 'Explora por cocina'}
+              {gridTitle ?? 'Explorá por cocina'}
             </motion.h2>
           </div>
           <motion.div
