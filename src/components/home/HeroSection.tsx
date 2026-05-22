@@ -201,7 +201,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.42)'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; e.currentTarget.style.color = 'rgba(255,255,255,0.52)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              Descarga la App
+              Descargá la App
             </Link>
           </motion.div>
         </motion.div>
