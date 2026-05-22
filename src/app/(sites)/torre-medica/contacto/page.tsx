@@ -138,7 +138,7 @@ export default function ContactoPage() {
               </h2>
               <div style={{ borderRadius: 6, overflow: 'hidden', border: '0.5px solid #E2EAF0', background: '#F4F8FB', height: 400 }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.1!2d-84.0!3d9.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3d!2sMomentum+Pinares+Curridabat!5e0!3m2!1ses!2scr!4v1"
+                  src="https://maps.google.com/maps?q=Momentum+Pinares+Curridabat+Costa+Rica&output=embed&z=16&hl=es"
                   width="100%"
                   height="400"
                   style={{ border: 0, display: 'block' }}
