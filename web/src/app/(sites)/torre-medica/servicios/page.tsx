@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { medicalServices } from '@/data/sites/torre-medica/services'
 
 export const metadata: Metadata = {
@@ -14,9 +13,13 @@ const ACCENT_LIGHT = '#2272AE'
 export default function ServiciosPage() {
   return (
     <>
+      <style>{`
+        .tm-cta-btn:hover { opacity: 0.85; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <div style={{ width: 20, height: '1px', background: ACCENT }} />
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: ACCENT_LIGHT }}>
@@ -27,14 +30,14 @@ export default function ServiciosPage() {
             Servicios Médicos
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, maxWidth: 520, lineHeight: 1.6 }}>
-            Los múltiples servicios de salud le brindan la atención que usted merece, con la calidad que necesita.
+            Los múltiples servicios de salud te brindan la atención que merecés, con la calidad que necesitás.
           </p>
         </div>
       </div>
 
       {/* Services grid */}
       <div style={{ background: '#fff', padding: '80px 0' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: 28 }}>
             {medicalServices.map((service) => (
               <div
@@ -53,7 +56,7 @@ export default function ServiciosPage() {
                     alt={service.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    style={{ objectFit: 'cover' }}
                   />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(7,13,20,0.7) 100%)' }} />
                   <div style={{
@@ -77,6 +80,7 @@ export default function ServiciosPage() {
                     href={service.huliUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="tm-cta-btn"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 8,
                       background: ACCENT, color: '#fff',
@@ -84,8 +88,6 @@ export default function ServiciosPage() {
                       padding: '10px 20px', borderRadius: 4,
                       textDecoration: 'none', transition: 'opacity 0.2s',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
                   >
                     Ver perfil y agendar
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -102,12 +104,10 @@ export default function ServiciosPage() {
       {/* Back to directory */}
       <div style={{ background: '#F4F8FB', padding: '48px 32px', textAlign: 'center', borderTop: '0.5px solid #DDE8F0' }}>
         <p style={{ fontSize: 15, color: '#3A4D5C', marginBottom: 20 }}>
-          ¿Busca un médico especialista específico?
+          ¿Buscás un médico especialista específico?
         </p>
         <a
-          href="https://directorio.torremedicamomentum.com"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/torre-medica/directorio"
           style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             background: ACCENT, color: '#fff',

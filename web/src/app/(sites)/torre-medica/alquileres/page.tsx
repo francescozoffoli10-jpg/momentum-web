@@ -27,7 +27,7 @@ const BENEFITS = [
   {
     icon: '📅',
     title: 'Horario extendido',
-    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar su disponibilidad de agenda y la conveniencia de sus pacientes.',
+    description: 'Lunes a viernes de 8am a 8pm y sábados de 8am a 4pm, para maximizar tu disponibilidad de agenda y la conveniencia de tus pacientes.',
   },
   {
     icon: '💻',
@@ -44,9 +44,14 @@ const BENEFITS = [
 export default function AlquileresPage() {
   return (
     <>
+      <style>{`
+        .tm-benefit-card { transition: border-color 0.3s, box-shadow 0.3s; }
+        .tm-benefit-card:hover { border-color: rgba(27,94,138,0.27) !important; box-shadow: 0 8px 32px rgba(27,94,138,0.08) !important; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <div style={{ width: 20, height: '1px', background: ACCENT }} />
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: ACCENT_LIGHT }}>
@@ -58,14 +63,14 @@ export default function AlquileresPage() {
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
             Consultorios y espacios médicos en una de las torres de salud más completas del este de San José.
-            Únase al ecosistema médico de Momentum Pinares.
+            Uníte al ecosistema médico de Momentum Pinares.
           </p>
         </div>
       </div>
 
       {/* Benefits grid */}
       <div style={{ background: '#fff', padding: '80px 0' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ marginBottom: 56 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
               <div style={{ width: 20, height: '0.5px', background: ACCENT }} />
@@ -74,7 +79,7 @@ export default function AlquileresPage() {
               </span>
             </div>
             <h2 style={{ fontSize: 'clamp(26px, 3.5vw, 38px)', fontWeight: 300, color: '#0A1018', letterSpacing: '-0.02em', margin: 0 }}>
-              El mejor entorno para su práctica médica
+              El mejor entorno para tu práctica médica
             </h2>
           </div>
 
@@ -82,19 +87,11 @@ export default function AlquileresPage() {
             {BENEFITS.map((b) => (
               <div
                 key={b.title}
+                className="tm-benefit-card"
                 style={{
                   padding: '28px 28px 32px',
                   border: '0.5px solid #E2EAF0',
                   borderRadius: 6,
-                  transition: 'border-color 0.3s, box-shadow 0.3s',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = `${ACCENT}44`
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(27,94,138,0.08)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.borderColor = '#E2EAF0'
-                  ;(e.currentTarget as HTMLElement).style.boxShadow = 'none'
                 }}
               >
                 <div style={{ fontSize: 28, marginBottom: 16 }}>{b.icon}</div>
@@ -113,10 +110,10 @@ export default function AlquileresPage() {
       {/* Contact CTA */}
       <div style={{ background: ACCENT, padding: '72px 32px', textAlign: 'center' }}>
         <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 36px)', fontWeight: 300, color: '#fff', letterSpacing: '-0.02em', margin: '0 0 12px' }}>
-          ¿Le interesa un consultorio?
+          ¿Te interesa un consultorio?
         </h2>
         <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', margin: '0 0 8px' }}>
-          Contáctenos para conocer disponibilidad, precios y condiciones de arrendamiento.
+          Contactanos para conocer disponibilidad, precios y condiciones de arrendamiento.
         </p>
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 32px', letterSpacing: '0.02em' }}>
           info@torremedicamomentum.com
@@ -130,7 +127,7 @@ export default function AlquileresPage() {
               border: '0.5px solid rgba(255,255,255,0.35)',
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'background 0.2s',
+              textDecoration: 'none',
             }}
           >
             Llamar: 4702-0577
@@ -143,7 +140,7 @@ export default function AlquileresPage() {
               border: '0.5px solid rgba(255,255,255,0.35)',
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'background 0.2s',
+              textDecoration: 'none',
             }}
           >
             Enviar email
@@ -155,7 +152,7 @@ export default function AlquileresPage() {
               background: '#fff', color: ACCENT,
               fontSize: 13, fontWeight: 600, letterSpacing: '0.05em',
               padding: '13px 26px', borderRadius: 4,
-              textDecoration: 'none', transition: 'opacity 0.2s',
+              textDecoration: 'none',
             }}
           >
             Formulario de contacto

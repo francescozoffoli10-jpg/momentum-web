@@ -11,9 +11,14 @@ const ACCENT_LIGHT = '#2272AE'
 export default function ContactoPage() {
   return (
     <>
+      <style>{`
+        .tm-phone-link:hover { color: #1B5E8A !important; }
+        .tm-social-link:hover { border-color: #1B5E8A !important; }
+      `}</style>
+
       {/* Header */}
       <div style={{ background: '#070D14', paddingTop: 120, paddingBottom: 64 }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
             <div style={{ width: 20, height: '1px', background: ACCENT }} />
             <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: ACCENT_LIGHT }}>
@@ -24,15 +29,15 @@ export default function ContactoPage() {
             Contacto
           </h1>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', margin: 0, lineHeight: 1.6 }}>
-            Estamos aquí para atenderle. Llámenos o visítenos en Momentum Pinares.
+            Estamos aquí para atenderte. Llamanos o visitanos en Momentum Pinares.
           </p>
         </div>
       </div>
 
       {/* Content */}
       <div style={{ background: '#fff', padding: '80px 0' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64 }}>
+        <div className="tm-inner" style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
+          <div className="tm-contact-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 64 }}>
 
             {/* Info column */}
             <div>
@@ -47,13 +52,12 @@ export default function ContactoPage() {
                 </div>
                 <a
                   href="tel:+50647020577"
+                  className="tm-phone-link"
                   style={{
                     fontSize: 28, fontWeight: 300, color: '#0A1018',
                     textDecoration: 'none', letterSpacing: '-0.02em', display: 'block',
                     transition: 'color 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.color = ACCENT}
-                  onMouseLeave={e => e.currentTarget.style.color = '#0A1018'}
                 >
                   4702-0577
                 </a>
@@ -111,14 +115,13 @@ export default function ContactoPage() {
                   href="https://www.facebook.com/TorreMedicaMomentum"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="tm-social-link"
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     fontSize: 14, color: '#3A4D5C', textDecoration: 'none',
                     padding: '8px 16px', border: '0.5px solid #E2EAF0', borderRadius: 4,
                     transition: 'border-color 0.2s',
                   }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = ACCENT}
-                  onMouseLeave={e => e.currentTarget.style.borderColor = '#E2EAF0'}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill={ACCENT}>
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -135,7 +138,7 @@ export default function ContactoPage() {
               </h2>
               <div style={{ borderRadius: 6, overflow: 'hidden', border: '0.5px solid #E2EAF0', background: '#F4F8FB', height: 400 }}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.1!2d-84.0!3d9.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3d!2sMomentum+Pinares+Curridabat!5e0!3m2!1ses!2scr!4v1"
+                  src="https://maps.google.com/maps?q=Momentum+Pinares+Curridabat+Costa+Rica&output=embed&z=16&hl=es"
                   width="100%"
                   height="400"
                   style={{ border: 0, display: 'block' }}
