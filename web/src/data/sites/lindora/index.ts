@@ -10,7 +10,7 @@ export const lindoraSite: SiteConfig = {
   email: 'info@momentumlindora.com',
   instagram: 'momentumcostarica',
   facebook: 'MomentumLindora',
-  heroImage: '/sites/lindora/banners/lindora-hero.webp',
+  heroImage: '/sites/lindora/banners/hero-lindora.webp',
   logo: '/brand/lindora-white.png',
   accentColor: '#932D2B',
   sections: ['gastronomia', 'comercios', 'ofiplaza', 'mediplaza'],

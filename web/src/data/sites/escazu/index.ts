@@ -10,9 +10,9 @@ export const escazuSite: SiteConfig = {
   email: 'info@momentumescazu.com',
   instagram: 'momentumcostarica',
   facebook: 'momentumescazu',
-  heroImage: '/sites/escazu/banners/escazu-hero.webp',
+  heroImage: '/sites/escazu/banners/hero-escazu.webp',
   logo: '/brand/momentum-white.png',
   accentColor: '#56717A',
   sections: ['gastronomia', 'servicios', 'centro-medico', 'oficentro'],
-  hasEvents: false,
+  hasEvents: true,
 }

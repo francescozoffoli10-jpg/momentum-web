@@ -15,7 +15,7 @@ export default function GastronomíaPage({ searchParams }: { searchParams: { cat
         eyebrow="Directorio · Lindora"
         title="Gastronomía"
         description="Restaurantes y cocinas del mundo integrados al ecosistema Momentum. Una experiencia gastronómica curada para todos los gustos."
-        count={11}
+        count={gastronomia.length}
         countLabel="restaurantes"
         sectionLinks={[
     { href: "/lindora/gastronomia", label: "Gastronomía", active: true },

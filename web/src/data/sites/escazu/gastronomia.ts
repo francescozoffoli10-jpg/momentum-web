@@ -60,6 +60,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['entrecote'],
     href: '/escazu/gastronomia',
     color: '#1A1010',
+    image: '/sites/escazu/categories/cocina-autor.webp',
   },
   {
     id: 'cafe-restaurante',
@@ -68,6 +69,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['paladixo'],
     href: '/escazu/gastronomia',
     color: '#101A10',
+    image: '/sites/escazu/categories/cafe-restaurante.webp',
   },
   // Wellness
   {
@@ -77,6 +79,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['contrology-pilates', 'gyrotronic'],
     href: '/escazu/servicios',
     color: '#0A1018',
+    image: '/sites/escazu/categories/pilates-fitness.webp',
   },
   {
     id: 'estetica-spa',
@@ -85,6 +88,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['ambrosia-estetica', 'estetica-nadira'],
     href: '/escazu/servicios',
     color: '#120A18',
+    image: '/sites/escazu/categories/estetica-spa.webp',
   },
   // Medical
   {
@@ -92,15 +96,17 @@ export const regionCards: RegionCard[] = [
     flag: 'Medicina Preventiva',
     title: 'GoodMed · Age Metrics',
     restaurants: ['goodmed-escazu', 'age-metrics-medical'],
-    href: '/escazu/servicios',
+    href: '/escazu/centro-medico',
     color: '#0A1A12',
+    image: '/sites/escazu/categories/medicina-preventiva.webp',
   },
   {
     id: 'especialistas',
     flag: 'Especialistas',
     title: 'Dermatología · Oncología · Reumatología',
     restaurants: ['skin-care-physicians', 'centro-oncologico', 'caira-reumatologia'],
-    href: '/escazu/servicios',
+    href: '/escazu/centro-medico',
     color: '#0A1218',
+    image: '/sites/escazu/categories/especialistas.webp',
   },
 ]

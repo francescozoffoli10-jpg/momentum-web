@@ -10,7 +10,7 @@ export const pinaresSite: SiteConfig = {
   email: 'info@momentumpinares.com',
   instagram: 'momentumcostarica',
   facebook: 'MomentumPinares',
-  heroImage: '/sites/pinares/banners/pinares-hero.webp',
+  heroImage: '/sites/pinares/banners/hero-pinares.webp',
   logo: '/brand/momentum-white.png',
   accentColor: '#4F5B3E',
   sections: ['gastronomia', 'comercios', 'servicios', 'torre-medica', 'ofiplaza'],
