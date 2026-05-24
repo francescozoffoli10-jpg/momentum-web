@@ -6,7 +6,7 @@ import { fetchEventsBySite } from '@/sanity/lib/fetch'
 import type { SiteEvent } from '@/data/types'
 
 export const metadata: Metadata = {
-  title: 'Eventos — Momentum Pinares',
+  title: 'Eventos',
   description: 'Eventos y activaciones en Momentum Pinares. Gastronomía, cultura y comunidad en Curridabat.',
 }
 

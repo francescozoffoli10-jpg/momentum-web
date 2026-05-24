@@ -6,7 +6,7 @@ import { fetchEventsBySite } from '@/sanity/lib/fetch'
 import type { SiteEvent } from '@/data/types'
 
 export const metadata: Metadata = {
-  title: 'Eventos — Momentum Lindora',
+  title: 'Eventos',
   description: 'Eventos y activaciones en Momentum Lindora. Gastronomía, cultura, bienestar y comunidad en Santa Ana.',
 }
 
