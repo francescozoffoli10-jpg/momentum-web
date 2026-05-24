@@ -7,26 +7,28 @@ import type { SiteConfig } from '@/data/types'
 // Cross-site discovery data
 const OTHER_SITES: Record<string, { label: string; tagline: string; path: string; accent: string }[]> = {
   lindora: [
-    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#7A2B8A' },
-    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#1A4A7A' },
+    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#56717A' },
+    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#4F5B3E' },
   ],
   escazu: [
     { label: 'Momentum Lindora', tagline: 'La experiencia lifestyle en Santa Ana', path: '/lindora', accent: '#932D2B' },
-    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#1A4A7A' },
+    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#4F5B3E' },
   ],
   pinares: [
     { label: 'Momentum Lindora', tagline: 'La experiencia lifestyle en Santa Ana', path: '/lindora', accent: '#932D2B' },
-    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#7A2B8A' },
+    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#56717A' },
   ],
 }
 
 const SECTION_LABELS: Record<string, string> = {
-  gastronomia: 'Gastronomía',
-  comercios: 'Comercios',
-  servicios: 'Servicios',
-  ofiplaza: 'Ofiplaza',
-  mediplaza: 'Mediplaza',
-  oficentro: 'Oficentro',
+  gastronomia:    'Gastronomía',
+  comercios:      'Comercios',
+  servicios:      'Servicios',
+  ofiplaza:       'Ofiplaza',
+  mediplaza:      'Mediplaza',
+  oficentro:      'Oficentro',
+  'centro-medico': 'Centro Médico',
+  'torre-medica':  'Torre Médica',
 }
 
 interface FooterProps {
@@ -144,7 +146,7 @@ export default function Footer({ site, basePath }: FooterProps) {
         {OTHER_SITES[site.id] && (
           <div style={{ marginBottom: 28, paddingBottom: 28, borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
             <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 14 }}>
-              Descubre el ecosistema Momentum
+              Descubrí el ecosistema Momentum
             </div>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               {OTHER_SITES[site.id].map(function(s) { return (

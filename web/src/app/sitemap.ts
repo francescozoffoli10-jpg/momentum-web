@@ -42,7 +42,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Utility pages for each site
     ...(['lindora', 'escazu', 'pinares'] as const).flatMap(site =>
       UTILITY_PAGES
-        .filter(p => !(site === 'escazu' && p === 'eventos'))
         .map(p => ({
           url: `${BASE}/${site}/${p}`,
           lastModified: now,

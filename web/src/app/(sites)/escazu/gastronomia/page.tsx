@@ -18,9 +18,10 @@ export default function GastronomiaPage({ searchParams }: { searchParams: { cat?
         count={gastronomia.length}
         countLabel="restaurantes"
         sectionLinks={[
-    { href: "/escazu/gastronomia", label: "Gastronomía", active: true },
-    { href: "/escazu/servicios", label: "Servicios", active: false },
-    { href: "/escazu/oficentro", label: "Oficentro", active: false },
+          { href: '/escazu/gastronomia',   label: 'Gastronomía',   active: true  },
+          { href: '/escazu/servicios',     label: 'Servicios',     active: false },
+          { href: '/escazu/centro-medico', label: 'Centro Médico', active: false },
+          { href: '/escazu/oficentro',     label: 'Oficentro',     active: false },
         ]}
       />
       <LogoGrid tenants={gastronomia} basePath="/escazu" siteId="escazu" initialCategory={searchParams.cat} />

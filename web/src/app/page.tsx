@@ -4,6 +4,12 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { gastronomia as lindoraGastronomia } from '@/data/sites/lindora/gastronomia'
+import { mediplaza as lindoraMediplaza } from '@/data/sites/lindora/mediplaza'
+import { servicios as escazuServicios } from '@/data/sites/escazu/servicios'
+import { oficentro as escazuOficentro } from '@/data/sites/escazu/oficentro'
+import { gastronomia as pinaresGastronomia } from '@/data/sites/pinares/gastronomia'
+import { comercios as pinaresComercios } from '@/data/sites/pinares/comercios'
 
 const destinations = [
   {
@@ -13,11 +19,11 @@ const destinations = [
     location: 'Lindora · Santa Ana',
     color: '#932D2B',
     colorLight: '#B03835',
-    image: '/sites/lindora/banners/lindora-hero.webp',
+    image: '/sites/lindora/banners/hero-lindora.webp',
     stats: [
       { label: 'Locales', value: '40+' },
-      { label: 'Gastronomía', value: '11' },
-      { label: 'Mediplaza', value: '8' },
+      { label: 'Gastronomía', value: String(lindoraGastronomia.length) },
+      { label: 'Mediplaza', value: String(lindoraMediplaza.length) },
     ],
     tagline: 'Gastronomía · Bienestar · Comercio · Mediplaza',
     href: '/lindora',
@@ -29,11 +35,11 @@ const destinations = [
     location: 'Escazú · San José',
     color: '#56717A',
     colorLight: '#6B8A94',
-    image: '/sites/escazu/banners/escazu-hero.webp',
+    image: '/sites/escazu/banners/hero-escazu.webp',
     stats: [
       { label: 'Locales', value: '29+' },
-      { label: 'Servicios', value: '18' },
-      { label: 'Oficentro', value: '9' },
+      { label: 'Servicios', value: String(escazuServicios.length) },
+      { label: 'Oficentro', value: String(escazuOficentro.length) },
     ],
     tagline: 'Servicios · Salud · Oficentro',
     href: '/escazu',
@@ -45,30 +51,14 @@ const destinations = [
     location: 'Curridabat · San José',
     color: '#4F5B3E',
     colorLight: '#647550',
-    image: '/sites/pinares/banners/pinares-hero.webp',
+    image: '/sites/pinares/banners/hero-pinares.webp',
     stats: [
       { label: 'Locales', value: '47+' },
-      { label: 'Gastronomía', value: '16' },
-      { label: 'Comercios', value: '31' },
+      { label: 'Gastronomía', value: String(pinaresGastronomia.length) },
+      { label: 'Comercios', value: String(pinaresComercios.length) },
     ],
     tagline: 'Gastronomía · Comercio · Vida',
     href: '/pinares',
-  },
-  {
-    id: 'torre-medica',
-    name: 'Torre Médica',
-    full: 'Torre Médica Momentum',
-    location: 'Curridabat · San José',
-    color: '#1B5E8A',
-    colorLight: '#2272AE',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=1000&fit=crop&auto=format&q=80',
-    stats: [
-      { label: 'Especialidades', value: '47+' },
-      { label: 'Servicios', value: '7' },
-      { label: 'Pisos', value: '8' },
-    ],
-    tagline: 'Salud · Especialistas · Diagnóstico',
-    href: '/torre-medica',
   },
 ]
 
@@ -266,8 +256,7 @@ export default function LandingPage() {
                 alt={d.full}
                 fill
                 priority
-                className="object-cover"
-                style={{ filter: 'brightness(0.55)' }}
+                style={{ objectFit: 'cover', filter: 'brightness(0.55)' }}
               />
             </div>
           ))}
@@ -285,8 +274,6 @@ export default function LandingPage() {
           display: 'flex',
           pointerEvents: 'none',
         }}>
-          <div style={{ flex: 1 }} />
-          <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
           <div style={{ flex: 1 }} />
           <div style={{ width: '0.5px', background: 'rgba(255,255,255,0.06)', alignSelf: 'stretch' }} />
           <div style={{ flex: 1 }} />
@@ -348,7 +335,7 @@ export default function LandingPage() {
               lineHeight: 1.8,
             }}
           >
-            Cuatro destinos. Un ecosistema.
+            Tres destinos. Un ecosistema.
           </motion.p>
 
           {/* Three colored dots */}
@@ -394,7 +381,7 @@ export default function LandingPage() {
               textShadow: '0 0 20px rgba(255,255,255,0.8), 0 0 48px rgba(255,255,255,0.35)',
             }}
           >
-            Descubrir
+            Descubrí
           </motion.span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -432,7 +419,7 @@ export default function LandingPage() {
             fontWeight: 300, letterSpacing: '-0.02em',
             color: '#fff', lineHeight: 1.15, margin: 0,
           }}>
-            Elige tu destino Momentum
+            Elegí tu destino Momentum
           </h2>
         </motion.div>
 
@@ -543,7 +530,7 @@ export default function LandingPage() {
           © {new Date().getFullYear()} Momentum Costa Rica
         </span>
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
-          Lindora · Escazú · Pinares · Torre Médica
+          Lindora · Escazú · Pinares
         </span>
       </footer>
     </main>
