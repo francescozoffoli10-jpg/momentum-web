@@ -9,7 +9,13 @@ export const siteEvent = {
     {
       name: 'site', title: 'Sede',
       type: 'string',
-      options: { list: ['lindora', 'pinares'] },
+      options: {
+        list: [
+          { title: 'Lindora', value: 'lindora' },
+          { title: 'Escazú',  value: 'escazu'  },
+          { title: 'Pinares', value: 'pinares' },
+        ],
+      },
       validation: (R: any) => R.required(),
     },
     {

@@ -46,6 +46,12 @@ export default defineConfig({
                   .title('Eventos Lindora')
                   .filter('_type == "siteEvent" && site == "lindora"')
               ),
+            S.listItem().title('📅 Eventos — Escazú')
+              .child(
+                S.documentList()
+                  .title('Eventos Escazú')
+                  .filter('_type == "siteEvent" && site == "escazu"')
+              ),
             S.listItem().title('📅 Eventos — Pinares')
               .child(
                 S.documentList()
