@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!tenant) return {}
   const ogImage = `${CANONICAL_BASE}/sites/escazu/logos/${tenant.logo}`
   return {
-    title: `${tenant.name} — Momentum Escazú`,
+    title: tenant.name,
     description: tenant.description,
     openGraph: {
       title: `${tenant.name} — Momentum Escazú`,
