@@ -10,6 +10,8 @@ const BASE = 'https://momentumcr.vercel.app'
 
 const UTILITY_PAGES = ['eventos', 'app', 'como-llegar', 'alquiler', 'contacto'] as const
 
+const TORRE_MEDICA_PAGES = ['directorio', 'servicios', 'alquileres', 'contacto'] as const
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
@@ -42,7 +44,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Utility pages for each site
     ...(['lindora', 'escazu', 'pinares'] as const).flatMap(site =>
       UTILITY_PAGES
-        .filter(p => !(site === 'escazu' && p === 'eventos'))
         .map(p => ({
           url: `${BASE}/${site}/${p}`,
           lastModified: now,
@@ -50,6 +51,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
           priority: 0.55,
         }))
     ),
+    // Torre Médica sub-site
+    { url: `${BASE}/torre-medica`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
+    ...TORRE_MEDICA_PAGES.map(p => ({
+      url: `${BASE}/torre-medica/${p}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.65,
+    })),
   ]
 
   const tenantRoutes: MetadataRoute.Sitemap = [
