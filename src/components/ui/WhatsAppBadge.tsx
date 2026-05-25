@@ -4,15 +4,16 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface WhatsAppBadgeProps {
+  whatsappPhone?: string
   phone: string
   message?: string
 }
 
-export default function WhatsAppBadge({ phone, message }: WhatsAppBadgeProps) {
+export default function WhatsAppBadge({ phone, whatsappPhone, message }: WhatsAppBadgeProps) {
   const [visible, setVisible] = useState(false)
 
   // Normalise to international digits only: +506 2282-6980 → 50622826980
-  const cleanPhone = phone.replace(/[^\d]/g, '')
+  const cleanPhone = (whatsappPhone ?? phone).replace(/[^\d]/g, '')
   const waUrl = `https://wa.me/${cleanPhone}${message ? `?text=${encodeURIComponent(message)}` : ''}`
 
   useEffect(() => {
