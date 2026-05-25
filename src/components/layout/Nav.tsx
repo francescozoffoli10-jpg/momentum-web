@@ -148,6 +148,29 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
               </li>
             ))}
 
+            {/* Home / ecosystem link */}
+            <li>
+              <Link href="/"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  padding: '5px 11px',
+                  border: '0.5px solid rgba(255,255,255,0.1)',
+                  borderRadius: 100,
+                  color: 'rgba(255,255,255,0.5)',
+                  fontSize: 10, fontWeight: 400, letterSpacing: '0.09em', textTransform: 'uppercase',
+                  textDecoration: 'none',
+                  transition: 'border-color 0.2s, color 0.2s, background 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.24)'; e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.5)'; e.currentTarget.style.background = 'transparent' }}
+              >
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                  <path d="M1 5L5.5 1L10 5V10H7V7H4V10H1V5Z" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Inicio
+              </Link>
+            </li>
+
             {/* Location switcher */}
             <li style={{ position: 'relative' }}
               onMouseEnter={() => setLocOpen(true)}
@@ -464,6 +487,27 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                   ))}
                 </div>
               </div>
+
+              {/* Mobile home link */}
+              <Link href="/"
+                onClick={() => setMobileOpen(false)}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  marginTop: 8,
+                  padding: '10px 16px',
+                  border: '0.5px solid rgba(255,255,255,0.1)',
+                  borderRadius: 100,
+                  textDecoration: 'none',
+                  alignSelf: 'flex-start',
+                }}
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M1 5.5L6 1L11 5.5V11H8V7.5H4V11H1V5.5Z" stroke="rgba(255,255,255,0.4)" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <span style={{ fontSize: 10, fontWeight: 400, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.38)' }}>
+                  Inicio · Todos los destinos
+                </span>
+              </Link>
             </motion.div>
           </motion.div>
         )}
