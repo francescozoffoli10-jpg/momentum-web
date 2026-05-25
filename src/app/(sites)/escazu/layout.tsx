@@ -36,7 +36,7 @@ export default function EscazuLayout({ children }: { children: React.ReactNode }
       <main>{children}</main>
       <Footer site={escazuSite} basePath="/escazu" />
       <AppBadge />
-      <WhatsAppBadge phone={escazuSite.phone} />
+      <WhatsAppBadge phone={escazuSite.phone} whatsappPhone={escazuSite.whatsappPhone} />
     </>
   )
 }
