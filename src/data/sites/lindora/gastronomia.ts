@@ -153,8 +153,8 @@ export const gastronomia: Tenant[] = [
     slug: 'soda-tapia',
     name: 'Soda Tapia',
     section: 'gastronomia',
-    category: 'Gastronomía · Costarricense',
-    tagline: 'Cocina Costarricense',
+    category: 'Gastronomía · Tica',
+    tagline: 'Cocina Tica',
     description: 'El sabor de casa, hecho con amor. Casados, gallo pinto y todos los clásicos de la cocina tica preparados con la receta de siempre.',
     logo: 'soda-tapia.png',
     photo: 'soda-tapia.webp',
@@ -191,7 +191,7 @@ export const regionCards: RegionCard[] = [
     title: 'La Fabbrica',
     restaurants: ['la-fabbrica'],
     color: '#2C1810',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/italiana.webp',
   },
   {
     id: 'india',
@@ -199,7 +199,7 @@ export const regionCards: RegionCard[] = [
     title: 'Naans & Curries',
     restaurants: ['naans-curries'],
     color: '#1A1008',
-    image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/india.webp',
   },
   {
     id: 'arabe',
@@ -207,15 +207,15 @@ export const regionCards: RegionCard[] = [
     title: 'Shawaddi',
     restaurants: ['shawaddi'],
     color: '#0D1A0D',
-    image: 'https://images.unsplash.com/photo-1530469912745-a215c6b256ea?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/arabe.webp',
   },
   {
-    id: 'costarricense',
-    flag: 'Costarricense',
+    id: 'tica',
+    flag: 'Tica',
     title: 'Soda Tapia',
     restaurants: ['soda-tapia'],
     color: '#0A1A10',
-    image: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/tica.webp',
   },
   {
     id: 'venezolana',
@@ -223,7 +223,7 @@ export const regionCards: RegionCard[] = [
     title: 'El Ávila',
     restaurants: ['el-avila'],
     color: '#1A0A0A',
-    image: 'https://images.unsplash.com/photo-1544025162-d76538b5f90f?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/venezolana.webp',
   },
   {
     id: 'fusion',
@@ -231,7 +231,7 @@ export const regionCards: RegionCard[] = [
     title: 'Kotoy · Ají Limón',
     restaurants: ['kotoy', 'aji-limon'],
     color: '#0D0D1A',
-    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/fusion.webp',
   },
   {
     id: 'americana',
@@ -239,7 +239,7 @@ export const regionCards: RegionCard[] = [
     title: "Porky's · BBQ Chicken",
     restaurants: ['porkys', 'bbq-chicken'],
     color: '#1A1010',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/americana.webp',
   },
   {
     id: 'francesa',
@@ -247,7 +247,7 @@ export const regionCards: RegionCard[] = [
     title: "Pâtisserie d'Amour",
     restaurants: ['patisserie-amour'],
     color: '#1A1510',
-    image: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/francesa.webp',
   },
   {
     id: 'mexicana',
@@ -255,6 +255,6 @@ export const regionCards: RegionCard[] = [
     title: 'Zócalo',
     restaurants: ['zocalo'],
     color: '#1A1208',
-    image: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/lindora/categories/mexicana.webp',
   },
 ]
