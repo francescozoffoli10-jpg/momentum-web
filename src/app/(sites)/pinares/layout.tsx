@@ -36,7 +36,7 @@ export default function PinaresLayout({ children }: { children: React.ReactNode 
       <main>{children}</main>
       <Footer site={pinaresSite} basePath="/pinares" />
       <AppBadge />
-      <WhatsAppBadge phone={pinaresSite.phone} />
+      <WhatsAppBadge phone={pinaresSite.phone} whatsappPhone={pinaresSite.whatsappPhone} />
     </>
   )
 }
