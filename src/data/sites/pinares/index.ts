@@ -7,6 +7,7 @@ export const pinaresSite: SiteConfig = {
   address: 'Curridabat, frente al Walmart de Curridabat',
   city: 'San José, Costa Rica',
   phone: '+506 2271-6058',
+  whatsappPhone: '+506 6319 7459',
   email: 'info@momentumpinares.com',
   instagram: 'momentumcostarica',
   facebook: 'MomentumPinares',
