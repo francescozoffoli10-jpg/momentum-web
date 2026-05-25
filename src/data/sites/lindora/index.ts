@@ -7,6 +7,7 @@ export const lindoraSite: SiteConfig = {
   address: 'Santa Ana, frente al Automercado de Lindora',
   city: 'San José, Costa Rica',
   phone: '+506 2282-6980',
+  whatsappPhone: '+506 6319 7459',
   email: 'info@momentumlindora.com',
   instagram: 'momentumcostarica',
   facebook: 'MomentumLindora',
