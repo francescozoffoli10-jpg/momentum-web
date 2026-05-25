@@ -28,7 +28,7 @@ export default function LindoraLayout({ children }: { children: React.ReactNode 
       <main>{children}</main>
       <Footer site={lindoraSite} basePath="/lindora" />
       <AppBadge />
-      <WhatsAppBadge phone={lindoraSite.phone} />
+      <WhatsAppBadge phone={lindoraSite.phone} whatsappPhone={lindoraSite.whatsappPhone} />
     </>
   )
 }
