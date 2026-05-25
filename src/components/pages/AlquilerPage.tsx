@@ -79,7 +79,7 @@ export default function AlquilerPage({ site }: { site: SiteConfig }) {
             {data.headline}
           </h1>
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.38)', fontWeight: 300, maxWidth: 520 }}>
-            Ser parte del ecosistema Momentum es ser parte de una comunidad premium en crecimiento. Contactanos para más información sobre disponibilidad.
+            Ser parte del ecosistema Momentum es ser parte de una comunidad premium en crecimiento. Contáctanos para más información sobre disponibilidad.
           </p>
         </motion.div>
 
