@@ -14,9 +14,9 @@
  *     NEXT_PUBLIC_PINARES_URL  = https://momentumpinares.com
  *
  *   For Preview (optional):
- *     NEXT_PUBLIC_LINDORA_URL  = https://momentum-preview-coral.vercel.app/lindora
- *     NEXT_PUBLIC_ESCAZU_URL   = https://momentum-preview-coral.vercel.app/escazu
- *     NEXT_PUBLIC_PINARES_URL  = https://momentum-preview-coral.vercel.app/pinares
+ *     NEXT_PUBLIC_LINDORA_URL  = https://momentumcr.vercel.app/lindora
+ *     NEXT_PUBLIC_ESCAZU_URL   = https://momentumcr.vercel.app/escazu
+ *     NEXT_PUBLIC_PINARES_URL  = https://momentumcr.vercel.app/pinares
  *
  * DNS change is the only thing that activates production domains.
  * Nothing here touches or breaks the current Squarespace sites.
