@@ -7,6 +7,7 @@ export const escazuSite: SiteConfig = {
   address: 'Escazú, San José',
   city: 'San José, Costa Rica',
   phone: '+506 2289 0000',
+  whatsappPhone: '+506 6319 7459',
   email: 'info@momentumescazu.com',
   instagram: 'momentumcostarica',
   facebook: 'momentumescazu',
