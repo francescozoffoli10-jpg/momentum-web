@@ -186,7 +186,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
               Ver Directorio
             </Link>
             <Link
-              href="#"
+              href={`${basePath}/app`}
               style={{
                 padding: '12px 28px',
                 border: '0.5px solid rgba(255,255,255,0.18)',
@@ -211,20 +211,24 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
       <motion.div
         style={{
           opacity: scrollO,
-          position: 'absolute', bottom: 36, left: '50%',
+          position: 'absolute', bottom: 32, left: '50%',
           transform: 'translateX(-50%)',
-          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
+          display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+          cursor: 'default',
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span style={{ fontSize: 8, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.16)', textTransform: 'uppercase' }}>Scroll</span>
+        <span style={{ fontSize: 8, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase' }}>Explorá</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, rgba(255,255,255,0.18), transparent)' }}
-        />
+          animate={{ y: [0, 7, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 7.5L10 12.5L15 7.5" stroke="rgba(255,255,255,0.45)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.div>
       </motion.div>
     </section>
   )
