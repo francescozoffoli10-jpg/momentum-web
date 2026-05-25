@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { SiteConfig } from '@/data/types'
+import ContactForm from './ContactForm'
 
 export default function ContactoPage({ site }: { site: SiteConfig }) {
   return (
@@ -181,6 +182,31 @@ export default function ContactoPage({ site }: { site: SiteConfig }) {
             }
           }
         `}</style>
+
+        {/* Contact form */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          style={{ marginBottom: 64 }}
+        >
+          <div style={{
+            fontSize: 9, fontWeight: 600, letterSpacing: '0.22em',
+            textTransform: 'uppercase', color: site.accentColor, marginBottom: 12,
+          }}>
+            Envianos un mensaje
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 300,
+            color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.1, marginBottom: 10,
+          }}>
+            ¿En qué te podemos ayudar?
+          </h2>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.32)', fontWeight: 300, maxWidth: 440, lineHeight: 1.7, marginBottom: 36 }}>
+            Completá el formulario y el equipo de Momentum se pondrá en contacto con vos a la brevedad.
+          </p>
+          <ContactForm site={site} defaultMomentum={site.name} />
+        </motion.div>
 
         {/* Address */}
         <motion.div
