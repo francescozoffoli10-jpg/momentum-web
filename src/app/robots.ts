@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://momentum-preview-coral.vercel.app/sitemap.xml',
+    sitemap: 'https://momentumcr.vercel.app/sitemap.xml',
   }
 }
