@@ -1,9 +1,8 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  // Skip ESLint and TypeScript errors during build
+  // Skip ESLint during build — TypeScript already validates all code
   eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
 
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -11,11 +10,13 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 828, 1080, 1200, 1920],
     imageSizes: [64, 96, 128, 256, 384],
     remotePatterns: [
+      // Sanity CDN — for images served via sanityClient queries
       { protocol: 'https', hostname: 'cdn.sanity.io' },
+      // Unsplash — for curated tenant stock photos
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-
+  // Legacy URL redirects — updated 2026-05-26
   async redirects() {
     return [
       // /pinares/mediplaza → /pinares/torre-medica (renamed section)
@@ -24,9 +25,21 @@ const nextConfig: NextConfig = {
         destination: '/pinares/torre-medica',
         permanent: true,
       },
+      // Standalone /torre-medica sub-site retired — now lives inside Pinares
+      {
+        source: '/torre-medica',
+        destination: '/pinares/torre-medica',
+        permanent: true,
+      },
+      {
+        source: '/torre-medica/:path*',
+        destination: '/pinares/torre-medica',
+        permanent: true,
+      },
     ]
   },
 
+  // Long-lived caching for static assets
   async headers() {
     return [
       {
