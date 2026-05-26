@@ -60,7 +60,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['entrecote'],
     href: '/escazu/gastronomia',
     color: '#1A1010',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/cocina-autor-v2.webp',
   },
   {
     id: 'cafe-restaurante',
@@ -69,7 +69,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['paladixo'],
     href: '/escazu/gastronomia',
     color: '#101A10',
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/cafe-restaurante-v2.webp',
   },
   // Wellness
   {
@@ -79,7 +79,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['contrology-pilates', 'gyrotronic'],
     href: '/escazu/servicios',
     color: '#0A1018',
-    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/pilates-fitness-v2.webp',
   },
   {
     id: 'estetica-spa',
@@ -88,7 +88,7 @@ export const regionCards: RegionCard[] = [
     restaurants: ['ambrosia-estetica', 'estetica-nadira'],
     href: '/escazu/servicios',
     color: '#120A18',
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/estetica-spa-v2.webp',
   },
   // Medical
   {
@@ -96,17 +96,17 @@ export const regionCards: RegionCard[] = [
     flag: 'Medicina Preventiva',
     title: 'GoodMed · Age Metrics',
     restaurants: ['goodmed-escazu', 'age-metrics-medical'],
-    href: '/escazu/servicios',
+    href: '/escazu/centro-medico',
     color: '#0A1A12',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/medicina-preventiva-v2.webp',
   },
   {
     id: 'especialistas',
     flag: 'Especialistas',
     title: 'Dermatología · Oncología · Reumatología',
     restaurants: ['skin-care-physicians', 'centro-oncologico', 'caira-reumatologia'],
-    href: '/escazu/servicios',
+    href: '/escazu/centro-medico',
     color: '#0A1218',
-    image: 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=600&fit=crop&auto=format&q=75',
+    image: '/sites/escazu/categories/especialistas-v2.webp',
   },
 ]
