@@ -21,9 +21,29 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://momentumcr.vercel.app'),
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ShoppingCenter',
+  name: 'Momentum Pinares',
+  description: 'Gastronomía, comercios, bienestar, Torre Médica y oficinas en Curridabat, San José, Costa Rica.',
+  url: 'https://momentumpinares.com',
+  telephone: '+506-7064-0874',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Curridabat, frente al Walmart',
+    addressLocality: 'Curridabat',
+    addressRegion: 'San José',
+    addressCountry: 'CR',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 9.9136, longitude: -84.0503 },
+  image: 'https://momentumcr.vercel.app/sites/pinares/banners/pinares-hero.webp',
+  sameAs: ['https://www.instagram.com/momentumcostarica'],
+}
+
 export default function PinaresLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         :root {
           --a: #4F5B3E;
