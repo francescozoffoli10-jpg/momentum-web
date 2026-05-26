@@ -28,7 +28,7 @@ export default function TorreMedicaNav() {
   return (
     <>
       <header style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
         background: scrolled ? 'rgba(10,18,30,0.97)' : 'rgba(10,18,30,0.85)',
         backdropFilter: 'blur(16px)',
         borderBottom: scrolled ? '0.5px solid rgba(255,255,255,0.08)' : '0.5px solid transparent',
@@ -38,17 +38,35 @@ export default function TorreMedicaNav() {
           maxWidth: 1280, margin: '0 auto', padding: '0 32px',
           height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          {/* Logo */}
-          <Link href="/torre-medica" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <Image
-              src="/sites/pinares/logos/torre-medica.png"
-              alt="Torre Médica Momentum"
-              width={140}
-              height={40}
-              className="object-contain"
-              style={{ height: 32, width: 'auto' }}
-            />
-          </Link>
+          {/* Logo + ecosystem breadcrumb */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+            <Link href="/torre-medica" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+              <Image
+                src="/sites/pinares/logos/torre-medica.png"
+                alt="Torre Médica Momentum"
+                width={140}
+                height={40}
+                className="object-contain"
+                style={{ height: 32, width: 'auto' }}
+              />
+            </Link>
+            <Link
+              href="/pinares"
+              style={{
+                marginLeft: 16, paddingLeft: 16,
+                borderLeft: '0.5px solid rgba(255,255,255,0.12)',
+                fontSize: 10, color: 'rgba(255,255,255,0.28)',
+                letterSpacing: '0.1em', textTransform: 'uppercase',
+                textDecoration: 'none', whiteSpace: 'nowrap',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.28)')}
+              className="tm-ecosystem-link"
+            >
+              ← Momentum Pinares
+            </Link>
+          </div>
 
           {/* Desktop nav */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: 2 }} className="tm-desktop-nav">
@@ -143,6 +161,18 @@ export default function TorreMedicaNav() {
             >
               Llamar: 4702-0577
             </a>
+            <Link
+              href="/pinares"
+              onClick={() => setOpen(false)}
+              style={{
+                display: 'block', marginTop: 12, padding: '12px 0',
+                fontSize: 11, color: 'rgba(255,255,255,0.35)',
+                letterSpacing: '0.1em', textTransform: 'uppercase',
+                textDecoration: 'none', textAlign: 'center',
+              }}
+            >
+              ← Volver a Momentum Pinares
+            </Link>
           </div>
         )}
       </header>
@@ -151,6 +181,7 @@ export default function TorreMedicaNav() {
         @media (max-width: 768px) {
           .tm-desktop-nav { display: none !important; }
           .tm-hamburger { display: flex !important; }
+          .tm-ecosystem-link { display: none !important; }
         }
       `}</style>
     </>
