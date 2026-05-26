@@ -21,9 +21,29 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://momentumcr.vercel.app'),
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ShoppingCenter',
+  name: 'Momentum Escazú',
+  description: 'Calma, bienestar y experiencia premium en Escazú, San José, Costa Rica.',
+  url: 'https://momentumescazu.com',
+  telephone: '+506-2289-0000',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Escazú',
+    addressLocality: 'Escazú',
+    addressRegion: 'San José',
+    addressCountry: 'CR',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 9.9278, longitude: -84.1366 },
+  image: 'https://momentumcr.vercel.app/sites/escazu/banners/escazu-hero.webp',
+  sameAs: ['https://www.instagram.com/momentumcostarica', 'https://www.facebook.com/momentumescazu'],
+}
+
 export default function EscazuLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         :root {
           --a: #56717A;
