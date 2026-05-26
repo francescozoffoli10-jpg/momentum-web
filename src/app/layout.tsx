@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )
