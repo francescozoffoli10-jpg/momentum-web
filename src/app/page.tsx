@@ -4,6 +4,12 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { gastronomia as lindoraGastronomia } from '@/data/sites/lindora/gastronomia'
+import { mediplaza as lindoraMediplaza } from '@/data/sites/lindora/mediplaza'
+import { servicios as escazuServicios } from '@/data/sites/escazu/servicios'
+import { oficentro as escazuOficentro } from '@/data/sites/escazu/oficentro'
+import { gastronomia as pinaresGastronomia } from '@/data/sites/pinares/gastronomia'
+import { comercios as pinaresComercios } from '@/data/sites/pinares/comercios'
 
 const destinations = [
   {
@@ -13,11 +19,11 @@ const destinations = [
     location: 'Lindora · Santa Ana',
     color: '#932D2B',
     colorLight: '#B03835',
-    image: '/sites/lindora/banners/lindora-hero.webp',
+    image: '/sites/lindora/banners/hero-lindora.webp',
     stats: [
       { label: 'Locales', value: '40+' },
-      { label: 'Gastronomía', value: '11' },
-      { label: 'Mediplaza', value: '8' },
+      { label: 'Gastronomía', value: String(lindoraGastronomia.length) },
+      { label: 'Mediplaza', value: String(lindoraMediplaza.length) },
     ],
     tagline: 'Gastronomía · Bienestar · Comercio · Mediplaza',
     href: '/lindora',
@@ -29,11 +35,11 @@ const destinations = [
     location: 'Escazú · San José',
     color: '#56717A',
     colorLight: '#6B8A94',
-    image: '/sites/escazu/banners/escazu-hero.webp',
+    image: '/sites/escazu/banners/hero-escazu.webp',
     stats: [
       { label: 'Locales', value: '29+' },
-      { label: 'Servicios', value: '18' },
-      { label: 'Oficentro', value: '9' },
+      { label: 'Servicios', value: String(escazuServicios.length) },
+      { label: 'Oficentro', value: String(escazuOficentro.length) },
     ],
     tagline: 'Servicios · Salud · Oficentro',
     href: '/escazu',
@@ -45,11 +51,11 @@ const destinations = [
     location: 'Curridabat · San José',
     color: '#4F5B3E',
     colorLight: '#647550',
-    image: '/sites/pinares/banners/pinares-hero.webp',
+    image: '/sites/pinares/banners/hero-pinares.webp',
     stats: [
       { label: 'Locales', value: '47+' },
-      { label: 'Gastronomía', value: '16' },
-      { label: 'Comercios', value: '31' },
+      { label: 'Gastronomía', value: String(pinaresGastronomia.length) },
+      { label: 'Comercios', value: String(pinaresComercios.length) },
     ],
     tagline: 'Gastronomía · Comercio · Vida',
     href: '/pinares',
@@ -378,14 +384,13 @@ export default function LandingPage() {
             Descubrí
           </motion.span>
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 7, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              width: 1.5, height: 42,
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), transparent)',
-              boxShadow: '0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.2)',
-            }}
-          />
+          >
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M5 8.5L11 14.5L17 8.5" stroke="rgba(255,255,255,0.85)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.div>
         </motion.button>
       </section>
 
