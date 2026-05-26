@@ -9,12 +9,10 @@ interface WhatsAppBadgeProps {
   message?: string
 }
 
-export default function WhatsAppBadge({ phone, whatsappPhone, message }: WhatsAppBadgeProps) {
-  const [visible, setVisible] = useState(false)
+const WA_URL = 'https://wa.me/message/434VEBX5JFO7D1'
 
-  // Normalise to international digits only: +506 2282-6980 → 50622826980
-  const cleanPhone = (whatsappPhone ?? phone).replace(/[^\d]/g, '')
-  const waUrl = `https://wa.me/${cleanPhone}${message ? `?text=${encodeURIComponent(message)}` : ''}`
+export default function WhatsAppBadge({ phone: _phone, whatsappPhone: _whatsappPhone, message: _message }: WhatsAppBadgeProps) {
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 2800)
@@ -25,7 +23,7 @@ export default function WhatsAppBadge({ phone, whatsappPhone, message }: WhatsAp
     <AnimatePresence>
       {visible && (
         <motion.a
-          href={waUrl}
+          href={WA_URL}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
