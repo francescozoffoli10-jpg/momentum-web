@@ -50,7 +50,7 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
   return (
     <>
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
         transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
         background: scrolled || mobileOpen ? 'rgba(16,8,8,0.97)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
