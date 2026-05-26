@@ -1,30 +1,33 @@
 /**
  * Momentum Hostname Routing Middleware
  *
- * Purpose: When production domains (momentumlindora.com, momentumescazu.com,
- * momentumpinares.com) point to this Next.js app, all existing Squarespace URLs
- * continue to work at the exact same paths — zero SEO loss, zero redirects for
- * normal pages.
+ * Purpose: When production domains point to this Next.js app, all existing URLs
+ * continue to work at the exact same paths — zero SEO loss, zero redirects.
  *
  * How it works:
- *   momentumlindora.com/la-fabbrica  → internally serves /lindora/la-fabbrica
- *   momentumlindora.com/gastronomia  → internally serves /lindora/gastronomia
- *   (browser URL stays unchanged — Google sees the same URL it already indexed)
+ *   momentumlindora.com/la-fabbrica        → internally serves /lindora/la-fabbrica
+ *   momentumescazu.com/gastronomia         → internally serves /escazu/gastronomia
+ *   torremedicamomentum.com/*              → redirects to momentumpinares.com/torre-medica
+ *   (Torre Médica is now a section inside Pinares, not a standalone sub-site)
  *
- * Preview domain (momentum-preview-coral.vercel.app) is unaffected — it
- * continues to use /lindora, /escazu, /pinares prefixes as before.
+ * Preview domain (momentumcr.vercel.app) is unaffected — it
+ * continues to use /lindora, /escazu, /pinares prefixes.
+ * /torre-medica on preview redirects to /pinares/torre-medica via next.config.ts.
  *
  * Only DNS change at the domain registrar will activate this behavior.
- * Live Squarespace sites are 100% untouched until that moment.
+ * Live sites are 100% untouched until that moment.
  */
 
 import { NextRequest, NextResponse } from 'next/server'
 
 // ── Domain → site mapping ─────────────────────────────────────────────────────
-function getSiteFromHostname(hostname: string): 'lindora' | 'escazu' | 'pinares' | null {
-  if (hostname.includes('lindora')) return 'lindora'
-  if (hostname.includes('escazu'))  return 'escazu'
-  if (hostname.includes('pinares')) return 'pinares'
+// Torre Médica is now a section inside Pinares — torremedicamomentum.com
+// redirects to momentumpinares.com/torre-medica at the middleware level.
+function getSiteFromHostname(hostname: string): 'lindora' | 'escazu' | 'pinares' | 'torre-medica' | null {
+  if (hostname.includes('torremedicamomentum')) return 'torre-medica' // handled separately below
+  if (hostname.includes('lindora'))             return 'lindora'
+  if (hostname.includes('escazu'))              return 'escazu'
+  if (hostname.includes('pinares'))             return 'pinares'
   return null
 }
 
@@ -60,6 +63,11 @@ const SQUARESPACE_REDIRECTS: Record<string, Record<string, string>> = {
     '/directorio': '/gastronomia',
     '/inicio':     '/',
   },
+  'torre-medica': {
+    '/inicio':  '/',
+    '/home':    '/',
+    '/contact': '/contacto',
+  },
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -84,6 +92,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // ── 2b. torremedicamomentum.com → redirect to Pinares Torre Médica section ──
+  // Torre Médica is no longer a standalone sub-site. All traffic from
+  // torremedicamomentum.com is permanently redirected to momentumpinares.com/torre-medica.
+  if (site === 'torre-medica') {
+    const url = request.nextUrl.clone()
+    url.host = hostname.replace('torremedicamomentum.com', 'momentumpinares.com')
+    url.pathname = '/torre-medica'
+    return NextResponse.redirect(url, { status: 301 })
+  }
+
   // ── 3. Bypass static assets and Next.js internals ──────────────────────────
   if (shouldBypass(pathname)) {
     return NextResponse.next()
@@ -104,11 +122,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // ── 6. Core rewrite: flat Squarespace URL → prefixed Next.js URL ─────────
+  // ── 6. Core rewrite: flat URL → prefixed Next.js route ───────────────────
   // The browser URL remains unchanged — only the internal routing is affected.
-  // momentumlindora.com/la-fabbrica  → serves  /lindora/la-fabbrica
-  // momentumlindora.com/gastronomia  → serves  /lindora/gastronomia
-  // momentumlindora.com/             → serves  /lindora
+  // momentumlindora.com/la-fabbrica           → serves /lindora/la-fabbrica
+  // torremedicamomentum.com/directorio        → serves /torre-medica/directorio
+  // torremedicamomentum.com/                  → serves /torre-medica
   const url = request.nextUrl.clone()
   url.pathname = pathname === '/' ? `/${site}` : `/${site}${pathname}`
   return NextResponse.rewrite(url)
