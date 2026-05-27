@@ -10,6 +10,7 @@ const TENANT_FIELDS = `
   description,
   "logo": coalesce(logo.asset->url, logoUrl),
   "photo": coalesce(photo.asset->url, photoUrl),
+  "videoUrl": videoFile.asset->url,
   "gallery": gallery[].asset->url,
   hours,
   phone,
