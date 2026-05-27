@@ -6,7 +6,6 @@ import TenantDetailPage from '@/components/pages/TenantDetailPage'
 import { buildTenantSchema } from '@/lib/schema'
 import { CANONICAL } from '@/lib/canonical'
 import { fetchTenantBySlug, fetchTenantsBySite } from '@/sanity/lib/fetch'
-import type { Tenant } from '@/data/types'
 
 const CANONICAL_BASE = CANONICAL.lindora
 
@@ -20,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
   const sanityTenant = await fetchTenantBySlug('lindora', slug)
-  const tenant: Tenant | undefined = sanityTenant ?? getTenant(slug)
+  const tenant = sanityTenant ?? getTenant(slug)
   if (!tenant) return {}
   const ogImage = tenant.logo?.startsWith('http')
     ? tenant.logo
@@ -41,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: 'summary',
       title: `${tenant.name} — Momentum Lindora`,
       description: tenant.description,
-      images: [ogImage],
+      images: [{ url: ogImage }],
     },
   }
 }
@@ -49,13 +48,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  const sanityTenant = await fetchTenantBySlug('lindora', slug)
-  const tenant: Tenant | undefined = sanityTenant ?? getTenant(slug)
+  // Fetch both concurrently — all awaits complete before the null check so TypeScript
+  // narrowing is preserved for `tenant` throughout the rest of the function.
+  const [sanityTenant, sanityAll] = await Promise.all([
+    fetchTenantBySlug('lindora', slug),
+    fetchTenantsBySite('lindora'),
+  ])
+
+  const tenant = sanityTenant ?? getTenant(slug)
   if (!tenant) notFound()
 
-  // Related tenants: prefer Sanity, fall back to static
-  const sanityAll = await fetchTenantsBySite('lindora')
-  const allPool: Tenant[] = sanityAll ?? allTenants
+  const allPool = sanityAll ?? allTenants
   const related = allPool
     .filter(t => t.slug !== slug && t.section === tenant.section)
     .sort((a, b) => {
@@ -83,4 +86,3 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     </>
   )
 }
-
