@@ -304,6 +304,10 @@ public/
 | 2026-05-27 | Sanity webhook → Vercel revalidation | Created `src/app/api/revalidate/route.ts` (POST+GET); `SANITY_REVALIDATE_SECRET` env var in Vercel; Sanity webhook "Vercel Revalidation" fires on Create/Update/Delete for `tenant`+`siteEvent` in `production` dataset; cache now clears instantly on publish/delete |
 | 2026-05-27 | Fix fetch fallback logic | `fetch.ts`: `null` = fetch error (fall back to static), `[]` = intentional empty (respect it); `revalidate` reduced from 3600→300s as safety net |
 | 2026-05-27 | Fix Vercel build failures | Root cause: `tsconfig.json` `include: ["**/*.tsx"]` was picking up `web/src/**` files; `web/src/app/**/[slug]/page.tsx` imported `fetchTenantBySlug`/`fetchTenantSlugs` that don't exist in `src/sanity/lib/fetch.ts`. Fix: added `"web"` to tsconfig `exclude`. Also removed invalid `eslint` property from `next.config.ts` (removed in Next.js 16). Build now passing. |
+| 2026-05-27 | Fix [slug] page 500s — null slugs | Sanity seeds some docs with `slug: null`; these passed the related filter (`null !== 'slug'` = true) and crashed `RelatedCard`. Fix: added `t.slug &&` guard to related tenants filter in all 3 `[slug]/page.tsx` files. |
+| 2026-05-27 | Fix [slug] page 500s — null logos | `resolveMediaUrl(null, ...)` returns `''`; `<Image src="">` throws in Next.js. Fix: guarded `<Image>` in `RelatedCard` and hero with `{logoSrc ? <Image .../> : <div placeholder />}`. |
+| 2026-05-27 | Fix [slug] page 500s — null gallery | `fetch()` returns `"gallery": null` from Sanity; spread `[photo, ...null]` throws (default params only fire for `undefined`, not `null`). Fix: changed to `[photo, ...(gallery ?? [])]` and `(gallery?.length ?? 0) > 0` in `PhotoGallery`. |
+| 2026-05-27 | **Sanity CMS fully live** ✅ | All tenant detail pages + directory pages now read from Sanity with static fallback. Revalidation webhook active. 200 across all routes on `momentumcr.vercel.app`. |
 
 ---
 
@@ -328,20 +332,11 @@ public/
 - `src/data/sites/escazu/centro-medico.ts` was missing from GitHub (fixed 2026-05-21)
 - `momentum-preview-coral.vercel.app` is an OLD URL — use `momentumcr.vercel.app`
 
-### ⚠️ Sanity Migration Status (2026-05-27)
+### ✅ Sanity Migration Complete (2026-05-27)
 
-All Sanity migration work from session 2026-05-27 was written to `web/src/...` paths and is **NOT deployed**. The live site still uses **static data** from `src/data/sites/`.
+All Sanity migration files have been pushed to root `src/` and are **live on Vercel**. The site reads from Sanity CMS with static data fallback on every page. 140 tenants are seeded across Lindora/Escazú/Pinares.
 
-Items in `web/src/` that need to be migrated to root `src/` to go live:
-- `web/src/app/(sites)/*/[slug]/page.tsx` — updated slug pages with `fetchTenantBySlug`
-- `web/src/app/(sites)/*/gastronomia/page.tsx` etc. — 14 directory pages with Sanity fetch + fallback
-- `web/src/components/directory/LogoGrid.tsx` — `resolveMediaUrl()` for Sanity CDN URLs
-- `web/src/components/pages/TenantDetailPage.tsx` — video support + Sanity media
-- `web/src/sanity/lib/fetch.ts` — typed query helpers (fetchTenantsBySection, fetchTenantBySlug, fetchTenantSlugs, fetchTenantsBySite)
-- `web/src/app/api/revalidate/route.ts` — webhook revalidation endpoint (currently 404)
-- `web/src/data/types.ts` — has `videoUrl` field added
-
-Until those are pushed to root `src/`, the Sanity CMS is seeded but not connected to the live site.
+The `web/src/` folder remains as a local mirror only — any future changes must be pushed to root `src/` via GitHub API.
 
 ---
 
