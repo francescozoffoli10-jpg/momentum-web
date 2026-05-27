@@ -62,6 +62,7 @@ export interface Tenant {
   description: string     // longer description for detail page
   logo: string            // filename in /public/sites/[siteId]/logos/
   photo?: string          // filename in /public/sites/[siteId]/photos/ — 800×440px landscape
+  videoUrl?: string       // Sanity CDN URL for short MP4 loop (hero section)
   gallery?: string[]      // additional filenames in /public/sites/[siteId]/photos/ for lightbox
   hours: HoursRow[]
   phone?: string
