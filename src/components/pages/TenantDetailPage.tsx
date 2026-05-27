@@ -7,7 +7,7 @@ import type { Tenant, SiteConfig } from '@/data/types'
 import { isOpenNow } from '@/lib/hours'
 
 /** Resolves logo/photo to a full URL — handles Sanity CDN, absolute paths, and legacy filenames */
-function resolveMediaUrl(value: string, siteId: string, type: 'logos' | 'photos'): string {
+function resolveMediaUrl(value: string | null | undefined, siteId: string, type: 'logos' | 'photos'): string {
   if (!value) return ''
   if (value.startsWith('http') || value.startsWith('/')) return value
   return `/sites/${siteId}/${type}/${value}`
@@ -410,6 +410,7 @@ function LinkRow({
 
 // ── Related tenant card ───────────────────────────────────────────────────────
 function RelatedCard({ tenant, siteId, basePath }: { tenant: Tenant; siteId: string; basePath: string }) {
+  const logoSrc = resolveMediaUrl(tenant.logo, siteId, 'logos')
   return (
     <Link
       href={`${basePath}/${tenant.slug}`}
@@ -438,13 +439,26 @@ function RelatedCard({ tenant, siteId, basePath }: { tenant: Tenant; siteId: str
         height: 110, display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: 16, background: '#0a0a0a', borderBottom: '0.5px solid rgba(255,255,255,0.06)',
       }}>
-        <Image
-          src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
-          alt={tenant.name}
-          width={140} height={70}
-          className="object-contain"
-          style={{ maxHeight: 64, width: 'auto', maxWidth: '85%' }}
-        />
+        {logoSrc ? (
+          <Image
+            src={logoSrc}
+            alt={tenant.name}
+            width={140} height={70}
+            className="object-contain"
+            style={{ maxHeight: 64, width: 'auto', maxWidth: '85%' }}
+          />
+        ) : (
+          <div style={{
+            width: 140, height: 64,
+            background: 'rgba(255,255,255,0.05)',
+            borderRadius: 2,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.05em' }}>
+              {tenant.name.slice(0, 2).toUpperCase()}
+            </span>
+          </div>
+        )}
       </div>
       <div style={{ padding: '10px 12px 12px' }}>
         <div style={{ fontSize: 9, color: 'var(--a)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 2, fontWeight: 500 }}>
@@ -476,6 +490,8 @@ export default function TenantDetailPage({
   // Map: prefer coords if available, fall back to name + address query
   const mapQuery  = encodeURIComponent(`${tenant.name}, ${site.address}, ${site.city}, Costa Rica`)
   const mapsHref  = `https://maps.google.com/?q=${mapQuery}`
+
+  const heroLogoSrc = resolveMediaUrl(tenant.logo, siteId, 'logos')
 
   return (
     <>
@@ -542,13 +558,25 @@ export default function TenantDetailPage({
                   }}
                 />
               )}
-              <Image
-                src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
-                alt={tenant.name}
-                width={180} height={180}
-                className="object-contain"
-                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto', position: 'relative', zIndex: 2 }}
-              />
+              {heroLogoSrc ? (
+                <Image
+                  src={heroLogoSrc}
+                  alt={tenant.name}
+                  width={180} height={180}
+                  className="object-contain"
+                  style={{ maxWidth: '100%', maxHeight: 180, width: 'auto', position: 'relative', zIndex: 2 }}
+                />
+              ) : (
+                <div style={{
+                  width: 160, height: 80,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  position: 'relative', zIndex: 2,
+                }}>
+                  <span style={{ fontSize: 28, fontWeight: 200, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.05em' }}>
+                    {tenant.name.slice(0, 3).toUpperCase()}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Info */}
