@@ -128,6 +128,13 @@ export const tenant = {
       hidden: ({ document }: any) => !!document?.photo,
     },
     {
+      name: 'videoFile', title: 'Video de portada (MP4)',
+      type: 'file',
+      group: 'media',
+      options: { accept: 'video/mp4,video/webm' },
+      description: 'Video corto en loop para la página del local. Sin audio, máx 10 MB recomendado.',
+    },
+    {
       name: 'gallery', title: 'Galería adicional',
       type: 'array',
       group: 'media',
