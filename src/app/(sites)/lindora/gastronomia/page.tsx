@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 // Revalidate every hour so new Sanity tenants appear without a redeploy
 export const revalidate = 3600
 
-export default async function GastronomíaPage({ searchParams }: { searchParams: { cat?: string } }) {
+export default async function GastronomíaPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
+  const { cat } = await searchParams
   // Try Sanity first; fall back to static data if CMS is unreachable
   const sanityTenants = await fetchTenantsBySection('lindora', 'gastronomia')
   const tenants: Tenant[] = sanityTenants ?? staticGastronomia
@@ -34,7 +35,7 @@ export default async function GastronomíaPage({ searchParams }: { searchParams:
     { href: "/lindora/mediplaza", label: "Mediplaza", active: false },
         ]}
       />
-      <LogoGrid tenants={tenants} basePath="/lindora" siteId="lindora" initialCategory={searchParams.cat} />
+      <LogoGrid tenants={tenants} basePath="/lindora" siteId="lindora" initialCategory={cat} />
     </>
   )
 }
