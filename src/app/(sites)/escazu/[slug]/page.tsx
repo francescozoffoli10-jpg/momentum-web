@@ -5,16 +5,15 @@ import { escazuSite } from '@/data/sites/escazu/index'
 import TenantDetailPage from '@/components/pages/TenantDetailPage'
 import { buildTenantSchema } from '@/lib/schema'
 import { CANONICAL } from '@/lib/canonical'
-import { fetchTenantBySlug, fetchTenantSlugs, fetchTenantsBySite } from '@/sanity/lib/fetch'
+import { fetchTenantBySlug, fetchTenantsBySite } from '@/sanity/lib/fetch'
 import type { Tenant } from '@/data/types'
 
 const CANONICAL_BASE = CANONICAL.escazu
 
 export const revalidate = 3600
 
-export async function generateStaticParams() {
-  const sanitySlugs = await fetchTenantSlugs('escazu')
-  if (sanitySlugs.length > 0) return sanitySlugs.map((slug) => ({ slug }))
+// Use static data for build-time generation; new Sanity-only tenants render on demand via ISR
+export function generateStaticParams() {
   return allTenants.map((t) => ({ slug: t.slug }))
 }
 
@@ -83,3 +82,4 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     </>
   )
 }
+
