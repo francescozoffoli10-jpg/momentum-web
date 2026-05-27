@@ -1,9 +1,6 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  // Skip ESLint during build — TypeScript already validates all code
-  eslint: { ignoreDuringBuilds: true },
-
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 2592000, // 30 days for optimized images
@@ -16,16 +13,14 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
   },
-  // Legacy URL redirects — updated 2026-05-26
+  // Legacy URL redirects
   async redirects() {
     return [
-      // /pinares/mediplaza → /pinares/torre-medica (renamed section)
       {
         source: '/pinares/mediplaza',
         destination: '/pinares/torre-medica',
         permanent: true,
       },
-      // Standalone /torre-medica sub-site retired — now lives inside Pinares
       {
         source: '/torre-medica',
         destination: '/pinares/torre-medica',
@@ -38,8 +33,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-
-  // Long-lived caching for static assets
   async headers() {
     return [
       {
@@ -59,3 +52,4 @@ const nextConfig: NextConfig = {
 }
 
 export default nextConfig
+
