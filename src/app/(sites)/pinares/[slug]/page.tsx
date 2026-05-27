@@ -5,18 +5,27 @@ import { pinaresSite } from '@/data/sites/pinares/index'
 import TenantDetailPage from '@/components/pages/TenantDetailPage'
 import { buildTenantSchema } from '@/lib/schema'
 import { CANONICAL } from '@/lib/canonical'
+import { fetchTenantBySlug, fetchTenantSlugs, fetchTenantsBySite } from '@/sanity/lib/fetch'
+import type { Tenant } from '@/data/types'
 
 const CANONICAL_BASE = CANONICAL.pinares
 
+export const revalidate = 3600
+
 export async function generateStaticParams() {
+  const sanitySlugs = await fetchTenantSlugs('pinares')
+  if (sanitySlugs.length > 0) return sanitySlugs.map((slug) => ({ slug }))
   return allTenants.map((t) => ({ slug: t.slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
-  const tenant = getTenant(slug)
+  const sanityTenant = await fetchTenantBySlug('pinares', slug)
+  const tenant: Tenant | undefined = sanityTenant ?? getTenant(slug)
   if (!tenant) return {}
-  const ogImage = `${CANONICAL_BASE}/sites/pinares/logos/${tenant.logo}`
+  const ogImage = tenant.logo?.startsWith('http')
+    ? tenant.logo
+    : `${CANONICAL_BASE}/sites/pinares/logos/${tenant.logo}`
   return {
     title: tenant.name,
     description: tenant.description,
@@ -40,10 +49,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const tenant = getTenant(slug)
+
+  const sanityTenant = await fetchTenantBySlug('pinares', slug)
+  const tenant: Tenant | undefined = sanityTenant ?? getTenant(slug)
   if (!tenant) notFound()
 
-  const related = allTenants
+  const sanityAll = await fetchTenantsBySite('pinares')
+  const allPool: Tenant[] = sanityAll ?? allTenants
+  const related = allPool
     .filter(t => t.slug !== slug && t.section === tenant.section)
     .sort((a, b) => {
       const sameA = a.category === tenant.category ? 0 : 1
