@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600
 
-export default async function GastronomiaPage({ searchParams }: { searchParams: { cat?: string } }) {
+export default async function GastronomiaPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
+  const { cat } = await searchParams
   const sanityTenants = await fetchTenantsBySection('escazu', 'gastronomia')
   const tenants: Tenant[] = sanityTenants ?? staticGastronomia
   return (
@@ -30,7 +31,7 @@ export default async function GastronomiaPage({ searchParams }: { searchParams: 
           { href: '/escazu/oficentro',     label: 'Oficentro',     active: false },
         ]}
       />
-      <LogoGrid tenants={tenants} basePath="/escazu" siteId="escazu" initialCategory={searchParams.cat} />
+      <LogoGrid tenants={tenants} basePath="/escazu" siteId="escazu" initialCategory={cat} />
     </>
   )
 }
