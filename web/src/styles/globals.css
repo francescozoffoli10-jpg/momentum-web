@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+/* ─── Design tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --a:       #8B2828;   /* brand accent — burgundy */
+  --a-light: #A33333;
+  --dk:      #100808;   /* near-black, dark sections */
+  --bg:      #F7F5F2;   /* off-white background */
+  --white:   #FFFFFF;
+  --text:    #1A1010;   /* primary text */
+  --mt:      #7A6A6A;   /* muted text */
+  --brd:     #E8E0DA;   /* borders */
+  --brd-dk:  rgba(255,255,255,0.08); /* borders on dark bg */
+  --f:       'DM Sans', system-ui, sans-serif;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-family: var(--f); font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+a { color: inherit; text-decoration: none; }
+
+img { display: block; max-width: 100%; }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--brd); border-radius: 2px; }
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection { background: var(--a); color: #fff; }
+
+/* ─── Utility classes (Tailwind-free) ───────────────────────────────────────── */
+
+/* Layout */
+.flex          { display: flex; }
+.inline-flex   { display: inline-flex; }
+.inline-block  { display: inline-block; }
+.block         { display: block; }
+.grid          { display: grid; }
+.hidden        { display: none; }
+
+/* Flex */
+.flex-col       { flex-direction: column; }
+.flex-wrap      { flex-wrap: wrap; }
+.items-center   { align-items: center; }
+.items-start    { align-items: flex-start; }
+.items-end      { align-items: flex-end; }
+.items-baseline { align-items: baseline; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+.flex-1          { flex: 1 1 0%; }
+.shrink-0        { flex-shrink: 0; }
+.flex-col        { flex-direction: column; }
+
+/* Grid */
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Gap */
+.gap-1  { gap: 4px; }
+.gap-2  { gap: 8px; }
+.gap-3  { gap: 12px; }
+.gap-4  { gap: 16px; }
+.gap-5  { gap: 20px; }
+.gap-6  { gap: 24px; }
+.gap-8  { gap: 32px; }
+.gap-10 { gap: 40px; }
+.gap-12 { gap: 48px; }
+
+/* Space */
+.space-y-2 > * + * { margin-top: 8px; }
+.space-y-4 > * + * { margin-top: 16px; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed    { position: fixed; }
+.sticky   { position: sticky; }
+
+/* Inset */
+.inset-0   { top: 0; right: 0; bottom: 0; left: 0; }
+.top-0     { top: 0; }
+.right-0   { right: 0; }
+.bottom-0  { bottom: 0; }
+.left-0    { left: 0; }
+.top-full  { top: 100%; }
+.top-8     { top: 32px; }
+.right-8   { right: 32px; }
+.bottom-10 { bottom: 40px; }
+.left-1\/2 { left: 50%; }
+
+/* Transform */
+.-translate-x-1\/2 { transform: translateX(-50%); }
+
+/* Size */
+.w-full      { width: 100%; }
+.h-full      { height: 100%; }
+.h-16        { height: 64px; }
+.min-w-\[160px\] { min-width: 160px; }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+
+/* Z-index */
+.z-10  { z-index: 10; }
+.z-50  { z-index: 50; }
+
+/* Padding */
+.p-5   { padding: 20px; }
+.pt-2  { padding-top: 8px; }
+.px-4  { padding-left: 16px; padding-right: 16px; }
+.px-7  { padding-left: 28px; padding-right: 28px; }
+.px-8  { padding-left: 32px; padding-right: 32px; }
+.py-2  { padding-top: 8px; padding-bottom: 8px; }
+.py-3  { padding-top: 12px; padding-bottom: 12px; }
+.py-4  { padding-top: 16px; padding-bottom: 16px; }
+.py-16 { padding-top: 64px; padding-bottom: 64px; }
+
+/* Margin */
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-10   { margin-top: 40px; }
+.mb-4    { margin-bottom: 16px; }
+.mb-10   { margin-bottom: 40px; }
+.mb-12   { margin-bottom: 48px; }
+
+/* Max-width */
+.max-w-screen-xl { max-width: 1280px; }
+
+/* Text */
+.text-sm      { font-size: 14px; line-height: 1.5; }
+.text-center  { text-align: center; }
+.text-white   { color: #ffffff; }
+.text-white\/40 { color: rgba(255,255,255,0.4); }
+.text-white\/70 { color: rgba(255,255,255,0.7); }
+.font-light   { font-weight: 300; }
+.font-medium  { font-weight: 500; }
+.leading-none { line-height: 1; }
+.tracking-tight { letter-spacing: -0.025em; }
+.uppercase    { text-transform: uppercase; }
+.not-italic   { font-style: normal; }
+
+/* List */
+.list-none { list-style: none; padding: 0; margin: 0; }
+
+/* Image */
+.object-cover   { object-fit: cover; }
+.object-contain { object-fit: contain; }
+
+/* Opacity */
+.opacity-10 { opacity: 0.1; }
+
+/* Border radius */
+.rounded    { border-radius: 6px; }
+.rounded-sm { border-radius: 2px; }
+
+/* Transitions */
+.transition-all    { transition: all 0.15s ease; }
+.transition-colors { transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease; }
+.transition-transform { transition: transform 0.15s ease; }
+.duration-300 { transition-duration: 300ms; }
+.duration-500 { transition-duration: 500ms; }
+
+/* Group hover (JS handles these, but we keep the class for identification) */
+.group { }
+
+/* Hover variants handled via onMouseEnter/Leave in components */
+
+/* ─── Smooth scroll ──────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+/* ─── Reduced motion accessibility ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Mobile responsive grid helpers ───────────────────────────────────────── */
+
+/* Featured tenants — 4 col desktop */
+.featured-grid { grid-template-columns: repeat(4, 1fr); }
+
+/* Cuisine region grid — 3 col desktop */
+.region-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* Editorial two-column with large gap */
+.editorial-grid { grid-template-columns: 1fr 1fr; gap: 88px; }
+
+/* Tenant detail: hero grid (logo + info [+ video]) */
+.tenant-hero-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+/* When tenant has a video — 3-column layout */
+.tenant-hero-grid.has-video {
+  grid-template-columns: 180px 1fr 420px;
+}
+/* Video column (desktop) */
+.tenant-hero-video-col {
+  border-radius: 8px;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 240px;
+  background: rgba(255,255,255,0.03);
+}
+.tenant-hero-video-col video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Mobile-only video bg inside logo box */
+.tenant-hero-video-bg {
+  display: none;
+}
+
+/* Tenant detail: body grid (content + sidebar) */
+.tenant-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 64px;
+}
+
+/* Responsive container padding */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+/* ── Tablet (≤1024px) ────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid-cols-4-responsive { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-cols-3-responsive { grid-template-columns: repeat(2, 1fr) !important; }
+  .featured-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Large mobile (≤768px) ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .region-grid { grid-template-columns: repeat(2, 1fr); }
+  .tenant-body-grid { grid-template-columns: 1fr; gap: 32px; }
+  .tenant-hero-grid,
+  .tenant-hero-grid.has-video {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+  .tenant-hero-grid .tenant-hero-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Hide desktop video column, show video bg inside logo box */
+  .tenant-hero-video-col { display: none; }
+  .tenant-hero-video-bg { display: block; }
+}
+
+/* ── Tablet footer ───────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ── Small mobile (≤640px) ───────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .grid-cols-4-responsive { grid-template-columns: 1fr !important; }
+  .grid-cols-3-responsive { grid-template-columns: 1fr !important; }
+  .grid-cols-2-responsive { grid-template-columns: 1fr !important; }
+  .featured-grid { grid-template-columns: repeat(2, 1fr); }
+  .editorial-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hide-mobile { display: none !important; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .container { padding-left: 20px; padding-right: 20px; }
+  .px-8 { padding-left: 20px !important; padding-right: 20px !important; }
+}
+
+/* ─── Focus styles ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--a);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Improved text rendering ────────────────────────────────────────────────── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Cursor custom for interactive logo ────────────────────────────────────── */
+.logo-bounce { cursor: pointer; user-select: none; }
