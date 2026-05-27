@@ -11,9 +11,22 @@ interface LogoGridProps {
   tenants: Tenant[]
   basePath: string
   siteId: string
+  initialCategory?: string
 }
 
 type SortOption = 'az' | 'za' | 'open'
+
+/** Resolves a logo/photo value to a full URL.
+ *  Handles three cases:
+ *  1. Full URL (Sanity CDN or external): used as-is — "https://..."
+ *  2. Absolute public path: used as-is — "/sites/..."
+ *  3. Legacy relative filename: prepends the public path — "logo.png" → "/sites/{siteId}/{type}/logo.png"
+ */
+function resolveMediaUrl(value: string, siteId: string, type: 'logos' | 'photos'): string {
+  if (!value) return ''
+  if (value.startsWith('http') || value.startsWith('/')) return value
+  return `/sites/${siteId}/${type}/${value}`
+}
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -146,7 +159,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
               transition: 'opacity 0.4s ease',
             }}>
               <Image
-                src={tenant.photo!.startsWith('http') ? tenant.photo! : `/sites/${siteId}/photos/${tenant.photo}`}
+                src={resolveMediaUrl(tenant.photo!, siteId, 'photos')}
                 alt={tenant.name}
                 fill
                 sizes="200px"
@@ -166,7 +179,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
             width: '85%', maxWidth: 200,
           }}>
             <Image
-              src={`/sites/${siteId}/logos/${tenant.logo}`}
+              src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
               alt={tenant.name}
               width={160} height={80}
               className="object-contain"
@@ -234,9 +247,9 @@ function TenantCard({ tenant, basePath, siteId, index }: {
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function LogoGrid({ tenants, basePath, siteId }: LogoGridProps) {
+export default function LogoGrid({ tenants, basePath, siteId, initialCategory }: LogoGridProps) {
   const [query, setQuery] = useState('')
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
+  const [activeCategory, setActiveCategory] = useState<string | null>(initialCategory ?? null)
   const [sortBy, setSortBy] = useState<SortOption>('az')
 
   // Build unique category list
