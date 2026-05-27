@@ -11,7 +11,6 @@ const CANONICAL_BASE = CANONICAL.pinares
 
 export const revalidate = 3600
 
-// Use static data for build-time generation; new Sanity-only tenants render on demand via ISR
 export function generateStaticParams() {
   return allTenants.map((t) => ({ slug: t.slug }))
 }
@@ -48,8 +47,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
 
-  // Fetch both concurrently — all awaits complete before the null check so TypeScript
-  // narrowing is preserved for `tenant` throughout the rest of the function.
   const [sanityTenant, sanityAll] = await Promise.all([
     fetchTenantBySlug('pinares', slug),
     fetchTenantsBySite('pinares'),
@@ -60,7 +57,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   const allPool = sanityAll ?? allTenants
   const related = allPool
-    .filter(t => t.slug !== slug && t.section === tenant.section)
+    .filter(t => t.slug && t.slug !== slug && t.section === tenant.section)
     .sort((a, b) => {
       const sameA = a.category === tenant.category ? 0 : 1
       const sameB = b.category === tenant.category ? 0 : 1
