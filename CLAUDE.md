@@ -1,6 +1,6 @@
 # Momentum Costa Rica — Project Memory
 
-> Last updated: 2026-05-21
+> Last updated: 2026-05-27
 
 ---
 
@@ -39,6 +39,30 @@ All four sites live under a single Next.js app using a path-prefix system at the
 - **Branch:** `main` — all pushes go here
 - **Auto-deploy:** Vercel auto-deploys on every push to main
 - **Deploy method:** GitHub API (no local git due to permissions lock issue with .git/index.lock)
+- **GitHub token:** Generate at github.com/settings/tokens → classic token, `repo` scope, name "Momentum deploy" (redacted — never commit the actual token)
+
+### ⚠️ CRITICAL: Repo Structure & Build Path
+
+The repo root IS the Next.js project. Vercel builds from `/` (repo root), NOT from `web/`.
+
+```
+/ (repo root — what Vercel builds)
+├── next.config.ts        ← built by Vercel
+├── package.json
+├── tsconfig.json         ← excludes: node_modules, web, src/sanity, src/app/studio, src/src
+├── src/                  ← THE SOURCE CODE Vercel deploys
+│   ├── app/
+│   ├── components/
+│   ├── data/
+│   ├── lib/
+│   └── sanity/
+└── web/                  ← LOCAL MIRROR ONLY — excluded from TypeScript, NOT deployed
+    └── src/ ...          ← changes here do NOT affect the live site
+```
+
+**ALL file pushes for deployment MUST target root paths** (`src/...`, `next.config.ts`, etc.).  
+Files pushed to `web/src/...` are ignored by the build.
+
 - **How to push files:**
   ```bash
   TOKEN="<YOUR_GITHUB_TOKEN>"
@@ -55,7 +79,7 @@ All four sites live under a single Next.js app using a path-prefix system at the
 
 ## 4. Tech Stack
 
-- **Framework:** Next.js 14 App Router (TypeScript)
+- **Framework:** Next.js 16.2.6 App Router (TypeScript), React 19
 - **Styling:** Inline styles only — NO Tailwind, NO CSS modules
 - **CMS:** Sanity v3 (studio at /studio, client in src/sanity/)
 - **Analytics:** Vercel Analytics
@@ -279,6 +303,7 @@ public/
 | 2026-05-27 | Tenant video support | Added `videoUrl` field to `types.ts`, Sanity schema (`videoFile` file type), and queries; `TenantDetailPage.tsx` shows video in 3rd hero column on desktop; video plays behind logo on mobile; CSS classes `has-video`, `tenant-hero-video-col`, `tenant-hero-video-bg` |
 | 2026-05-27 | Sanity webhook → Vercel revalidation | Created `src/app/api/revalidate/route.ts` (POST+GET); `SANITY_REVALIDATE_SECRET` env var in Vercel; Sanity webhook "Vercel Revalidation" fires on Create/Update/Delete for `tenant`+`siteEvent` in `production` dataset; cache now clears instantly on publish/delete |
 | 2026-05-27 | Fix fetch fallback logic | `fetch.ts`: `null` = fetch error (fall back to static), `[]` = intentional empty (respect it); `revalidate` reduced from 3600→300s as safety net |
+| 2026-05-27 | Fix Vercel build failures | Root cause: `tsconfig.json` `include: ["**/*.tsx"]` was picking up `web/src/**` files; `web/src/app/**/[slug]/page.tsx` imported `fetchTenantBySlug`/`fetchTenantSlugs` that don't exist in `src/sanity/lib/fetch.ts`. Fix: added `"web"` to tsconfig `exclude`. Also removed invalid `eslint` property from `next.config.ts` (removed in Next.js 16). Build now passing. |
 
 ---
 
@@ -303,10 +328,30 @@ public/
 - `src/data/sites/escazu/centro-medico.ts` was missing from GitHub (fixed 2026-05-21)
 - `momentum-preview-coral.vercel.app` is an OLD URL — use `momentumcr.vercel.app`
 
+### ⚠️ Sanity Migration Status (2026-05-27)
+
+All Sanity migration work from session 2026-05-27 was written to `web/src/...` paths and is **NOT deployed**. The live site still uses **static data** from `src/data/sites/`.
+
+Items in `web/src/` that need to be migrated to root `src/` to go live:
+- `web/src/app/(sites)/*/[slug]/page.tsx` — updated slug pages with `fetchTenantBySlug`
+- `web/src/app/(sites)/*/gastronomia/page.tsx` etc. — 14 directory pages with Sanity fetch + fallback
+- `web/src/components/directory/LogoGrid.tsx` — `resolveMediaUrl()` for Sanity CDN URLs
+- `web/src/components/pages/TenantDetailPage.tsx` — video support + Sanity media
+- `web/src/sanity/lib/fetch.ts` — typed query helpers (fetchTenantsBySection, fetchTenantBySlug, fetchTenantSlugs, fetchTenantsBySite)
+- `web/src/app/api/revalidate/route.ts` — webhook revalidation endpoint (currently 404)
+- `web/src/data/types.ts` — has `videoUrl` field added
+
+Until those are pushed to root `src/`, the Sanity CMS is seeded but not connected to the live site.
+
 ---
 
 ## 13. Vercel Build Gotchas
 
+- Vercel builds from repo ROOT — all source files must be at `src/...` not `web/src/...`
+- `tsconfig.json` now excludes `"web"` to prevent web mirror files from causing TS errors
+- `next.config.ts` at root must NOT have `eslint: { ignoreDuringBuilds: true }` — removed in Next.js 16
 - Build fails if any imported file doesn't exist in the repo (even if it exists locally)
-- Always verify local-only files with: `curl .../repos/.../contents/PATH | python3 -c "import sys,json; d=json.load(sys.stdin); print('OK' if 'sha' in d else 'MISSING')"`
+- `src/sanity` is excluded from TypeScript but files are still type-checked when imported by included files
+- Always verify file exists at correct path: `curl .../repos/.../contents/src/PATH | python3 -c "import sys,json; d=json.load(sys.stdin); print('OK' if 'sha' in d else 'MISSING')"`
 - Vercel project name in URL is still `momentum-prototype` (internal only — user-facing is `momentumcr.vercel.app`)
+- The "middleware" convention is deprecated in Next.js 16 — warning shown but not an error (use "proxy" eventually)
