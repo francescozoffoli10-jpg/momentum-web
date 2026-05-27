@@ -1,21 +1,27 @@
 import type { Metadata } from 'next'
 import PageHeader from '@/components/directory/PageHeader'
 import LogoGrid from '@/components/directory/LogoGrid'
-import { gastronomia } from '@/data/sites/pinares/gastronomia'
+import { fetchTenantsBySection } from '@/sanity/lib/fetch'
+import { gastronomia as staticGastronomia } from '@/data/sites/pinares/gastronomia'
+import type { Tenant } from '@/data/types'
 
 export const metadata: Metadata = {
   title: 'Gastronomía',
   description: 'Restaurantes y opciones gastronómicas en Momentum Pinares.',
 }
 
-export default function GastronomiaPage() {
+export const revalidate = 3600
+
+export default async function GastronomiaPage({ searchParams }: { searchParams: { cat?: string } }) {
+  const sanityTenants = await fetchTenantsBySection('pinares', 'gastronomia')
+  const tenants: Tenant[] = sanityTenants ?? staticGastronomia
   return (
     <>
       <PageHeader
         eyebrow="Directorio · Pinares"
         title="Gastronomía"
         description="La mayor variedad gastronómica del ecosistema Momentum, toda en Curridabat."
-        count={gastronomia.length}
+        count={tenants.length}
         countLabel="opciones"
         sectionLinks={[
           { href: '/pinares/gastronomia', label: 'Gastronomía', active: true },
@@ -25,7 +31,7 @@ export default function GastronomiaPage() {
           { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
       />
-      <LogoGrid tenants={gastronomia} basePath="/pinares" siteId="pinares" />
+      <LogoGrid tenants={tenants} basePath="/pinares" siteId="pinares" initialCategory={searchParams.cat} />
     </>
   )
 }
