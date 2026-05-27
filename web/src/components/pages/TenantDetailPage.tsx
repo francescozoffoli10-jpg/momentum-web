@@ -501,7 +501,7 @@ export default function TenantDetailPage({
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <div style={{ background: 'var(--dk)', padding: '56px 0' }}>
         <div className="max-w-screen-xl mx-auto px-8">
-          <div className="tenant-hero-grid">
+          <div className={`tenant-hero-grid${tenant.videoUrl ? ' has-video' : ''}`}>
             {/* Logo box */}
             <div
               className="tenant-hero-logo"
@@ -512,14 +512,42 @@ export default function TenantDetailPage({
                 borderRadius: 8,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 padding: 16,
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
+              {/* Mobile-only: video plays behind the logo */}
+              {tenant.videoUrl && (
+                <video
+                  className="tenant-hero-video-bg"
+                  autoPlay muted loop playsInline
+                  style={{
+                    position: 'absolute', inset: 0,
+                    width: '100%', height: '100%',
+                    objectFit: 'cover',
+                    zIndex: 0,
+                  }}
+                >
+                  <source src={tenant.videoUrl} type="video/mp4" />
+                </video>
+              )}
+              {/* Dark overlay so logo stays legible over video */}
+              {tenant.videoUrl && (
+                <div
+                  className="tenant-hero-video-bg"
+                  style={{
+                    position: 'absolute', inset: 0,
+                    background: 'rgba(0,0,0,0.45)',
+                    zIndex: 1,
+                  }}
+                />
+              )}
               <Image
                 src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
                 alt={tenant.name}
                 width={180} height={180}
                 className="object-contain"
-                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto' }}
+                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto', position: 'relative', zIndex: 2 }}
               />
             </div>
 
@@ -616,6 +644,15 @@ export default function TenantDetailPage({
                 <ShareButton />
               </div>
             </div>
+
+            {/* Desktop video column — 3rd grid cell, hidden on mobile */}
+            {tenant.videoUrl && (
+              <div className="tenant-hero-video-col">
+                <video autoPlay muted loop playsInline>
+                  <source src={tenant.videoUrl} type="video/mp4" />
+                </video>
+              </div>
+            )}
           </div>
         </div>
       </div>
