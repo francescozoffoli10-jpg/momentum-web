@@ -60,7 +60,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   const allPool = sanityAll ?? allTenants
   const related = allPool
-    .filter(t => t.slug !== slug && t.section === tenant.section)
+    .filter(t => t.slug && t.slug !== slug && t.section === tenant.section)
     .sort((a, b) => {
       const sameA = a.category === tenant.category ? 0 : 1
       const sameB = b.category === tenant.category ? 0 : 1
