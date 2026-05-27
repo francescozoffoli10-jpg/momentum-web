@@ -6,6 +6,13 @@ import Link from 'next/link'
 import type { Tenant, SiteConfig } from '@/data/types'
 import { isOpenNow } from '@/lib/hours'
 
+/** Resolves logo/photo to a full URL — handles Sanity CDN, absolute paths, and legacy filenames */
+function resolveMediaUrl(value: string, siteId: string, type: 'logos' | 'photos'): string {
+  if (!value) return ''
+  if (value.startsWith('http') || value.startsWith('/')) return value
+  return `/sites/${siteId}/${type}/${value}`
+}
+
 const SECTION_LABELS: Record<string, string> = {
   gastronomia: 'Gastronomía',
   comercios:   'Comercios',
@@ -70,8 +77,6 @@ function ShareButton() {
         setToast('copied')
       } catch { /* clipboard blocked */ }
     }
-    if (toast !== null) return
-    setTimeout(() => setToast(null), 2200)
   }
 
   useEffect(() => {
@@ -181,7 +186,7 @@ function PhotoGallery({
             onClick={() => setLightboxIndex(0)}
           >
             <Image
-              src={mainPhoto.startsWith('http') ? mainPhoto : `/sites/${siteId}/photos/${mainPhoto}`}
+              src={resolveMediaUrl(mainPhoto, siteId, 'photos')}
               alt={`${tenantName} — foto`}
               fill
               style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
@@ -232,7 +237,7 @@ function PhotoGallery({
                   }}
                 >
                   <Image
-                    src={photo.startsWith('http') ? photo : `/sites/${siteId}/photos/${photo}`}
+                    src={resolveMediaUrl(photo, siteId, 'photos')}
                     alt={`${tenantName} foto ${i + 1}`}
                     fill
                     style={{ objectFit: 'cover' }}
@@ -303,7 +308,7 @@ function PhotoGallery({
             }}
           >
             <Image
-              src={allPhotos[lightboxIndex].startsWith('http') ? allPhotos[lightboxIndex] : `/sites/${siteId}/photos/${allPhotos[lightboxIndex]}`}
+              src={resolveMediaUrl(allPhotos[lightboxIndex], siteId, 'photos')}
               alt={`${tenantName} foto ${lightboxIndex + 1}`}
               fill
               className="object-contain"
@@ -434,7 +439,7 @@ function RelatedCard({ tenant, siteId, basePath }: { tenant: Tenant; siteId: str
         padding: 16, background: '#0a0a0a', borderBottom: '0.5px solid rgba(255,255,255,0.06)',
       }}>
         <Image
-          src={`/sites/${siteId}/logos/${tenant.logo}`}
+          src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
           alt={tenant.name}
           width={140} height={70}
           className="object-contain"
@@ -496,7 +501,7 @@ export default function TenantDetailPage({
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <div style={{ background: 'var(--dk)', padding: '56px 0' }}>
         <div className="max-w-screen-xl mx-auto px-8">
-          <div className="tenant-hero-grid">
+          <div className={`tenant-hero-grid${tenant.videoUrl ? ' has-video' : ''}`}>
             {/* Logo box */}
             <div
               className="tenant-hero-logo"
@@ -507,14 +512,42 @@ export default function TenantDetailPage({
                 borderRadius: 8,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 padding: 16,
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
+              {/* Mobile-only: video plays behind the logo */}
+              {tenant.videoUrl && (
+                <video
+                  className="tenant-hero-video-bg"
+                  autoPlay muted loop playsInline
+                  style={{
+                    position: 'absolute', inset: 0,
+                    width: '100%', height: '100%',
+                    objectFit: 'cover',
+                    zIndex: 0,
+                  }}
+                >
+                  <source src={tenant.videoUrl} type="video/mp4" />
+                </video>
+              )}
+              {/* Dark overlay so logo stays legible over video */}
+              {tenant.videoUrl && (
+                <div
+                  className="tenant-hero-video-bg"
+                  style={{
+                    position: 'absolute', inset: 0,
+                    background: 'rgba(0,0,0,0.45)',
+                    zIndex: 1,
+                  }}
+                />
+              )}
               <Image
-                src={`/sites/${siteId}/logos/${tenant.logo}`}
+                src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
                 alt={tenant.name}
                 width={180} height={180}
                 className="object-contain"
-                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto' }}
+                style={{ maxWidth: '100%', maxHeight: 180, width: 'auto', position: 'relative', zIndex: 2 }}
               />
             </div>
 
@@ -611,6 +644,15 @@ export default function TenantDetailPage({
                 <ShareButton />
               </div>
             </div>
+
+            {/* Desktop video column — 3rd grid cell, hidden on mobile */}
+            {tenant.videoUrl && (
+              <div className="tenant-hero-video-col">
+                <video autoPlay muted loop playsInline>
+                  <source src={tenant.videoUrl} type="video/mp4" />
+                </video>
+              </div>
+            )}
           </div>
         </div>
       </div>
