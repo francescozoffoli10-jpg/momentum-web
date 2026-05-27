@@ -276,6 +276,9 @@ public/
 | 2026-05-27 | Sanity CMS migration — 14 directory pages | All 13 section pages + Pinares ofiplaza updated with `fetchTenantsBySection` + static fallback pattern; `revalidate = 3600` |
 | 2026-05-27 | Sanity CMS migration — [slug] pages | All 3 `[slug]/page.tsx` files updated with `fetchTenantBySlug` + static fallback; `generateStaticParams` uses `fetchTenantSlugs` |
 | 2026-05-27 | Sanity seed script | Created `scripts/seed-sanity.mjs` — seeds all tenants (Lindora, Escazú, Pinares) via Sanity mutations API; excludes Sucremart + Ramstack from Lindora comercios; run with `SANITY_WRITE_TOKEN=sk... node scripts/seed-sanity.mjs` |
+| 2026-05-27 | Tenant video support | Added `videoUrl` field to `types.ts`, Sanity schema (`videoFile` file type), and queries; `TenantDetailPage.tsx` shows video in 3rd hero column on desktop; video plays behind logo on mobile; CSS classes `has-video`, `tenant-hero-video-col`, `tenant-hero-video-bg` |
+| 2026-05-27 | Sanity webhook → Vercel revalidation | Created `src/app/api/revalidate/route.ts` (POST+GET); `SANITY_REVALIDATE_SECRET` env var in Vercel; Sanity webhook "Vercel Revalidation" fires on Create/Update/Delete for `tenant`+`siteEvent` in `production` dataset; cache now clears instantly on publish/delete |
+| 2026-05-27 | Fix fetch fallback logic | `fetch.ts`: `null` = fetch error (fall back to static), `[]` = intentional empty (respect it); `revalidate` reduced from 3600→300s as safety net |
 
 ---
 
@@ -283,7 +286,7 @@ public/
 
 | # | Task | Notes |
 |---|------|-------|
-| SEED | Run Sanity seed script | Need write token: sanity.io/manage → project klr3qmou → API → Tokens → create Editor token; then `SANITY_WRITE_TOKEN=sk... node web/scripts/seed-sanity.mjs` |
+| ~~SEED~~ | ~~Run Sanity seed script~~ | ✅ Done 2026-05-27 — 140 tenants seeded across Lindora/Escazú/Pinares |
 | 47 | Upload stock event images to Sanity | |
 | 60 | Add premium lifestyle stock images to Sanity events | |
 | GA4 | Add GA4 Measurement ID to Vercel | Create property at analytics.google.com, get G-XXXXXXXXXX, add as `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var in Vercel |
