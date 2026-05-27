@@ -6,6 +6,13 @@ import Link from 'next/link'
 import type { Tenant, SiteConfig } from '@/data/types'
 import { isOpenNow } from '@/lib/hours'
 
+/** Resolves logo/photo to a full URL — handles Sanity CDN, absolute paths, and legacy filenames */
+function resolveMediaUrl(value: string, siteId: string, type: 'logos' | 'photos'): string {
+  if (!value) return ''
+  if (value.startsWith('http') || value.startsWith('/')) return value
+  return `/sites/${siteId}/${type}/${value}`
+}
+
 const SECTION_LABELS: Record<string, string> = {
   gastronomia: 'Gastronomía',
   comercios:   'Comercios',
@@ -179,7 +186,7 @@ function PhotoGallery({
             onClick={() => setLightboxIndex(0)}
           >
             <Image
-              src={mainPhoto.startsWith('http') ? mainPhoto : `/sites/${siteId}/photos/${mainPhoto}`}
+              src={resolveMediaUrl(mainPhoto, siteId, 'photos')}
               alt={`${tenantName} — foto`}
               fill
               style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
@@ -230,7 +237,7 @@ function PhotoGallery({
                   }}
                 >
                   <Image
-                    src={photo.startsWith('http') ? photo : `/sites/${siteId}/photos/${photo}`}
+                    src={resolveMediaUrl(photo, siteId, 'photos')}
                     alt={`${tenantName} foto ${i + 1}`}
                     fill
                     style={{ objectFit: 'cover' }}
@@ -301,7 +308,7 @@ function PhotoGallery({
             }}
           >
             <Image
-              src={allPhotos[lightboxIndex].startsWith('http') ? allPhotos[lightboxIndex] : `/sites/${siteId}/photos/${allPhotos[lightboxIndex]}`}
+              src={resolveMediaUrl(allPhotos[lightboxIndex], siteId, 'photos')}
               alt={`${tenantName} foto ${lightboxIndex + 1}`}
               fill
               className="object-contain"
@@ -432,7 +439,7 @@ function RelatedCard({ tenant, siteId, basePath }: { tenant: Tenant; siteId: str
         padding: 16, background: '#0a0a0a', borderBottom: '0.5px solid rgba(255,255,255,0.06)',
       }}>
         <Image
-          src={`/sites/${siteId}/logos/${tenant.logo}`}
+          src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
           alt={tenant.name}
           width={140} height={70}
           className="object-contain"
@@ -508,7 +515,7 @@ export default function TenantDetailPage({
               }}
             >
               <Image
-                src={`/sites/${siteId}/logos/${tenant.logo}`}
+                src={resolveMediaUrl(tenant.logo, siteId, 'logos')}
                 alt={tenant.name}
                 width={180} height={180}
                 className="object-contain"
