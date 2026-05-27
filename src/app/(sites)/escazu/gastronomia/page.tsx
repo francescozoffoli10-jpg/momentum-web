@@ -12,8 +12,9 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600
 
-export default async function GastronomiaPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
-  const { cat } = await searchParams
+export default async function GastronomiaPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  const params = await searchParams
+  const cat = typeof params.cat === 'string' ? params.cat : undefined
   const sanityTenants = await fetchTenantsBySection('escazu', 'gastronomia')
   const tenants: Tenant[] = sanityTenants ?? staticGastronomia
   return (
