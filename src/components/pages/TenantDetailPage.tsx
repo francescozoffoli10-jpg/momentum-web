@@ -144,7 +144,7 @@ function PhotoGallery({
   tenantName: string
 }) {
   // All photos = main first, then extras
-  const allPhotos = [mainPhoto, ...gallery]
+  const allPhotos = [mainPhoto, ...(gallery ?? [])]
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const close  = useCallback(() => setLightboxIndex(null), [])
@@ -168,7 +168,7 @@ function PhotoGallery({
     return () => { document.body.style.overflow = '' }
   }, [lightboxIndex])
 
-  const hasGallery = gallery.length > 0
+  const hasGallery = (gallery?.length ?? 0) > 0
 
   return (
     <>
