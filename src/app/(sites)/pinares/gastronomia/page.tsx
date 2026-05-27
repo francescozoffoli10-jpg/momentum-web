@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600
 
-export default async function GastronomiaPage({ searchParams }: { searchParams: { cat?: string } }) {
+export default async function GastronomiaPage({ searchParams }: { searchParams: Promise<{ cat?: string }> }) {
+  const { cat } = await searchParams
   const sanityTenants = await fetchTenantsBySection('pinares', 'gastronomia')
   const tenants: Tenant[] = sanityTenants ?? staticGastronomia
   return (
@@ -31,7 +32,7 @@ export default async function GastronomiaPage({ searchParams }: { searchParams: 
           { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
       />
-      <LogoGrid tenants={tenants} basePath="/pinares" siteId="pinares" initialCategory={searchParams.cat} />
+      <LogoGrid tenants={tenants} basePath="/pinares" siteId="pinares" initialCategory={cat} />
     </>
   )
 }
