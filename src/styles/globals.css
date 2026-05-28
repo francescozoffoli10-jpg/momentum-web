@@ -194,12 +194,34 @@ html { scroll-behavior: smooth; }
 /* Editorial two-column with large gap */
 .editorial-grid { grid-template-columns: 1fr 1fr; gap: 88px; }
 
-/* Tenant detail: hero grid (logo + info) */
+/* Tenant detail: hero grid (logo + info [+ video]) */
 .tenant-hero-grid {
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 48px;
   align-items: center;
+}
+/* When tenant has a video — 3-column layout */
+.tenant-hero-grid.has-video {
+  grid-template-columns: 180px 1fr 420px;
+}
+/* Video column (desktop) */
+.tenant-hero-video-col {
+  border-radius: 8px;
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 240px;
+  background: rgba(255,255,255,0.03);
+}
+.tenant-hero-video-col video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Mobile-only video bg inside logo box */
+.tenant-hero-video-bg {
+  display: none;
 }
 
 /* Tenant detail: body grid (content + sidebar) */
@@ -229,6 +251,19 @@ html { scroll-behavior: smooth; }
 @media (max-width: 768px) {
   .region-grid { grid-template-columns: repeat(2, 1fr); }
   .tenant-body-grid { grid-template-columns: 1fr; gap: 32px; }
+  .tenant-hero-grid,
+  .tenant-hero-grid.has-video {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+  .tenant-hero-grid .tenant-hero-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Hide desktop video column, show video bg inside logo box */
+  .tenant-hero-video-col { display: none; }
+  .tenant-hero-video-bg { display: block; }
   .tenant-hero-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -275,3 +310,4 @@ body {
 
 /* ─── Cursor custom for interactive logo ────────────────────────────────────── */
 .logo-bounce { cursor: pointer; user-select: none; }
+
