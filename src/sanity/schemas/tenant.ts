@@ -104,7 +104,7 @@ export const tenant = {
       type: 'image',
       group: 'media',
       options: { hotspot: false },
-      validation: (R: any) => R.required(),
+      description: 'Opcional. Si no se sube, se usa logoUrl como fallback.',
     },
     {
       name: 'photo', title: 'Foto banner principal (16:9)',
@@ -162,3 +162,4 @@ export const tenant = {
 }
 
 export const schemas = [hoursRow, tenant]
+
