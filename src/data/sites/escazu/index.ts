@@ -15,5 +15,6 @@ export const escazuSite: SiteConfig = {
   logo: '/brand/escazu-dark.png',
   accentColor: '#56717A',
   sections: ['gastronomia', 'servicios', 'centro-medico', 'oficentro'],
-  hasEvents: true,
+  hasEvents: false,
 }
+
