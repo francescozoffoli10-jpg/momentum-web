@@ -322,6 +322,8 @@ public/
 | 2026-05-29 | Legatus video — Lindora | Downloaded from Google Drive (66.6 MB), compressed to 5.4 MB via ffmpeg (CRF 28, 720p, no audio), uploaded to Sanity Assets API, patched `lindora-legatus`. |
 | 2026-05-29 | Pinares videos — all 20 tenants | Downloaded, compressed (CRF 28, 720p), uploaded to Sanity, patched all 20 Pinares tenant docs: spazio-verde, sazon-tico, refill-to-go, play-and-dream, pikeos, ottos-corner, naans-curries-pinares, kenana, wkb-honbu-dojo, gnc, fun-in-a-box, la-fonda-azteca, el-caminito, dennys, da-noi, chamo-gourmet, boston-beer-garden, bbq-chicken-pinares, ayana-fashion, antonella-boutique. Videos sourced from `https://drive.google.com/drive/folders/1IxujsYcsFIKGFTjBDt0g4KEvc8Okp8in`. |
 | 2026-05-29 | Escazú videos — 8 tenants | Downloaded, compressed, uploaded, patched: paladixo, la-clinique, gyrotronic, goodmed-escazu, entrecote, el-tramito-a-granel, contrology-pilates, audinsa. Sourced from `https://drive.google.com/drive/folders/1nJHU3u9RLusOZraOMQtT77U9Rk6JYTtB`. 3 Drive folders (Dr. Manrique Navas, DermaKids, General) skipped — no matching Sanity slug. |
+| 2026-05-29 | Pinares logos + photos — full slug-based upload | 57 logos (PNG) + 57 photos (WebP, converted from JPG via Pillow) uploaded to `public/sites/pinares/logos/` and `public/sites/pinares/photos/` using clean slug-based filenames. All 57 Pinares tenant Sanity docs patched with `logoUrl` + `photoUrl`. Transactions `tYwdV2ldLdzJB4kwq0N5dQ`, `tYwdV2ldLdzJB4kwq0N5pU`, `UAjCtlAuHSg7wG7TzG7V02`. |
+| 2026-05-29 | Delete 9 defunct Pinares tenants | Deleted from Sanity: edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx. Transaction `tYwdV2ldLdzJB4kwq0N69m`. Pinares now has 57 active tenants. |
 
 ---
 
@@ -334,6 +336,8 @@ public/
 | ~~LINDORA LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Lindora tenants~~ | ✅ Done 2026-05-29 — 39 logos + 39 photos pushed to GitHub, all Sanity docs patched |
 | ~~PINARES VIDEOS~~ | ~~Upload all Pinares tenant videos~~ | ✅ Done 2026-05-29 — 20 tenants, all in Sanity |
 | ~~ESCAZU VIDEOS~~ | ~~Upload all Escazú tenant videos~~ | ✅ Done 2026-05-29 — 8 tenants, all in Sanity |
+| ~~PINARES LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Pinares tenants~~ | ✅ Done 2026-05-29 — 57 logos + 57 photos pushed to GitHub, all Sanity docs patched |
+| ~~PINARES DEFUNCT~~ | ~~Delete 9 defunct Pinares tenants~~ | ✅ Done 2026-05-29 — edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx |
 | LOGOS | Upload logos for 2 remaining Lindora tenants | Core Medical Center (`core-medical.png` has Shawaddi logo), MDT Costa Rica (`mdt-costa-rica.png` has Soda Tapia logo) — correct logo files not found in folder; need new files uploaded and Sanity patched |
 | LOGOS | Upload logos for Escazú tenants with no file | `audinsa`, `capri`, `centro-medico-momentum`, `kinesis`, `la-clinique` — no logo file in `public/sites/escazu/logos/` |
 | ~~PHOTOS~~ | ~~Zócalo photo fixed~~ | ✅ Done 2026-05-28 — patched to `ortodoncia-loranca.webp` (confirmed in GitHub repo) |
@@ -374,7 +378,7 @@ Logo and photo files in `public/sites/lindora/logos/` and `public/sites/lindora/
 - `nail-station` — `plantimec.webp` contains a medical insole image (wrong); no correct Nail Station photo in folder
 
 **Escazú logos**: Fully audited 2026-05-28 — all 31 files correctly match their tenants. No mismatches.
-**Pinares logos**: Fully audited 2026-05-28 — all 51 files correctly match their tenants. No mismatches.
+**Pinares logos + photos**: Fully replaced 2026-05-29 — 57 slug-named PNGs + 57 slug-named WebPs uploaded; all Sanity docs point to correct files. 9 defunct tenants deleted.
 
 ### ✅ Sanity Migration Complete (2026-05-27)
 
