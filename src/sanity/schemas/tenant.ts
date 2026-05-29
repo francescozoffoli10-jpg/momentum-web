@@ -104,13 +104,35 @@ export const tenant = {
       type: 'image',
       group: 'media',
       options: { hotspot: false },
-      description: 'Opcional. Si no se sube, se usa logoUrl como fallback.',
+      description: 'Subí el logo directamente. Si no se sube, se usa logoUrl como fallback.',
+    },
+    {
+      name: 'logoUrl', title: 'Logo URL (fallback)',
+      type: 'string',
+      group: 'media',
+      description: 'Nombre de archivo en /public/sites/{sede}/logos/ (ej: shawaddi.png). Se usa solo si no hay logo subido arriba.',
+      hidden: ({ document }: any) => !!document?.logo?.asset,
     },
     {
       name: 'photo', title: 'Foto banner principal (16:9)',
       type: 'image',
       group: 'media',
       options: { hotspot: true },
+      description: 'Foto de portada del local. Si no se sube, se usa photoUrl como fallback.',
+    },
+    {
+      name: 'photoUrl', title: 'Foto URL (fallback)',
+      type: 'string',
+      group: 'media',
+      description: 'Nombre de archivo en /public/sites/{sede}/photos/ (ej: shawaddi.webp). Se usa solo si no hay foto subida arriba.',
+      hidden: ({ document }: any) => !!document?.photo?.asset,
+    },
+    {
+      name: 'videoFile', title: 'Video de portada (MP4 / WebM)',
+      type: 'file',
+      group: 'media',
+      options: { accept: 'video/mp4,video/webm' },
+      description: 'Video corto en loop que aparece en la página del local. Sin audio. Máx 15 MB recomendado.',
     },
     {
       name: 'gallery', title: 'Galería adicional',
@@ -162,4 +184,3 @@ export const tenant = {
 }
 
 export const schemas = [hoursRow, tenant]
-
