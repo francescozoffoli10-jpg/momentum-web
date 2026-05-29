@@ -324,6 +324,8 @@ public/
 | 2026-05-29 | Escazú videos — 8 tenants | Downloaded, compressed, uploaded, patched: paladixo, la-clinique, gyrotronic, goodmed-escazu, entrecote, el-tramito-a-granel, contrology-pilates, audinsa. Sourced from `https://drive.google.com/drive/folders/1nJHU3u9RLusOZraOMQtT77U9Rk6JYTtB`. 3 Drive folders (Dr. Manrique Navas, DermaKids, General) skipped — no matching Sanity slug. |
 | 2026-05-29 | Pinares logos + photos — full slug-based upload | 57 logos (PNG) + 57 photos (WebP, converted from JPG via Pillow) uploaded to `public/sites/pinares/logos/` and `public/sites/pinares/photos/` using clean slug-based filenames. All 57 Pinares tenant Sanity docs patched with `logoUrl` + `photoUrl`. Transactions `tYwdV2ldLdzJB4kwq0N5dQ`, `tYwdV2ldLdzJB4kwq0N5pU`, `UAjCtlAuHSg7wG7TzG7V02`. |
 | 2026-05-29 | Delete 9 defunct Pinares tenants | Deleted from Sanity: edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx. Transaction `tYwdV2ldLdzJB4kwq0N69m`. Pinares now has 57 active tenants. |
+| 2026-05-29 | Escazú logos + photos — full slug-based upload | 30 logos (PNG) + 30 photos (WebP) uploaded to `public/sites/escazu/logos/` and `public/sites/escazu/photos/`. All 30 Escazú tenant Sanity docs patched with `logoUrl` + `photoUrl`. Transactions `UAjCtlAuHSg7wG7TzGEO6P`, `tYwdV2ldLdzJB4kwq0PWVo`. |
+| 2026-05-29 | Delete 4 defunct Escazú tenants | Deleted from Sanity: capri, firmamento, schmaus-dental, wellness-institute. Transaction `tYwdV2ldLdzJB4kwq0PWgm`. Escazú now has 30 active tenants. |
 
 ---
 
@@ -338,8 +340,8 @@ public/
 | ~~ESCAZU VIDEOS~~ | ~~Upload all Escazú tenant videos~~ | ✅ Done 2026-05-29 — 8 tenants, all in Sanity |
 | ~~PINARES LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Pinares tenants~~ | ✅ Done 2026-05-29 — 57 logos + 57 photos pushed to GitHub, all Sanity docs patched |
 | ~~PINARES DEFUNCT~~ | ~~Delete 9 defunct Pinares tenants~~ | ✅ Done 2026-05-29 — edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx |
-| LOGOS | Upload logos for 2 remaining Lindora tenants | Core Medical Center (`core-medical.png` has Shawaddi logo), MDT Costa Rica (`mdt-costa-rica.png` has Soda Tapia logo) — correct logo files not found in folder; need new files uploaded and Sanity patched |
-| LOGOS | Upload logos for Escazú tenants with no file | `audinsa`, `capri`, `centro-medico-momentum`, `kinesis`, `la-clinique` — no logo file in `public/sites/escazu/logos/` |
+| LOGOS | Upload logo for Core Medical Center (Lindora) | `core-medical.png` has Shawaddi logo — correct Core Medical logo file not found in folder; need new file uploaded and Sanity patched |
+| ESCAZU | "Rosanna Mauro" in ZIP has no Sanity slug — verify if tenant exists and add to seed if so |
 | ~~PHOTOS~~ | ~~Zócalo photo fixed~~ | ✅ Done 2026-05-28 — patched to `ortodoncia-loranca.webp` (confirmed in GitHub repo) |
 | PHOTOS | Nail Station has no correct photo | `plantimec.webp` contains a medical insole image (wrong). No correct Nail Station photo in folder. Need new file: upload to `public/sites/lindora/photos/nail-station-photo.webp` (or similar) and patch Sanity `photoUrl` |
 | VIDEOS | Vinum (Lindora) video | Antonella was uploading as .mov — needs conversion to MP4 first. If she can provide Drive link, download + convert + upload. |
@@ -374,7 +376,6 @@ Logo and photo files in `public/sites/lindora/logos/` and `public/sites/lindora/
 
 **Still unresolved (no correct file exists anywhere in the folder):**
 - `core-medical` — `core-medical.png` has Shawaddi logo; `core-medical.webp` has Shawaddi food photo — correct files not uploaded
-- `mdt-costa-rica` — `mdt-costa-rica.png` has Soda Tapia logo; `mdt-costa-rica.webp` has Soda Tapia desserts — correct files not uploaded
 - `nail-station` — `plantimec.webp` contains a medical insole image (wrong); no correct Nail Station photo in folder
 
 **Escazú logos**: Fully audited 2026-05-28 — all 31 files correctly match their tenants. No mismatches.
