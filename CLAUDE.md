@@ -1,6 +1,6 @@
 # Momentum Costa Rica — Project Memory
 
-> Last updated: 2026-05-27
+> Last updated: 2026-05-28
 
 ---
 
@@ -301,6 +301,7 @@ public/
 | 2026-05-27 | Sanity CMS migration — [slug] pages | All 3 `[slug]/page.tsx` files updated with `fetchTenantBySlug` + static fallback; `generateStaticParams` uses `fetchTenantSlugs` |
 | 2026-05-27 | Sanity seed script | Created `scripts/seed-sanity.mjs` — seeds all tenants (Lindora, Escazú, Pinares) via Sanity mutations API; excludes Sucremart + Ramstack from Lindora comercios; run with `SANITY_WRITE_TOKEN=sk... node scripts/seed-sanity.mjs` |
 | 2026-05-27 | Tenant video support | Added `videoUrl` field to `types.ts`, Sanity schema (`videoFile` file type), and queries; `TenantDetailPage.tsx` shows video in 3rd hero column on desktop; video plays behind logo on mobile; CSS classes `has-video`, `tenant-hero-video-col`, `tenant-hero-video-bg` |
+| 2026-05-28 | Tenant videos uploaded to Sanity | 10 Lindora tenants have videos live in Sanity: La Fabbrica, Ají Limón, El Ávila Bar & Grill, Naans & Curries, Nail Station by Sense, Pâtisserie d'Amour, Shawaddi, Soda Tapia, Zócalo. Downloaded from Google Drive (file IDs resolved via Drive DOM), uploaded via Sanity Assets API, patched tenant docs via Mutations API. |
 | 2026-05-27 | Sanity webhook → Vercel revalidation | Created `src/app/api/revalidate/route.ts` (POST+GET); `SANITY_REVALIDATE_SECRET` env var in Vercel; Sanity webhook "Vercel Revalidation" fires on Create/Update/Delete for `tenant`+`siteEvent` in `production` dataset; cache now clears instantly on publish/delete |
 | 2026-05-27 | Fix fetch fallback logic | `fetch.ts`: `null` = fetch error (fall back to static), `[]` = intentional empty (respect it); `revalidate` reduced from 3600→300s as safety net |
 | 2026-05-27 | Fix Vercel build failures | Root cause: `tsconfig.json` `include: ["**/*.tsx"]` was picking up `web/src/**` files; `web/src/app/**/[slug]/page.tsx` imported `fetchTenantBySlug`/`fetchTenantSlugs` that don't exist in `src/sanity/lib/fetch.ts`. Fix: added `"web"` to tsconfig `exclude`. Also removed invalid `eslint` property from `next.config.ts` (removed in Next.js 16). Build now passing. |
@@ -308,6 +309,19 @@ public/
 | 2026-05-27 | Fix [slug] page 500s — null logos | `resolveMediaUrl(null, ...)` returns `''`; `<Image src="">` throws in Next.js. Fix: guarded `<Image>` in `RelatedCard` and hero with `{logoSrc ? <Image .../> : <div placeholder />}`. |
 | 2026-05-27 | Fix [slug] page 500s — null gallery | `fetch()` returns `"gallery": null` from Sanity; spread `[photo, ...null]` throws (default params only fire for `undefined`, not `null`). Fix: changed to `[photo, ...(gallery ?? [])]` and `(gallery?.length ?? 0) > 0` in `PhotoGallery`. |
 | 2026-05-27 | **Sanity CMS fully live** ✅ | All tenant detail pages + directory pages now read from Sanity with static fallback. Revalidation webhook active. 200 across all routes on `momentumcr.vercel.app`. |
+| 2026-05-28 | Delete test tenants | Deleted `Prueba Delicias` (lindora) and `Imagen Test` (pinares) test entries from Sanity via Mutations API DELETE operation |
+| 2026-05-28 | Fix Pinares cross-site logo filenames | 4 tenants updated: `boston-beer-garden` → `boston-beer-garden.png`, `naans-curries-pinares` → `naans-curries-pinares.png`, `vinum-pinares` → `vinum-pinares.png`, `dj-arbitraje-oficentro` → `dj-arbitraje-oficentro.png` |
+| 2026-05-28 | Lindora logo/photo audit + full remapping | Visually audited all 46 logo files via browser JS overlay. Logo files had wrong content (e.g. `aji-limon.png` actually contained AquaNest logo). Bulk-patched Sanity `logoUrl`+`photoUrl` for 31 Lindora tenants via Mutations API. See Known Issues for remaining unresolved tenants. |
+| 2026-05-28 | Lindora logo audit round 2 — 3 more fixes | Found 3 more mismatched logos via close inspection: `george-bakkar` → `dongfeng.png`; `naans-curries` → `sales-xcelerator.png`; `purple-express` → `md-fajas.png`. All patched in Sanity + verified live. |
+| 2026-05-28 | Full Escazú logo audit | Visually audited all 31 logo files. All correctly match their tenants. 5 tenants with no file uploaded (not mismatched): `audinsa`, `capri`, `centro-medico-momentum`, `kinesis`, `la-clinique`. |
+| 2026-05-28 | Full Pinares logo audit | Visually audited all 51 logo files. All correctly match their tenants. Several Torre Médica specialists use `torre-medica.png` as expected fallback. |
+| 2026-05-28 | Lindora photo audit round 3 — Zócalo + Newgate fixes | Zócalo: patched `photoUrl` → `ortodoncia-loranca.webp` (file confirmed in GitHub). Newgate Tattoos: patched `logoUrl` → `newgate.png` (correct tattoo studio logo), `photoUrl` → `rejuvenese.webp` (correct b&w tattoo artist photo). Transaction `UAjCtlAuHSg7wG7TzF29nn`. |
+| 2026-05-28 | Nail Station photo diagnosed | `plantimec.webp` (54KB, 1080×1350) is valid WEBP but contains a medical insole/orthopedic product image — wrong for Nail Station. No correct Nail Station photo file exists in the folder. Needs new file uploaded. |
+| 2026-05-29 | Sanity schema fix — deployed missing fields | `src/sanity/schemas/tenant.ts` on GitHub was missing `logoUrl`, `photoUrl`, `videoFile` fields (only existed in local web/ mirror). Pushed full corrected schema to root `src/sanity/schemas/tenant.ts`. Commit: `50f6af58`. |
+| 2026-05-29 | Lindora logos + photos — full slug-based remapping | 39 logos (PNG) + 39 photos (WebP, converted from JPG via Pillow) uploaded to `public/sites/lindora/logos/` and `public/sites/lindora/photos/` using clean slug-based filenames. All 39 Lindora tenant Sanity docs patched with `logoUrl` + `photoUrl`. Transaction `bM4Vn6Xhr0kQ8myfj5AjZq`. |
+| 2026-05-29 | Legatus video — Lindora | Downloaded from Google Drive (66.6 MB), compressed to 5.4 MB via ffmpeg (CRF 28, 720p, no audio), uploaded to Sanity Assets API, patched `lindora-legatus`. |
+| 2026-05-29 | Pinares videos — all 20 tenants | Downloaded, compressed (CRF 28, 720p), uploaded to Sanity, patched all 20 Pinares tenant docs: spazio-verde, sazon-tico, refill-to-go, play-and-dream, pikeos, ottos-corner, naans-curries-pinares, kenana, wkb-honbu-dojo, gnc, fun-in-a-box, la-fonda-azteca, el-caminito, dennys, da-noi, chamo-gourmet, boston-beer-garden, bbq-chicken-pinares, ayana-fashion, antonella-boutique. Videos sourced from `https://drive.google.com/drive/folders/1IxujsYcsFIKGFTjBDt0g4KEvc8Okp8in`. |
+| 2026-05-29 | Escazú videos — 8 tenants | Downloaded, compressed, uploaded, patched: paladixo, la-clinique, gyrotronic, goodmed-escazu, entrecote, el-tramito-a-granel, contrology-pilates, audinsa. Sourced from `https://drive.google.com/drive/folders/1nJHU3u9RLusOZraOMQtT77U9Rk6JYTtB`. 3 Drive folders (Dr. Manrique Navas, DermaKids, General) skipped — no matching Sanity slug. |
 
 ---
 
@@ -316,8 +330,15 @@ public/
 | # | Task | Notes |
 |---|------|-------|
 | ~~SEED~~ | ~~Run Sanity seed script~~ | ✅ Done 2026-05-27 — 140 tenants seeded across Lindora/Escazú/Pinares |
-| 47 | Upload stock event images to Sanity | |
-| 60 | Add premium lifestyle stock images to Sanity events | |
+| ~~AUDIT~~ | ~~Audit Escazú and Pinares logos~~ | ✅ Done 2026-05-28 — both sites clean, no mismatches |
+| ~~LINDORA LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Lindora tenants~~ | ✅ Done 2026-05-29 — 39 logos + 39 photos pushed to GitHub, all Sanity docs patched |
+| ~~PINARES VIDEOS~~ | ~~Upload all Pinares tenant videos~~ | ✅ Done 2026-05-29 — 20 tenants, all in Sanity |
+| ~~ESCAZU VIDEOS~~ | ~~Upload all Escazú tenant videos~~ | ✅ Done 2026-05-29 — 8 tenants, all in Sanity |
+| LOGOS | Upload logos for 2 remaining Lindora tenants | Core Medical Center (`core-medical.png` has Shawaddi logo), MDT Costa Rica (`mdt-costa-rica.png` has Soda Tapia logo) — correct logo files not found in folder; need new files uploaded and Sanity patched |
+| LOGOS | Upload logos for Escazú tenants with no file | `audinsa`, `capri`, `centro-medico-momentum`, `kinesis`, `la-clinique` — no logo file in `public/sites/escazu/logos/` |
+| ~~PHOTOS~~ | ~~Zócalo photo fixed~~ | ✅ Done 2026-05-28 — patched to `ortodoncia-loranca.webp` (confirmed in GitHub repo) |
+| PHOTOS | Nail Station has no correct photo | `plantimec.webp` contains a medical insole image (wrong). No correct Nail Station photo in folder. Need new file: upload to `public/sites/lindora/photos/nail-station-photo.webp` (or similar) and patch Sanity `photoUrl` |
+| VIDEOS | Vinum (Lindora) video | Antonella was uploading as .mov — needs conversion to MP4 first. If she can provide Drive link, download + convert + upload. |
 | GA4 | Add GA4 Measurement ID to Vercel | Create property at analytics.google.com, get G-XXXXXXXXXX, add as `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var in Vercel |
 | SEO | Update `metadataBase` URLs to production domains when DNS flips | Currently all point to `momentumcr.vercel.app`; update to `momentumlindora.com`, `momentumescazu.com`, `momentumpinares.com` |
 | SEO | Update sitemap base URL to production domains | `src/app/sitemap.ts` — change `BASE` const when domains flip |
@@ -331,6 +352,29 @@ public/
 - Torre Médica was removed from landing page (was 4th panel, now only 3)
 - `src/data/sites/escazu/centro-medico.ts` was missing from GitHub (fixed 2026-05-21)
 - `momentum-preview-coral.vercel.app` is an OLD URL — use `momentumcr.vercel.app`
+
+### ⚠️ Lindora Logo/Photo Mismatch (partially resolved 2026-05-28)
+
+Logo and photo files in `public/sites/lindora/logos/` and `public/sites/lindora/photos/` were batch-uploaded with incorrect filename assignments. Example: `aji-limon.png` contained AquaNest's logo, `kotoy.png` contained Desarrolladores 506's logo, etc.
+
+**Fix applied:** Patched Sanity `logoUrl`/`photoUrl` for 31 tenants so each points to the file that actually contains its correct image. Files were NOT renamed — the fix is entirely in Sanity data.
+
+**Round 2 fixes (2026-05-28):** Found 3 more logos hiding under wrong filenames:
+- `naans-curries` → fixed: `sales-xcelerator.png` contained the correct logo ✓
+- `george-bakkar` → fixed: `dongfeng.png` contained the correct logo ✓
+- `purple-express` → fixed: `md-fajas.png` contained the correct logo ✓
+
+**Round 3 fixes (2026-05-28):**
+- `zocalo` → photo fixed: `ortodoncia-loranca.webp` (confirmed in GitHub repo) ✓
+- `newgate-tattoos` → logo fixed: `newgate.png` (correct tattoo studio logo) ✓; photo fixed: `rejuvenese.webp` ✓
+
+**Still unresolved (no correct file exists anywhere in the folder):**
+- `core-medical` — `core-medical.png` has Shawaddi logo; `core-medical.webp` has Shawaddi food photo — correct files not uploaded
+- `mdt-costa-rica` — `mdt-costa-rica.png` has Soda Tapia logo; `mdt-costa-rica.webp` has Soda Tapia desserts — correct files not uploaded
+- `nail-station` — `plantimec.webp` contains a medical insole image (wrong); no correct Nail Station photo in folder
+
+**Escazú logos**: Fully audited 2026-05-28 — all 31 files correctly match their tenants. No mismatches.
+**Pinares logos**: Fully audited 2026-05-28 — all 51 files correctly match their tenants. No mismatches.
 
 ### ✅ Sanity Migration Complete (2026-05-27)
 
