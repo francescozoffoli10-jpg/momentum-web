@@ -1,19 +1,18 @@
 /**
  * Sanity data fetching via HTTP API — no @sanity/client dependency.
- * Uses native fetch (Node 18+ / Edge Runtime compatible).
- *
  * Uses cache: 'no-store' so each ISR revalidation cycle always gets
  * fresh Sanity data. Page-level `export const revalidate` controls
  * how frequently ISR runs — the recommended pattern for Next.js 15+.
  */
 
-import type { Tenant, SiteEvent } from '@/data/types'
+import type { Tenant, SiteEvent, TeatroShow } from '@/data/types'
 import {
   TENANTS_BY_SECTION,
   TENANTS_BY_SITE,
   TENANT_BY_SLUG,
   TENANT_SLUGS_BY_SITE,
   EVENTS_BY_SITE,
+  TEATRO_SHOWS_ACTIVE,
 } from './queries'
 
 const PROJECT_ID  = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? 'klr3qmou'
@@ -77,4 +76,12 @@ export async function fetchTenantSlugs(siteId: string): Promise<string[]> {
 
 export async function fetchEventsBySite(siteId: string): Promise<SiteEvent[] | null> {
   return sanityFetch<SiteEvent[]>(EVENTS_BY_SITE(siteId))
+}
+
+// ── Teatro helpers ────────────────────────────────────────────────────────────
+
+/** Fetch all active teatro shows ordered by 'order' field. Returns [] if none or on error. */
+export async function fetchTeatroShows(): Promise<TeatroShow[]> {
+  const result = await sanityFetch<TeatroShow[]>(TEATRO_SHOWS_ACTIVE)
+  return result ?? []
 }
