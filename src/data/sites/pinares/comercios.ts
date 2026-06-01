@@ -519,8 +519,6 @@ export const comercios: Tenant[] = [
     featured: false,
   },
   {
-  {
-  {
     slug: 'hyatt-place',
     name: 'Hyatt Place',
     section: 'comercios',
