@@ -196,7 +196,7 @@ web/src/
 ### Pinares
 - Accent: `#4F5B3E` (olive green)
 - Logo: `/brand/momentum-white.png`
-- Sections: gastronomia, comercios, servicios, torre-medica, ofiplaza
+- Sections: gastronomia, comercios, servicios, teatro, torre-medica, ofiplaza
 - Address: Curridabat, frente al Walmart
 
 ### Torre Médica
@@ -331,7 +331,10 @@ public/
 | 2026-06-01 | Fix OG image double path — all 3 [slug]/page.tsx | `logoUrl` = `/sites/pinares/logos/slug.png` caused double path (`/sites/.../logos//sites/.../logos/slug.png`). Fixed `generateMetadata` in Lindora, Escazú, Pinares slug pages: now checks `startsWith('/')` before prepending `/sites/[site]/logos/`. |
 | 2026-06-01 | Fix hours.ts — CLOSED NOW bug | Completely rewrote `parseDays()` in `src/lib/hours.ts`. Old code used abbreviated keys (`'lun – vie'`) that never matched actual data (`'Lunes a Viernes'`), so `isOpenNow()` always returned `false`. New parser handles: full Spanish day names, ranges with "a" separator, "y" (and) pairs, plural forms (Sábados/Domingos), service-label prefixes (Laboratorio L–V, Dental Sábado), and single-char abbreviations (L–V). Also fixed hours split regex from `/–\|-\|a/` (was splitting on the letter 'a' inside 'am') to `/[–—]/` (em/en dash only). |
 | 2026-06-01 | Add Vinum to Pinares gastronomia section | Created duplicate Sanity doc `pinares-vinum-gastronomia` (section: gastronomia, slug: vinum-pinares) so Vinum appears in both Gastronomía and Comercios listings. Added to `pinares/gastronomia.ts` static fallback. Both listing cards link to the same `/pinares/vinum-pinares` detail page. Txn `UAjCtlAuHSg7wG7TzJdso8`. |
+| 2026-06-01 | Add Teatro section to Pinares | Added `'teatro'` to `pinaresSite.sections` in `pinares/index.ts`; `teatro: 'Teatro'` to `SECTION_LABELS` in `Nav.tsx`; created `src/app/(sites)/pinares/teatro/page.tsx` (premium editorial feature for Teatro Espressivo + Espressivo Bistró, external images from espressivo.cr); added editorial Teatro highlight section to `pinares/page.tsx` homepage. All 4 files pushed to GitHub, Vercel deploying. |
 | 2026-06-01 | Clean static fallback data — Unsplash → real photos | Replaced all Unsplash photo URLs with slug-based WebP paths across all 8 affected files: `escazu/gastronomia.ts`, `escazu/servicios.ts`, `escazu/oficentro.ts`, `escazu/centro-medico.ts`, `pinares/gastronomia.ts` (already clean), `pinares/comercios.ts`, `pinares/servicios.ts`, `pinares/ofiplaza.ts`, `pinares/torre-medica.ts`. Removed defunct tenant entries: `capri` (escazu/gastronomia), `wellness-institute` + `schmaus-dental` (escazu/centro-medico + servicios), `firmamento` (escazu/oficentro), `la-pegona` + `party-time` (pinares/comercios), `orange-theory` (pinares/servicios), `imagen-test` + `labin` + `ifisiotx` + `larisa-paez-wellness` + `edgar-jimenez-solis` + `ka-diagnostico-craneofacial` (pinares/torre-medica). Lindora files were already clean. |
+| 2026-06-01 | Fix dangling `{` syntax errors — 7 static data files | Removing defunct tenants in a prior session left bare `{` object literals (unclosed) in 7 files, causing TypeScript build failures on every Vercel deploy since commit `4003995b`. Fixed: `escazu/gastronomia.ts` (1), `escazu/centro-medico.ts` (2), `escazu/oficentro.ts` (1), `escazu/servicios.ts` (2), `pinares/torre-medica.ts` (rewritten clean), `pinares/comercios.ts` (2), `pinares/servicios.ts` (1). All verified brace-balanced. Commits `4ea278de` → `fbcdb191`. |
+| 2026-06-01 | Fix TypeScript error — `'teatro'` not in `DirectorySection` | `src/data/types.ts` `DirectorySection` union was missing `'teatro'`, causing `TS2322` error in `pinares/index.ts` and blocking all Vercel builds. Added `\| 'teatro'` to the union. Commit `77cd572b`. Build passing, `/pinares/teatro` live at HTTP 200. |
 
 ---
 
