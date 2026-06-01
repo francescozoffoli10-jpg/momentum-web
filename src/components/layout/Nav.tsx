@@ -21,6 +21,7 @@ const SECTION_LABELS: Record<string, string> = {
   oficentro:      'Oficentro',
   'centro-medico': 'Centro Médico',
   'torre-medica':  'Torre Médica',
+  teatro:          'Teatro',
 }
 
 interface NavProps {
