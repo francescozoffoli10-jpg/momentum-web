@@ -28,6 +28,7 @@ export default async function TorreMedicaPage() {
           { href: '/pinares/gastronomia',  label: 'Gastronomía',  active: false },
           { href: '/pinares/comercios',    label: 'Comercios',    active: false },
           { href: '/pinares/servicios',    label: 'Servicios',    active: false },
+          { href: '/pinares/teatro',    label: 'Teatro',      active: false  },
           { href: '/pinares/torre-medica', label: 'Torre Médica', active: true  },
           { href: '/pinares/ofiplaza',     label: 'Ofiplaza',     active: false },
         ]}
