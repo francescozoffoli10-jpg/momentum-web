@@ -22,49 +22,34 @@ export default defineConfig({
           .title('Momentum')
           .items([
             S.listItem().title('🍽 Lindora — Tenants')
-              .child(
-                S.documentList()
-                  .title('Tenants Lindora')
-                  .filter('_type == "tenant" && site == "lindora"')
-              ),
+              .child(S.documentList().title('Tenants Lindora').filter('_type == "tenant" && site == "lindora"')),
             S.listItem().title('🌿 Pinares — Tenants')
-              .child(
-                S.documentList()
-                  .title('Tenants Pinares')
-                  .filter('_type == "tenant" && site == "pinares"')
-              ),
+              .child(S.documentList().title('Tenants Pinares').filter('_type == "tenant" && site == "pinares"')),
             S.listItem().title('🏙 Escazú — Tenants')
-              .child(
-                S.documentList()
-                  .title('Tenants Escazú')
-                  .filter('_type == "tenant" && site == "escazu"')
-              ),
+              .child(S.documentList().title('Tenants Escazú').filter('_type == "tenant" && site == "escazu"')),
             S.divider(),
             S.listItem().title('📅 Eventos — Lindora')
-              .child(
-                S.documentList()
-                  .title('Eventos Lindora')
-                  .filter('_type == "siteEvent" && site == "lindora"')
-              ),
+              .child(S.documentList().title('Eventos Lindora').filter('_type == "siteEvent" && site == "lindora"')),
             S.listItem().title('📅 Eventos — Escazú')
-              .child(
-                S.documentList()
-                  .title('Eventos Escazú')
-                  .filter('_type == "siteEvent" && site == "escazu"')
-              ),
+              .child(S.documentList().title('Eventos Escazú').filter('_type == "siteEvent" && site == "escazu"')),
             S.listItem().title('📅 Eventos — Pinares')
-              .child(
-                S.documentList()
-                  .title('Eventos Pinares')
-                  .filter('_type == "siteEvent" && site == "pinares"')
-              ),
+              .child(S.documentList().title('Eventos Pinares').filter('_type == "siteEvent" && site == "pinares"')),
             S.divider(),
-            S.listItem().title('🎭 Teatro Espressivo — Cartelera')
+            S.listItem().title('🎭 Teatro — Funciones (Cartelera)')
               .child(
                 S.documentList()
                   .title('Funciones')
                   .filter('_type == "teatroShow"')
                   .defaultOrdering([{ field: 'order', direction: 'asc' }])
+              ),
+            // Singleton — opens the single config doc directly (no list)
+            S.listItem()
+              .title('⚙️ Teatro — Logo, fotos y configuración')
+              .id('teatroConfig')
+              .child(
+                S.document()
+                  .schemaType('teatroConfig')
+                  .documentId('teatro-config')
               ),
           ]),
     }),
