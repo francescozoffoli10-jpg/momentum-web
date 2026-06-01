@@ -14,5 +14,5 @@ export const pinaresSite: SiteConfig = {
   heroImage: '/sites/pinares/banners/hero-pinares.webp',
   logo: '/brand/pinares-dark.png',
   accentColor: '#4F5B3E',
-  sections: ['gastronomia', 'comercios', 'servicios', 'torre-medica', 'ofiplaza'],
+  sections: ['gastronomia', 'comercios', 'servicios', 'teatro', 'torre-medica', 'ofiplaza'],
 }
