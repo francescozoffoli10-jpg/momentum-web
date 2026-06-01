@@ -206,7 +206,6 @@ export const servicios: Tenant[] = [
     featured: false,
   },
   {
-  {
     slug: 'teatralia',
     name: 'Teatralia',
     section: 'servicios',
@@ -234,7 +233,6 @@ export const servicios: Tenant[] = [
     local: 'CM40-B',
     featured: false,
   },
-  {
   {
     slug: 'gyrotronic',
     name: 'Gyrotonic Studio Escazú',
