@@ -11,6 +11,7 @@ export type DirectorySection =
   | 'oficentro'
   | 'centro-medico'
   | 'torre-medica'
+  | 'teatro'
 
 export interface SiteConfig {
   id: SiteId
