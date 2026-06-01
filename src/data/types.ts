@@ -20,15 +20,15 @@ export interface SiteConfig {
   address: string
   city: string
   phone: string
-  whatsappPhone?: string    // dedicated WhatsApp number (if different from phone)
+  whatsappPhone?: string
   email: string
   instagram: string
   facebook: string
   heroImage: string
-  logo: string             // path to site logo PNG (white version for dark backgrounds)
+  logo: string
   accentColor: string
   sections: DirectorySection[]
-  hasEvents?: boolean      // show Eventos tab in nav (default: true)
+  hasEvents?: boolean
 }
 
 // ─── Site Event ───────────────────────────────────────────────────────────────
@@ -38,10 +38,10 @@ export interface SiteEvent {
   title: string
   subtitle?: string
   description: string
-  date: string             // ISO date string e.g. "2026-06-14"
-  timeLabel?: string       // e.g. "6:00 pm – 9:00 pm"
-  image?: string           // filename in /public/sites/[siteId]/events/ or full path
-  tag?: string             // e.g. "Gastronomía", "Bienestar", "Música"
+  date: string
+  timeLabel?: string
+  image?: string
+  tag?: string
   ctaLabel?: string
   ctaUrl?: string
   featured?: boolean
@@ -58,13 +58,13 @@ export interface Tenant {
   slug: string
   name: string
   section: DirectorySection
-  category: string        // e.g. "Gastronomía · Italiana"
-  tagline: string         // short descriptor shown in hero
-  description: string     // longer description for detail page
-  logo: string            // filename in /public/sites/[siteId]/logos/
-  photo?: string          // filename in /public/sites/[siteId]/photos/ — 800×440px landscape
-  videoUrl?: string       // Sanity CDN URL for short MP4 loop (hero section)
-  gallery?: string[]      // additional filenames in /public/sites/[siteId]/photos/ for lightbox
+  category: string
+  tagline: string
+  description: string
+  logo: string
+  photo?: string
+  videoUrl?: string
+  gallery?: string[]
   hours: HoursRow[]
   phone?: string
   local?: string
@@ -73,26 +73,26 @@ export interface Tenant {
   instagram?: string
   whatsapp?: string
   menuUrl?: string
-  featured?: boolean      // show in homepage highlights
+  featured?: boolean
 }
 
-// ─── Region Card (homepage gastronomy grid) ───────────────────────────────────
+// ─── Region Card ──────────────────────────────────────────────────────────────
 
 export interface RegionCard {
   id: string
-  flag: string            // cuisine label e.g. "Italiana" or "Pilates & Fitness"
-  title: string           // display title e.g. "La Fabbrica"
-  restaurants: string[]   // tenant slugs (used for count)
-  href?: string           // override link; defaults to {basePath}/gastronomia
-  image?: string          // optional background image
-  color?: string          // fallback gradient color
+  flag: string
+  title: string
+  restaurants: string[]
+  href?: string
+  image?: string
+  color?: string
 }
 
 // ─── Teatro Show ──────────────────────────────────────────────────────────────
 
 export interface TeatroShowDate {
-  date: string    // ISO date e.g. "2026-06-14"
-  time: string    // display e.g. "8:00 pm"
+  date: string
+  time: string
 }
 
 export interface TeatroShow {
@@ -103,7 +103,43 @@ export interface TeatroShow {
   genre?: string
   duration?: string
   dates?: TeatroShowDate[]
-  image?: string          // Sanity CDN URL or external URL
-  ticketUrl?: string      // defaults to boleteria.espressivo.cr
+  image?: string
+  ticketUrl?: string
   featured?: boolean
+}
+
+// ─── Teatro Config (singleton) ────────────────────────────────────────────────
+
+export interface TeatroStat {
+  num: string
+  label: string
+  sub: string
+}
+
+export interface TeatroSpec {
+  value: string
+  label: string
+  symbol: string
+}
+
+export interface TeatroConfig {
+  heroImage?: string
+  heroTagline?: string
+  identityTitle?: string
+  identityParagraph1?: string
+  identityParagraph2?: string
+  identityImage?: string
+  stats?: TeatroStat[]
+  specs?: TeatroSpec[]
+  bistroDescription?: string
+  bistroImage?: string
+  bistroHours?: HoursRow[]
+  phoneTeatro?: string
+  phoneBistro?: string
+  whatsapp?: string
+  instagram?: string
+  instagramBistro?: string
+  website?: string
+  boleteria?: string
+  boleteriaHours?: string
 }
