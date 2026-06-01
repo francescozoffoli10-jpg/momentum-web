@@ -34,7 +34,6 @@ export const gastronomia: Tenant[] = [
     instagram: 'paladixo',
     featured: false,
   },
-  {
 ]
 
 export const regionCards: RegionCard[] = [
