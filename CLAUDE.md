@@ -328,6 +328,8 @@ public/
 | 2026-05-29 | Delete 4 defunct Escazú tenants | Deleted from Sanity: capri, firmamento, schmaus-dental, wellness-institute. Transaction `tYwdV2ldLdzJB4kwq0PWgm`. Escazú now has 30 active tenants. |
 | 2026-05-29 | Add Rosanna Mauro Wellness Institute (Escazú) | Created new Sanity tenant `escazu-rosanna-mauro` (section: servicios). Logo + photo uploaded to GitHub. Transaction `UAjCtlAuHSg7wG7TzIz4yY`. Escazú now has 31 active tenants. |
 | 2026-05-29 | Pinares gastronomia.ts — real photos + fixes | Replaced all Unsplash URLs with slug-based webp paths; fixed logo for boston-beer-garden (was `bostons.png`) and naans-curries-pinares (was `naans-curries.png`); fixed bbq-chicken slug → bbq-chicken-pinares; removed defunct tacobar entry. Commit `97edd42d`. |
+| 2026-06-01 | Fix OG image double path — all 3 [slug]/page.tsx | `logoUrl` = `/sites/pinares/logos/slug.png` caused double path (`/sites/.../logos//sites/.../logos/slug.png`). Fixed `generateMetadata` in Lindora, Escazú, Pinares slug pages: now checks `startsWith('/')` before prepending `/sites/[site]/logos/`. |
+| 2026-06-01 | Clean static fallback data — Unsplash → real photos | Replaced all Unsplash photo URLs with slug-based WebP paths across: `escazu/gastronomia.ts` (2 fixes), `escazu/servicios.ts` (20 fixes), `pinares/comercios.ts` (35 fixes), `pinares/servicios.ts` (2 fixes). Also removed defunct tenant entries from static files: `capri` from escazu/gastronomia.ts; `wellness-institute` + `schmaus-dental` from escazu/servicios.ts; `la-pegona` + `party-time` from pinares/comercios.ts; `orange-theory` from pinares/servicios.ts. |
 
 ---
 
@@ -342,14 +344,17 @@ public/
 | ~~ESCAZU VIDEOS~~ | ~~Upload all Escazú tenant videos~~ | ✅ Done 2026-05-29 — 8 tenants, all in Sanity |
 | ~~PINARES LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Pinares tenants~~ | ✅ Done 2026-05-29 — 57 logos + 57 photos pushed to GitHub, all Sanity docs patched |
 | ~~PINARES DEFUNCT~~ | ~~Delete 9 defunct Pinares tenants~~ | ✅ Done 2026-05-29 — edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx |
-| LOGOS | Upload logo for Core Medical Center (Lindora) | `core-medical.png` has Shawaddi logo — correct Core Medical logo file not found in folder; need new file uploaded and Sanity patched |
 | ~~ESCAZU LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Escazú tenants~~ | ✅ Done 2026-05-29 — 30 logos + 30 photos, Rosanna Mauro added as new tenant |
 | ~~PHOTOS~~ | ~~Zócalo photo fixed~~ | ✅ Done 2026-05-28 — patched to `ortodoncia-loranca.webp` (confirmed in GitHub repo) |
-| PHOTOS | Nail Station has no correct photo | `plantimec.webp` contains a medical insole image (wrong). No correct Nail Station photo in folder. Need new file: upload to `public/sites/lindora/photos/nail-station-photo.webp` (or similar) and patch Sanity `photoUrl` |
-| VIDEOS | Vinum (Lindora) video | Antonella was uploading as .mov — needs conversion to MP4 first. If she can provide Drive link, download + convert + upload. |
+| ~~OG IMAGE BUG~~ | ~~Fix OG image double path in all 3 [slug]/page.tsx~~ | ✅ Done 2026-06-01 — fixed `startsWith('/')` check in generateMetadata |
+| ~~STATIC DATA~~ | ~~Clean Unsplash URLs + defunct tenants from static fallback files~~ | ✅ Done 2026-06-01 — escazu/gastronomia.ts, escazu/servicios.ts, pinares/comercios.ts, pinares/servicios.ts all cleaned |
+| LOGOS | Upload logo for Core Medical Center (Lindora) | `core-medical.png` has Shawaddi logo — correct Core Medical logo file not found in folder; need new file uploaded and Sanity patched |
+| PHOTOS | Nail Station has no correct photo | `plantimec.webp` contains a medical insole image (wrong). No correct Nail Station photo in folder. Need new file: upload to `public/sites/lindora/photos/nail-station.webp` and patch Sanity `photoUrl` |
+| VIDEOS | Vinum (Lindora) video | .mov file — needs conversion to MP4 first. If she can provide Drive link, download + convert + upload. |
 | GA4 | Add GA4 Measurement ID to Vercel | Create property at analytics.google.com, get G-XXXXXXXXXX, add as `NEXT_PUBLIC_GA_MEASUREMENT_ID` env var in Vercel |
 | SEO | Update `metadataBase` URLs to production domains when DNS flips | Currently all point to `momentumcr.vercel.app`; update to `momentumlindora.com`, `momentumescazu.com`, `momentumpinares.com` |
 | SEO | Update sitemap base URL to production domains | `src/app/sitemap.ts` — change `BASE` const when domains flip |
+| ROSANNA MAURO | Complete tenant info in Sanity Studio | Add phone, hours, Instagram to `escazu-rosanna-mauro` doc |
 
 ---
 
