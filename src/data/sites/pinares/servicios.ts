@@ -2,7 +2,6 @@ import type { Tenant } from '@/data/types'
 
 export const servicios: Tenant[] = [
   {
-  {
     slug: 'surgical-center',
     name: 'Surgical Center',
     section: 'servicios',
