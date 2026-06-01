@@ -309,6 +309,22 @@ export const gastronomia: Tenant[] = [
     hours: [{ days: 'Lunes a Domingo', hours: '10:00 am – 10:00 pm' }],
     featured: false,
   },
+  {
+    slug: 'vinum-pinares',
+    name: 'Vinum Store',
+    section: 'gastronomia',
+    category: 'Gastronomía · Vinos & Degustación',
+    tagline: 'Los mejores vinos, destilados y accesorios',
+    description: 'Todo el mundo del vino, los destilados y los accesorios de cata en un solo lugar. Vinum es la referencia del buen beber en Momentum Pinares.',
+    logo: 'vinum-pinares.png',
+    photo: '/sites/pinares/photos/vinum-pinares.webp',
+    hours: [
+      { days: 'Lunes a Miércoles', hours: '10:00 am – 8:00 pm' },
+      { days: 'Jueves a Sábado', hours: '10:00 am – 9:00 pm' },
+      { days: 'Domingo', hours: '10:00 am – 6:00 pm' },
+    ],
+    featured: false,
+  },
 ]
 
 export const regionCards: RegionCard[] = [
