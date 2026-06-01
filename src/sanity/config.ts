@@ -58,6 +58,14 @@ export default defineConfig({
                   .title('Eventos Pinares')
                   .filter('_type == "siteEvent" && site == "pinares"')
               ),
+            S.divider(),
+            S.listItem().title('🎭 Teatro Espressivo — Cartelera')
+              .child(
+                S.documentList()
+                  .title('Funciones')
+                  .filter('_type == "teatroShow"')
+                  .defaultOrdering([{ field: 'order', direction: 'asc' }])
+              ),
           ]),
     }),
     visionTool(),
