@@ -101,7 +101,6 @@ export const oficentro: Tenant[] = [
     featured: false,
   },
   {
-  {
     slug: 'dj-arbitraje-oficentro',
     name: 'DJ Arbitraje',
     section: 'oficentro',
