@@ -66,3 +66,18 @@ export const EVENTS_BY_SITE = (siteId: string) => `
   }
 `
 
+// Active teatro shows ordered by the 'order' field
+export const TEATRO_SHOWS_ACTIVE = `
+  *[_type == "teatroShow" && isActive == true && !(_id in path("drafts.**"))] | order(order asc) {
+    _id,
+    title,
+    subtitle,
+    description,
+    genre,
+    duration,
+    dates,
+    "image": coalesce(image.asset->url, imageUrl),
+    ticketUrl,
+    featured,
+  }
+`
