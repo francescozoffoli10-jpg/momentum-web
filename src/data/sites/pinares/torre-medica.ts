@@ -2,8 +2,6 @@ import type { Tenant } from '@/data/types'
 
 export const torreMedica: Tenant[] = [
   {
-  {
-  {
     slug: 'm-surgical-center',
     name: 'M Surgical Center',
     section: 'torre-medica',
@@ -19,8 +17,4 @@ export const torreMedica: Tenant[] = [
     website: 'https://directorio.torremedicamomentum.com/es/search/health-service/m-surgical-center?ref=sb',
     featured: true,
   },
-  {
-  {
-  {
-  {
 ]
