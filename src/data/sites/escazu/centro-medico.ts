@@ -136,7 +136,6 @@ export const centroMedico: Tenant[] = [
     featured: false,
   },
   {
-  {
     slug: 'la-clinique',
     name: 'La Clinique',
     section: 'centro-medico',
@@ -172,5 +171,4 @@ export const centroMedico: Tenant[] = [
     hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 5:00 pm' }],
     featured: false,
   },
-  {
 ]
