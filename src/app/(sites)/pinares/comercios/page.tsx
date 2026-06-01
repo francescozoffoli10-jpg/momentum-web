@@ -27,6 +27,7 @@ export default async function ComerciosPage() {
           { href: '/pinares/gastronomia', label: 'Gastronomía', active: false },
           { href: '/pinares/comercios',   label: 'Comercios',   active: true },
           { href: '/pinares/servicios',   label: 'Servicios',   active: false },
+          { href: '/pinares/teatro',    label: 'Teatro',      active: false  },
           { href: '/pinares/torre-medica', label: 'Torre Médica', active: false },
           { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
         ]}
