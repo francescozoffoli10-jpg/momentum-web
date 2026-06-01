@@ -2,21 +2,6 @@ import type { Tenant } from '@/data/types'
 
 export const servicios: Tenant[] = [
   {
-    slug: 'orange-theory',
-    name: 'Orangetheory Fitness',
-    section: 'servicios',
-    category: 'Servicios · Fitness',
-    tagline: 'More Life',
-    description: 'Entrena con ciencia: el método Orangetheory combina cardio, fuerza y entrenamiento a intervalos monitoreado en tiempo real. Resultados medibles y una comunidad que te impulsa a superar tus límites.',
-    logo: 'orange-theory.png',
-    photo: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&h=500&fit=crop&auto=format&q=80',
-    hours: [
-      { days: 'Lunes a Viernes', hours: '5:30 am – 8:00 pm' },
-      { days: 'Sábados y Domingos', hours: '7:00 am – 12:00 md' },
-    ],
-    instagram: 'orangetheoryfitnesscr',
-    featured: true,
-  },
   {
     slug: 'surgical-center',
     name: 'Surgical Center',
@@ -25,7 +10,7 @@ export const servicios: Tenant[] = [
     tagline: 'Excelencia quirúrgica en Pinares',
     description: 'Centro quirúrgico especializado en cirugías ambulatorias y procedimientos de alta complejidad. Infraestructura de primer nivel y un equipo médico comprometido con tu recuperación.',
     logo: 'surgical-center.png',
-    photo: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop&auto=format&q=80',
+    photo: '/sites/pinares/photos/surgical-center.webp',
     hours: [{ days: 'Lunes a Viernes', hours: '7:00 am – 5:00 pm' }],
     featured: false,
   },
@@ -37,7 +22,7 @@ export const servicios: Tenant[] = [
     tagline: 'Wellness Center',
     description: 'Centro de bienestar integral dirigido por Larisa Páez. Nutrición, hábitos saludables y programas personalizados de wellness para mejorar tu calidad de vida desde adentro hacia afuera.',
     logo: 'larisa-paez.png',
-    photo: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&h=500&fit=crop&auto=format&q=80',
+    photo: '/sites/pinares/photos/larisa-paez.webp',
     hours: [{ days: 'Lunes a Viernes', hours: '8:00 am – 5:00 pm' }],
     instagram: 'larisapaezwellness',
     featured: false,
