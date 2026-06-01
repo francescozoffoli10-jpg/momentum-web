@@ -87,3 +87,23 @@ export interface RegionCard {
   image?: string          // optional background image
   color?: string          // fallback gradient color
 }
+
+// ─── Teatro Show ──────────────────────────────────────────────────────────────
+
+export interface TeatroShowDate {
+  date: string    // ISO date e.g. "2026-06-14"
+  time: string    // display e.g. "8:00 pm"
+}
+
+export interface TeatroShow {
+  _id: string
+  title: string
+  subtitle?: string
+  description?: string
+  genre?: string
+  duration?: string
+  dates?: TeatroShowDate[]
+  image?: string          // Sanity CDN URL or external URL
+  ticketUrl?: string      // defaults to boleteria.espressivo.cr
+  featured?: boolean
+}
