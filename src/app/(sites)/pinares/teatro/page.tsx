@@ -1,4 +1,8 @@
 import type { Metadata } from 'next'
+import { fetchTeatroShows } from '@/sanity/lib/fetch'
+import type { TeatroShow, TeatroShowDate } from '@/data/types'
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Teatro Espressivo — Momentum Pinares',
@@ -8,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Teatro Espressivo — Momentum Pinares',
     description:
       '20 años de teatro, cultura y gastronomía. Sumergite en la magia de Teatro Espressivo.',
-    images: [{ url: 'https://espressivo.cr/media/esp_banner.jpg' }],
+    images: [{ url: 'https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=1200&q=80' }],
   },
 }
 
@@ -26,13 +30,167 @@ const STATS = [
 ]
 
 const SPECS = [
-  { value: '250+',     label: 'Capacidad',           symbol: '◈' },
-  { value: '8×6m',     label: 'Escenario',            symbol: '▭' },
-  { value: '4K',       label: 'Proyector',            symbol: '◉' },
-  { value: 'Sáb & Dom', label: 'Funciones principales', symbol: '◷' },
+  { value: '250+',      label: 'Capacidad',              symbol: '◈' },
+  { value: '8×6m',      label: 'Escenario',               symbol: '▭' },
+  { value: '4K',        label: 'Proyector',               symbol: '◉' },
+  { value: 'Sáb & Dom', label: 'Funciones principales',   symbol: '◷' },
 ]
 
-export default function TeatroPage() {
+// Filter past dates and return next N upcoming
+function getUpcomingDates(dates: TeatroShowDate[], limit = 3): TeatroShowDate[] {
+  const today = new Date().toISOString().split('T')[0]
+  return dates.filter((d) => d.date >= today).slice(0, limit)
+}
+
+function formatDate(isoDate: string): string {
+  const date = new Date(isoDate + 'T12:00:00')
+  return date.toLocaleDateString('es-CR', { weekday: 'short', day: 'numeric', month: 'short' })
+}
+
+function ShowCard({ show }: { show: TeatroShow }) {
+  const upcomingDates = show.dates ? getUpcomingDates(show.dates) : []
+  const ticketHref = show.ticketUrl || 'https://boleteria.espressivo.cr'
+
+  return (
+    <div style={{ background: '#070D14', display: 'flex', flexDirection: 'column' }}>
+      {/* Image */}
+      <div style={{ position: 'relative', aspectRatio: '16/9', overflow: 'hidden', background: '#0c1520' }}>
+        {show.image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={show.image}
+            alt={show.title}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <div style={{
+            width: '100%', height: '100%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity={0.12}>
+              <path d="M8 36V16a4 4 0 0 1 4-4h24a4 4 0 0 1 4 4v20M4 36h40M16 24l4 4 8-8" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        )}
+        {/* Genre pill */}
+        {show.genre && (
+          <div style={{
+            position: 'absolute', top: 14, left: 14,
+            padding: '4px 10px',
+            background: 'rgba(7,13,20,0.85)',
+            border: '0.5px solid rgba(255,255,255,0.15)',
+            borderRadius: 2,
+            fontSize: 9, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'var(--a)',
+          }}>
+            {show.genre}
+          </div>
+        )}
+        {show.featured && (
+          <div style={{
+            position: 'absolute', top: 14, right: 14,
+            padding: '4px 10px',
+            background: 'var(--a)',
+            borderRadius: 2,
+            fontSize: 9, letterSpacing: '0.14em',
+            textTransform: 'uppercase', color: '#fff',
+          }}>
+            Destacada
+          </div>
+        )}
+        {/* Bottom gradient */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to top, rgba(7,13,20,0.55) 0%, transparent 55%)',
+        }} />
+      </div>
+
+      {/* Content */}
+      <div style={{ padding: '28px 32px 36px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{
+          fontSize: 'clamp(20px, 2vw, 26px)', fontWeight: 300,
+          color: '#fff', letterSpacing: '-0.02em',
+          marginBottom: show.subtitle ? 8 : 16, lineHeight: 1.15,
+        }}>
+          {show.title}
+        </h3>
+        {show.subtitle && (
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.32)', fontWeight: 300, marginBottom: 16 }}>
+            {show.subtitle}
+          </p>
+        )}
+        {show.duration && (
+          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.1em', marginBottom: 16, textTransform: 'uppercase' }}>
+            {show.duration}
+          </p>
+        )}
+        {show.description && (
+          <p style={{
+            fontSize: 14, color: 'rgba(255,255,255,0.38)', fontWeight: 300,
+            lineHeight: 1.75, marginBottom: 28, flex: 1,
+          }}>
+            {show.description.length > 150
+              ? show.description.slice(0, 150) + '…'
+              : show.description}
+          </p>
+        )}
+
+        {/* Upcoming dates */}
+        {upcomingDates.length > 0 && (
+          <div style={{ marginBottom: 28 }}>
+            <p style={{
+              fontSize: 9, letterSpacing: '0.18em',
+              textTransform: 'uppercase', color: 'rgba(255,255,255,0.18)',
+              marginBottom: 12,
+            }}>
+              Próximas funciones
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+              {upcomingDates.map((d, i) => (
+                <div key={i} style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  padding: '9px 0',
+                  borderBottom: '0.5px solid rgba(255,255,255,0.05)',
+                }}>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>
+                    {formatDate(d.date)}
+                  </span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.62)', fontWeight: 400 }}>
+                    {d.time}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CTA */}
+        <a
+          href={ticketHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            padding: '11px 22px',
+            background: 'var(--a)', color: '#fff',
+            fontSize: 10, fontWeight: 600, letterSpacing: '0.12em',
+            textTransform: 'uppercase', borderRadius: 2, textDecoration: 'none',
+            width: 'fit-content', marginTop: 'auto',
+          }}
+        >
+          Comprar entradas
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  )
+}
+
+export default async function TeatroPage() {
+  const shows = await fetchTeatroShows()
+
   return (
     <>
       <main style={{ background: '#070D14', color: '#fff', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
@@ -41,17 +199,17 @@ export default function TeatroPage() {
         <section style={{ position: 'relative', height: '100vh', minHeight: 640, display: 'flex', alignItems: 'flex-end', overflow: 'hidden' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://espressivo.cr/media/esp_banner.jpg"
+            src="https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?w=1920&q=80"
             alt="Teatro Espressivo"
             style={{
               position: 'absolute', inset: 0,
               width: '100%', height: '100%',
-              objectFit: 'cover', objectPosition: 'center 30%',
+              objectFit: 'cover', objectPosition: 'center 40%',
             }}
           />
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(to top, rgba(7,13,20,1) 0%, rgba(7,13,20,0.6) 45%, rgba(7,13,20,0.25) 100%)',
+            background: 'linear-gradient(to top, rgba(7,13,20,1) 0%, rgba(7,13,20,0.65) 45%, rgba(7,13,20,0.3) 100%)',
           }} />
           <div style={{ position: 'relative', zIndex: 1, maxWidth: 1280, margin: '0 auto', padding: '0 32px 96px', width: '100%' }}>
             <p style={{
@@ -139,6 +297,77 @@ export default function TeatroPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* ── CARTELERA ── */}
+        <section style={{ padding: '120px 32px' }}>
+          <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 64, flexWrap: 'wrap', gap: 24 }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                  <div style={{ width: 28, height: '0.5px', background: 'var(--a)' }} />
+                  <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--a)' }}>
+                    Cartelera Actual
+                  </span>
+                </div>
+                <h2 style={{ fontSize: 'clamp(26px, 3vw, 44px)', fontWeight: 300, letterSpacing: '-0.03em', color: '#fff', lineHeight: 1.1 }}>
+                  En escena ahora.
+                </h2>
+              </div>
+              <a
+                href="https://boleteria.espressivo.cr"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: 11, color: 'rgba(255,255,255,0.3)', textDecoration: 'none',
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                }}
+              >
+                Ver toda la programación
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M2 8L8 2M8 2H4M8 2v4" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            {/* Shows or empty state */}
+            {shows.length === 0 ? (
+              <div style={{
+                border: '0.5px solid rgba(255,255,255,0.07)',
+                padding: '80px 40px',
+                textAlign: 'center',
+                borderRadius: 2,
+              }}>
+                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.18)', letterSpacing: '0.04em', marginBottom: 16 }}>
+                  Nuevas funciones próximamente.
+                </p>
+                <a
+                  href="https://instagram.com/espressivocr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 11, color: 'var(--a)', textDecoration: 'none', letterSpacing: '0.1em' }}
+                >
+                  Seguinos en @espressivocr
+                </a>
+              </div>
+            ) : (
+              <div
+                className="teatro-shows-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+                  gap: 1,
+                  background: 'rgba(255,255,255,0.06)',
+                }}
+              >
+                {shows.map((show) => (
+                  <ShowCard key={show._id} show={show} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
 
@@ -327,6 +556,9 @@ export default function TeatroPage() {
             grid-template-columns: repeat(2, 1fr) !important;
           }
           .teatro-contact-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .teatro-shows-grid {
             grid-template-columns: 1fr !important;
           }
         }
