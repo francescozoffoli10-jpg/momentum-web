@@ -22,6 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!tenant) return {}
   const ogImage = tenant.logo?.startsWith('http')
     ? tenant.logo
+    : tenant.logo?.startsWith('/')
+    ? `${CANONICAL_BASE}${tenant.logo}`
     : `${CANONICAL_BASE}/sites/pinares/logos/${tenant.logo}`
   return {
     title: tenant.name,
