@@ -81,3 +81,27 @@ export const TEATRO_SHOWS_ACTIVE = `
     featured,
   }
 `
+// Teatro config singleton (documentId: "teatro-config")
+export const TEATRO_CONFIG = `
+  *[_type == "teatroConfig" && _id == "teatro-config"][0] {
+    "heroImage": coalesce(heroImage.asset->url, heroImageUrl),
+    heroTagline,
+    identityTitle,
+    identityParagraph1,
+    identityParagraph2,
+    "identityImage": coalesce(identityImage.asset->url, identityImageUrl),
+    stats,
+    specs,
+    bistroDescription,
+    "bistroImage": coalesce(bistroImage.asset->url, bistroImageUrl),
+    bistroHours,
+    phoneTeatro,
+    phoneBistro,
+    whatsapp,
+    instagram,
+    instagramBistro,
+    website,
+    boleteria,
+    boleteriaHours,
+  }
+`
