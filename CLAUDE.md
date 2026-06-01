@@ -326,6 +326,8 @@ public/
 | 2026-05-29 | Delete 9 defunct Pinares tenants | Deleted from Sanity: edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx. Transaction `tYwdV2ldLdzJB4kwq0N69m`. Pinares now has 57 active tenants. |
 | 2026-05-29 | Escazú logos + photos — full slug-based upload | 30 logos (PNG) + 30 photos (WebP) uploaded to `public/sites/escazu/logos/` and `public/sites/escazu/photos/`. All 30 Escazú tenant Sanity docs patched with `logoUrl` + `photoUrl`. Transactions `UAjCtlAuHSg7wG7TzGEO6P`, `tYwdV2ldLdzJB4kwq0PWVo`. |
 | 2026-05-29 | Delete 4 defunct Escazú tenants | Deleted from Sanity: capri, firmamento, schmaus-dental, wellness-institute. Transaction `tYwdV2ldLdzJB4kwq0PWgm`. Escazú now has 30 active tenants. |
+| 2026-05-29 | Add Rosanna Mauro Wellness Institute (Escazú) | Created new Sanity tenant `escazu-rosanna-mauro` (section: servicios). Logo + photo uploaded to GitHub. Transaction `UAjCtlAuHSg7wG7TzIz4yY`. Escazú now has 31 active tenants. |
+| 2026-05-29 | Pinares gastronomia.ts — real photos + fixes | Replaced all Unsplash URLs with slug-based webp paths; fixed logo for boston-beer-garden (was `bostons.png`) and naans-curries-pinares (was `naans-curries.png`); fixed bbq-chicken slug → bbq-chicken-pinares; removed defunct tacobar entry. Commit `97edd42d`. |
 
 ---
 
@@ -341,7 +343,7 @@ public/
 | ~~PINARES LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Pinares tenants~~ | ✅ Done 2026-05-29 — 57 logos + 57 photos pushed to GitHub, all Sanity docs patched |
 | ~~PINARES DEFUNCT~~ | ~~Delete 9 defunct Pinares tenants~~ | ✅ Done 2026-05-29 — edgar-jimenez-solis, party-time, ka-diagnostico-craneofacial, la-pegona, labin, larisa-paez-wellness, orange-theory, tacobar, ifisiotx |
 | LOGOS | Upload logo for Core Medical Center (Lindora) | `core-medical.png` has Shawaddi logo — correct Core Medical logo file not found in folder; need new file uploaded and Sanity patched |
-| ESCAZU | "Rosanna Mauro" in ZIP has no Sanity slug — verify if tenant exists and add to seed if so |
+| ~~ESCAZU LOGOS/PHOTOS~~ | ~~Upload slug-based logos + photos for all Escazú tenants~~ | ✅ Done 2026-05-29 — 30 logos + 30 photos, Rosanna Mauro added as new tenant |
 | ~~PHOTOS~~ | ~~Zócalo photo fixed~~ | ✅ Done 2026-05-28 — patched to `ortodoncia-loranca.webp` (confirmed in GitHub repo) |
 | PHOTOS | Nail Station has no correct photo | `plantimec.webp` contains a medical insole image (wrong). No correct Nail Station photo in folder. Need new file: upload to `public/sites/lindora/photos/nail-station-photo.webp` (or similar) and patch Sanity `photoUrl` |
 | VIDEOS | Vinum (Lindora) video | Antonella was uploading as .mov — needs conversion to MP4 first. If she can provide Drive link, download + convert + upload. |
