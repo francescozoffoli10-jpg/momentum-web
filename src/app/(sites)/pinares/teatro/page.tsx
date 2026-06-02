@@ -179,8 +179,8 @@ export default async function TeatroPage() {
 
         {/* ── IDENTITY ── */}
         <section style={{ padding: '120px 32px' }}>
-          <div className="teatro-two-col" style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'center' }}>
-            <div>
+          <div className="teatro-two-col" style={{ maxWidth: 1280, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 96, alignItems: 'stretch' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--a)', marginBottom: 32 }}>20+ Años de Historia</p>
               <h2 style={{ fontSize: 'clamp(28px, 3.5vw, 50px)', fontWeight: 300, letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: 32, color: '#fff' }}>
                 {identityTitle}
@@ -193,7 +193,7 @@ export default async function TeatroPage() {
               </a>
             </div>
             {/* Right column: video reel when available, identity photo as fallback */}
-            <div style={{ position: 'relative', paddingTop: '150%', borderRadius: 4, overflow: 'hidden', background: 'rgba(255,255,255,0.04)' }}>
+            <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', background: 'rgba(255,255,255,0.04)', minHeight: 400 }}>
               {videoUrl ? (
                 <>
                   {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
