@@ -94,6 +94,7 @@ export const TEATRO_CONFIG = `
     specs,
     bistroDescription,
     "bistroImage": coalesce(bistroImage.asset->url, bistroImageUrl),
+    "videoUrl": videoFile.asset->url,
     bistroHours,
     phoneTeatro,
     phoneBistro,
