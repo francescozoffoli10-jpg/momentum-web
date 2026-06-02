@@ -208,9 +208,11 @@ export default async function TeatroPage() {
               <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}>Showreel</span>
               <div style={{ width: 28, height: '0.5px', background: 'rgba(255,255,255,0.15)' }} />
             </div>
-            {/* Portrait video container — 9:16 centred, max 480px wide */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: 420, aspectRatio: '9/16', overflow: 'hidden', borderRadius: 4, background: '#070D14' }}>
-              {/* Top / bottom fade into page background */}
+            {/* Portrait video container — 9:16 centred, max 420px wide
+                 Uses paddingTop trick (16/9 × 100% = 177.78%) so height is
+                 always enforced regardless of browser video handling          */}
+            <div style={{ position: 'relative', width: '100%', maxWidth: 420, paddingTop: '177.78%', overflow: 'hidden', borderRadius: 4, background: '#070D14' }}>
+              {/* Top / bottom fade */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 60, background: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent)', zIndex: 1, pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 60, background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)', zIndex: 1, pointerEvents: 'none' }} />
               {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
@@ -220,7 +222,7 @@ export default async function TeatroPage() {
                 muted
                 loop
                 playsInline
-                style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
             </div>
           </section>
