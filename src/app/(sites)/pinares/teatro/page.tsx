@@ -192,41 +192,33 @@ export default async function TeatroPage() {
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M8 3.5l3 3-3 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
             </div>
-            <div style={{ position: 'relative', aspectRatio: '4/5', borderRadius: 4, overflow: 'hidden', background: 'rgba(255,255,255,0.04)' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={identityImage} alt="Producción de Teatro Espressivo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            {/* Right column: video reel when available, identity photo as fallback */}
+            <div style={{ position: 'relative', paddingTop: '150%', borderRadius: 4, overflow: 'hidden', background: 'rgba(255,255,255,0.04)' }}>
+              {videoUrl ? (
+                <>
+                  {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                  <video
+                    src={videoUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                  {/* Subtle Showreel label at bottom */}
+                  <div style={{ position: 'absolute', bottom: 20, left: 0, right: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10, zIndex: 2 }}>
+                    <div style={{ width: 20, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
+                    <span style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Showreel</span>
+                    <div style={{ width: 20, height: '0.5px', background: 'rgba(255,255,255,0.2)' }} />
+                  </div>
+                </>
+              ) : (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img src={identityImage} alt="Producción de Teatro Espressivo" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              )}
             </div>
           </div>
         </section>
-
-        {/* ── VIDEO SHOWREEL (vertical / portrait) ── */}
-        {videoUrl && (
-          <section style={{ background: '#000', padding: '80px 32px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 32 }}>
-            {/* Subtle label above */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 28, height: '0.5px', background: 'rgba(255,255,255,0.15)' }} />
-              <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.22)' }}>Showreel</span>
-              <div style={{ width: 28, height: '0.5px', background: 'rgba(255,255,255,0.15)' }} />
-            </div>
-            {/* Portrait video container — 9:16 centred, max 420px wide
-                 Uses paddingTop trick (16/9 × 100% = 177.78%) so height is
-                 always enforced regardless of browser video handling          */}
-            <div style={{ position: 'relative', width: '100%', maxWidth: 420, paddingTop: '177.78%', overflow: 'hidden', borderRadius: 4, background: '#070D14' }}>
-              {/* Top / bottom fade */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 60, background: 'linear-gradient(to bottom, rgba(0,0,0,0.5), transparent)', zIndex: 1, pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 60, background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)', zIndex: 1, pointerEvents: 'none' }} />
-              {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-              <video
-                src={videoUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-          </section>
-        )}
 
         {/* ── STATS ── */}
         <section style={{ borderTop: '0.5px solid rgba(255,255,255,0.06)', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
