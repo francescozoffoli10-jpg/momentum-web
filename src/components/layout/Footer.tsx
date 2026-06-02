@@ -7,16 +7,16 @@ import type { SiteConfig } from '@/data/types'
 // Cross-site discovery data
 const OTHER_SITES: Record<string, { label: string; tagline: string; path: string; accent: string }[]> = {
   lindora: [
-    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#7A2B8A' },
-    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#1A4A7A' },
+    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#56717A' },
+    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#4F5B3E' },
   ],
   escazu: [
     { label: 'Momentum Lindora', tagline: 'La experiencia lifestyle en Santa Ana', path: '/lindora', accent: '#932D2B' },
-    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#1A4A7A' },
+    { label: 'Momentum Pinares', tagline: 'Gastronomía, cultura y experiencias únicas', path: '/pinares', accent: '#4F5B3E' },
   ],
   pinares: [
     { label: 'Momentum Lindora', tagline: 'La experiencia lifestyle en Santa Ana', path: '/lindora', accent: '#932D2B' },
-    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#7A2B8A' },
+    { label: 'Momentum Escazú', tagline: 'Calma, bienestar y lifestyle premium', path: '/escazu', accent: '#56717A' },
   ],
 }
 
