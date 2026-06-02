@@ -112,6 +112,15 @@ export const teatroConfig = defineType({
       type: 'url',
       initialValue: 'https://espressivo.cr/media/thumbnail.jpg',
     }),
+    // ── VIDEO SHOWREEL ──────────────────────────────────────────────────────
+    defineField({
+      name: 'videoFile',
+      title: 'Video showreel (MP4, sin audio)',
+      type: 'file',
+      options: { accept: 'video/mp4,video/*' },
+      description: 'Video corto de loop para la sección showreel. MP4, H.264, sin audio, máx 20MB. Ideal 1920×1080px.',
+    }),
+
     defineField({
       name: 'bistroHours',
       title: 'Bistró — Horarios',
@@ -180,3 +189,4 @@ export const teatroConfig = defineType({
     prepare: () => ({ title: 'Teatro Espressivo — Configuración' }),
   },
 })
+
