@@ -142,4 +142,5 @@ export interface TeatroConfig {
   website?: string
   boleteria?: string
   boleteriaHours?: string
+  videoUrl?: string
 }
