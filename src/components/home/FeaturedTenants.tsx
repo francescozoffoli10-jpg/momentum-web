@@ -73,7 +73,7 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
                 borderRadius: 4, padding: '5px 10px',
               }}>
                 <Image
-                  src={`/sites/${siteId}/logos/${tenant.logo}`}
+                  src={tenant.logo.startsWith('http') || tenant.logo.startsWith('/') ? tenant.logo : `/sites/${siteId}/logos/${tenant.logo}`}
                   alt={tenant.name}
                   width={100}
                   height={40}
@@ -87,7 +87,7 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
               <div style={{ position: 'absolute', bottom: -16, right: -16, width: 64, height: 64, borderRadius: '50%', background: 'var(--a)', opacity: 0.05 }} />
               <div style={{ position: 'absolute', top: -20, left: -20, width: 48, height: 48, borderRadius: '50%', background: 'var(--a)', opacity: 0.03 }} />
               <Image
-                src={`/sites/${siteId}/logos/${tenant.logo}`}
+                src={tenant.logo.startsWith('http') || tenant.logo.startsWith('/') ? tenant.logo : `/sites/${siteId}/logos/${tenant.logo}`}
                 alt={tenant.name}
                 width={180}
                 height={100}
