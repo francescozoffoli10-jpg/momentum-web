@@ -8,13 +8,18 @@ import EditorialSection from '@/components/home/EditorialSection'
 import RegionGrid from '@/components/home/RegionGrid'
 import { pinaresSite } from '@/data/sites/pinares'
 import { gastronomia, regionCards } from '@/data/sites/pinares/gastronomia'
+import { fetchTeatroConfig } from '@/sanity/lib/fetch'
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Momentum Pinares',
   description: 'Variedad, dinamismo y todo en un solo lugar en Curridabat, San José.',
 }
 
-export default function PinaresHomePage() {
+export default async function PinaresHomePage() {
+  const [cfg] = await Promise.all([fetchTeatroConfig()])
+  const teatroHeroImage = cfg?.heroImage || 'https://espressivo.cr/media/esp_banner.jpg'
   const featured = gastronomia.filter((t) => t.featured)
   const featuredTenants = featured.length >= 4 ? featured : gastronomia.slice(0, 4)
 
@@ -31,7 +36,7 @@ export default function PinaresHomePage() {
         <div style={{ position: 'relative', minHeight: 540 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://espressivo.cr/media/esp_banner.jpg"
+            src={teatroHeroImage}
             alt=""
             aria-hidden="true"
             style={{
