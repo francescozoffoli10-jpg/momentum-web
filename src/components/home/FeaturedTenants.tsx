@@ -57,7 +57,7 @@ function TenantCard({ tenant, basePath, siteId, index }: { tenant: Tenant; baseP
           {tenant.photo ? (
             <>
               <Image
-                src={tenant.photo!.startsWith('http') ? tenant.photo! : `/sites/${siteId}/photos/${tenant.photo}`}
+                src={tenant.photo!.startsWith('http') || tenant.photo!.startsWith('/') ? tenant.photo! : `/sites/${siteId}/photos/${tenant.photo}`}
                 alt={tenant.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 25vw"
