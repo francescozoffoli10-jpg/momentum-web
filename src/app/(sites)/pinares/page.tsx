@@ -19,7 +19,11 @@ export const metadata: Metadata = {
 
 export default async function PinaresHomePage() {
   const [cfg] = await Promise.all([fetchTeatroConfig()])
-  const teatroHeroImage = cfg?.heroImage || 'https://espressivo.cr/media/esp_banner.jpg'
+  // Sanity CDN images can be huge — append resize params for fast web loading
+  const rawHero = cfg?.heroImage || 'https://espressivo.cr/media/esp_banner.jpg'
+  const teatroHeroImage = rawHero.includes('cdn.sanity.io')
+    ? rawHero + '?w=1920&q=80&auto=format'
+    : rawHero
   const featured = gastronomia.filter((t) => t.featured)
   const featuredTenants = featured.length >= 4 ? featured : gastronomia.slice(0, 4)
 
