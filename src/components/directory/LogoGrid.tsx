@@ -207,22 +207,7 @@ function TenantCard({ tenant, basePath, siteId, index }: {
                 </span>
               </div>
             )}
-            {tenant.menuUrl && (
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: 3,
-                padding: '3px 8px',
-                background: hovered && hasPhoto ? 'rgba(255,255,255,0.12)' : 'rgba(139,40,40,0.06)',
-                border: `0.5px solid ${hovered && hasPhoto ? 'rgba(255,255,255,0.2)' : 'rgba(139,40,40,0.2)'}`,
-                borderRadius: 100,
-              }}>
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <path d="M1 2h6M1 4h4M1 6h5" stroke={hovered && hasPhoto ? 'rgba(255,255,255,0.7)' : 'rgba(139,40,40,0.7)'} strokeWidth="1" strokeLinecap="round"/>
-                </svg>
-                <span style={{ fontSize: 8, fontWeight: 600, letterSpacing: '0.1em', color: hovered && hasPhoto ? 'rgba(255,255,255,0.7)' : 'rgba(139,40,40,0.75)', textTransform: 'uppercase' }}>
-                  Menú
-                </span>
-              </div>
-            )}
+
           </div>
         </div>
 
@@ -432,3 +417,4 @@ export default function LogoGrid({ tenants, basePath, siteId, initialCategory }:
     </section>
   )
 }
+
