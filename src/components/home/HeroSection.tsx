@@ -93,7 +93,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
           }}
         >
           <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--a)', display: 'inline-block' }} />
-          <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+          <span style={{ fontSize: 10, fontWeight: 500, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.72)' }}>
             {site.address} · Costa Rica
           </span>
         </motion.div>
@@ -150,8 +150,8 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
         >
           <p style={{
             fontSize: 'clamp(12px, 1.2vw, 14px)',
-            color: 'rgba(255,255,255,0.36)',
-            fontWeight: 300,
+            color: 'rgba(255,255,255,0.68)',
+            fontWeight: 400,
             maxWidth: 360,
             lineHeight: 2.1,
             marginTop: 28,
@@ -190,7 +190,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
               style={{
                 padding: '12px 28px',
                 border: '0.5px solid rgba(255,255,255,0.18)',
-                color: 'rgba(255,255,255,0.52)',
+                color: 'rgba(255,255,255,0.75)',
                 fontSize: 10,
                 letterSpacing: '0.13em',
                 textTransform: 'uppercase',
