@@ -137,7 +137,7 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
             </li>
 
             {(([
-              site.hasEvents !== false && ['Eventos', 'eventos'],
+              site.hasEvents === true && ['Eventos', 'eventos'],
               ['App', 'app'],
             ].filter(Boolean)) as [string, string][]).map(([label, slug]) => (
               <li key={label}>
@@ -397,7 +397,7 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                 </motion.div>
               ))}
               {(([
-                site.hasEvents !== false && ['Eventos', 'eventos'],
+                site.hasEvents === true && ['Eventos', 'eventos'],
                 ['App', 'app'],
               ].filter(Boolean)) as [string, string][]).map(([label, slug], i) => (
                 <motion.div key={label}
