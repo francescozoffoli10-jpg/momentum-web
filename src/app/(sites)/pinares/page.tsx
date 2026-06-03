@@ -99,12 +99,13 @@ export default async function PinaresHomePage() {
 
             {/* Left: content */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-                <div style={{ width: 24, height: '0.5px', background: 'var(--a)' }} />
-                <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--a)' }}>
-                  Alojamiento · Hyatt Place
-                </span>
-              </div>
+              {/* Hyatt logo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/sites/pinares/logos/hyatt-place.png"
+                alt="Hyatt Place"
+                style={{ height: 36, width: 'auto', marginBottom: 24, opacity: 0.85 }}
+              />
               <h2 style={{ fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 300, color: 'var(--text)', letterSpacing: '-0.025em', lineHeight: 1.08, marginBottom: 20 }}>
                 Hospedáte en el<br />corazón de Pinares.
               </h2>
@@ -147,8 +148,8 @@ export default async function PinaresHomePage() {
             <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', aspectRatio: '4/3' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2026/03/11/1023/SJOZP-P0131-Outdoor-Pool-Relaxation-Area.jpg/SJOZP-P0131-Outdoor-Pool-Relaxation-Area.4x3.jpg?imwidth=1200"
-                alt="Hyatt Place San José Pinares — Piscina al aire libre"
+                src="/sites/pinares/photos/hyatt-place.webp"
+                alt="Hyatt Place San José Pinares"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
               {/* Rating badge */}
