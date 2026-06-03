@@ -31,10 +31,11 @@ export default async function GastronomiaPage({ searchParams }: { searchParams: 
           { href: '/pinares/servicios',   label: 'Servicios',   active: false },
           { href: '/pinares/teatro',    label: 'Teatro',      active: false  },
           { href: '/pinares/torre-medica', label: 'Torre Médica', active: false },
-          { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
+          { href: '/pinares/oficentro',    label: 'Oficentro',    active: false },
         ]}
       />
       <LogoGrid tenants={tenants} basePath="/pinares" siteId="pinares" initialCategory={cat} />
     </>
   )
 }
+
