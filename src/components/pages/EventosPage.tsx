@@ -60,7 +60,7 @@ function EventCard({ ev, index, accentColor, siteHeroImage }: {
           alt={ev.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          style={{ objectFit: 'cover', transition: 'transform 0.6s ease' }}
+          style={{ objectFit: ev.featured ? 'cover' : 'contain', objectPosition: 'center', transition: 'transform 0.6s ease' }}
           className="event-img"
         />
         {/* gradient overlay */}
@@ -68,7 +68,7 @@ function EventCard({ ev, index, accentColor, siteHeroImage }: {
           position: 'absolute', inset: 0,
           background: ev.featured
             ? 'linear-gradient(to right, rgba(10,4,4,0.0) 40%, rgba(10,4,4,0.92) 100%), linear-gradient(to top, rgba(10,4,4,0.7) 0%, transparent 50%)'
-            : 'linear-gradient(to top, rgba(10,4,4,0.85) 0%, rgba(10,4,4,0.2) 60%)',
+            : 'none',
         }} />
         {/* Date pill — always visible on image */}
         <div style={{
