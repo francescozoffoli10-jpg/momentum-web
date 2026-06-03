@@ -29,11 +29,9 @@ export default defineConfig({
               .child(S.documentList().title('Tenants Escazú').filter('_type == "tenant" && site == "escazu"')),
             S.divider(),
             S.listItem().title('📅 Eventos — Lindora')
-              .child(S.documentList().title('Eventos Lindora').filter('_type == "siteEvent" && site == "lindora"')),
-            S.listItem().title('📅 Eventos — Escazú')
-              .child(S.documentList().title('Eventos Escazú').filter('_type == "siteEvent" && site == "escazu"')),
+              .child(S.documentList().title('Eventos Lindora').filter('_type == "siteEvent" && site == "lindora"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
             S.listItem().title('📅 Eventos — Pinares')
-              .child(S.documentList().title('Eventos Pinares').filter('_type == "siteEvent" && site == "pinares"')),
+              .child(S.documentList().title('Eventos Pinares').filter('_type == "siteEvent" && site == "pinares"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
             S.divider(),
             S.listItem().title('🎭 Teatro — Funciones (Cartelera)')
               .child(
