@@ -16,7 +16,7 @@ const destinations = [
     id: 'lindora',
     name: 'Lindora',
     full: 'Momentum Lindora',
-    location: 'Lindora · Santa Ana',
+    location: 'Lindora · Santa Ana, San José',
     color: '#932D2B',
     colorLight: '#B03835',
     image: '/sites/lindora/banners/hero-lindora.webp',
@@ -535,3 +535,4 @@ export default function LandingPage() {
     </main>
   )
 }
+
