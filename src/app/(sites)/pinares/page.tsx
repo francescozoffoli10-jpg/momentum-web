@@ -8,7 +8,7 @@ import EditorialSection from '@/components/home/EditorialSection'
 import RegionGrid from '@/components/home/RegionGrid'
 import { pinaresSite } from '@/data/sites/pinares'
 import { gastronomia, regionCards } from '@/data/sites/pinares/gastronomia'
-import { fetchTeatroConfig } from '@/sanity/lib/fetch'
+import { fetchTeatroConfig, fetchFeaturedTenants } from '@/sanity/lib/fetch'
 
 export const revalidate = 300
 
@@ -18,14 +18,14 @@ export const metadata: Metadata = {
 }
 
 export default async function PinaresHomePage() {
-  const [cfg] = await Promise.all([fetchTeatroConfig()])
+  const [cfg, cmsFeats] = await Promise.all([fetchTeatroConfig(), fetchFeaturedTenants('pinares')])
   // Sanity CDN images can be huge — append resize params for fast web loading
   const rawHero = cfg?.heroImage || 'https://espressivo.cr/media/esp_banner.jpg'
   const teatroHeroImage = rawHero.includes('cdn.sanity.io')
     ? rawHero + '?w=1920&q=80&auto=format'
     : rawHero
-  const featured = gastronomia.filter((t) => t.featured)
-  const featuredTenants = featured.length >= 4 ? featured : gastronomia.slice(0, 4)
+  const cmsOrStatic = cmsFeats.length > 0 ? cmsFeats : gastronomia.filter((t) => t.featured)
+  const featuredTenants = cmsOrStatic.length >= 4 ? cmsOrStatic.slice(0, 4) : gastronomia.slice(0, 4)
 
   return (
     <>
