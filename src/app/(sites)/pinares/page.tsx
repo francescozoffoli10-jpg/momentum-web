@@ -110,7 +110,7 @@ export default async function PinaresHomePage() {
                 Hospedáte en el<br />corazón de Pinares.
               </h2>
               <p style={{ fontSize: 15, color: 'var(--mt)', fontWeight: 300, lineHeight: 1.8, marginBottom: 32 }}>
-                Hyatt Place San José/Pinares se encuentra a pasos del ecosistema Momentum. Piscina, gimnasio 24h, desayuno incluido y el Restaurante Provincia — gastronomía costarricense contemporánea dentro del hotel.
+                El Hyatt Place San José/Pinares forma parte del ecosistema Momentum — ubicado dentro del mismo complejo. Piscina, gimnasio 24h, desayuno incluido y el Restaurante Provincia, gastronomía costarricense contemporánea.
               </p>
 
               {/* Amenity pills */}
