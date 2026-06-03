@@ -21,34 +21,54 @@ export default defineConfig({
         S.list()
           .title('Momentum')
           .items([
-            S.listItem().title('🍽 Lindora — Tenants')
-              .child(S.documentList().title('Tenants Lindora').filter('_type == "tenant" && site == "lindora"')),
-            S.listItem().title('🌿 Pinares — Tenants')
-              .child(S.documentList().title('Tenants Pinares').filter('_type == "tenant" && site == "pinares"')),
-            S.listItem().title('🏙 Escazú — Tenants')
-              .child(S.documentList().title('Tenants Escazú').filter('_type == "tenant" && site == "escazu"')),
-            S.divider(),
-            S.listItem().title('📅 Eventos — Lindora')
-              .child(S.documentList().title('Eventos Lindora').filter('_type == "siteEvent" && site == "lindora"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
-            S.listItem().title('📅 Eventos — Pinares')
-              .child(S.documentList().title('Eventos Pinares').filter('_type == "siteEvent" && site == "pinares"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
-            S.divider(),
-            S.listItem().title('🎭 Teatro — Funciones (Cartelera)')
+
+            // ── Lindora ──────────────────────────────────────────────────────
+            S.listItem().title('🍽 Lindora')
               .child(
-                S.documentList()
-                  .title('Funciones')
-                  .filter('_type == "teatroShow"')
-                  .defaultOrdering([{ field: 'order', direction: 'asc' }])
+                S.list().title('Lindora').items([
+                  S.listItem().title('Tenants — Lindora')
+                    .child(S.documentList().title('Tenants Lindora').filter('_type == "tenant" && site == "lindora"')),
+                  S.listItem().title('📅 Eventos — Lindora')
+                    .child(S.documentList().title('Eventos Lindora').filter('_type == "siteEvent" && site == "lindora"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
+                ])
               ),
-            // Singleton — opens the single config doc directly (no list)
-            S.listItem()
-              .title('⚙️ Teatro — Logo, fotos y configuración')
-              .id('teatroConfig')
+
+            // ── Pinares ──────────────────────────────────────────────────────
+            S.listItem().title('🌿 Pinares')
               .child(
-                S.document()
-                  .schemaType('teatroConfig')
-                  .documentId('teatro-config')
+                S.list().title('Pinares').items([
+                  S.listItem().title('Tenants — Pinares')
+                    .child(S.documentList().title('Tenants Pinares').filter('_type == "tenant" && site == "pinares"')),
+                  S.listItem().title('📅 Eventos — Pinares')
+                    .child(S.documentList().title('Eventos Pinares').filter('_type == "siteEvent" && site == "pinares"').defaultOrdering([{ field: 'date', direction: 'desc' }])),
+                  S.divider(),
+                  S.listItem().title('🎭 Teatro — Funciones (Cartelera)')
+                    .child(
+                      S.documentList()
+                        .title('Funciones')
+                        .filter('_type == "teatroShow"')
+                        .defaultOrdering([{ field: 'order', direction: 'asc' }])
+                    ),
+                  S.listItem()
+                    .title('⚙️ Teatro — Logo, fotos y configuración')
+                    .id('teatroConfig')
+                    .child(
+                      S.document()
+                        .schemaType('teatroConfig')
+                        .documentId('teatro-config')
+                    ),
+                ])
               ),
+
+            // ── Escazú ───────────────────────────────────────────────────────
+            S.listItem().title('🏙 Escazú')
+              .child(
+                S.list().title('Escazú').items([
+                  S.listItem().title('Tenants — Escazú')
+                    .child(S.documentList().title('Tenants Escazú').filter('_type == "tenant" && site == "escazu"')),
+                ])
+              ),
+
           ]),
     }),
     visionTool(),
