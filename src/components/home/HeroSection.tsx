@@ -152,15 +152,15 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
             const SITE_TAGLINES: Record<string, { line1: string; line2: string }> = {
               lindora: {
                 line1: 'Gastronomía · Familia · Bienestar · Comercio',
-                line2: 'Tu rincón favorito en Santa Ana.',
+                line2: 'Tu spot favorito en Santa Ana.',
               },
               escazu: {
                 line1: 'Bienestar · Salud · Gastronomía · Negocios',
-                line2: 'Calma y experiencia premium en Escazú.',
+                line2: 'Calma, naturaleza y vida en Escazú.',
               },
               pinares: {
                 line1: 'Gastronomía · Teatro · Entretenimiento · Cultura',
-                line2: 'El ecosistema más completo del este.',
+                line2: 'Todo en un mismo lugar.',
               },
             }
             const t = SITE_TAGLINES[site.id] ?? { line1: 'Gastronomía · Bienestar · Comercio · Vida', line2: 'Un ecosistema para tu estilo de vida.' }
