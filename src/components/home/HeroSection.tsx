@@ -148,18 +148,37 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p style={{
-            fontSize: 'clamp(12px, 1.2vw, 14px)',
-            color: 'rgba(255,255,255,0.68)',
-            fontWeight: 400,
-            maxWidth: 360,
-            lineHeight: 2.1,
-            marginTop: 28,
-            letterSpacing: '0.05em',
-          }}>
-            Gastronomía · Bienestar · Comercio · Vida<br />
-            Un ecosistema para tu estilo de vida.
-          </p>
+          {(() => {
+            const SITE_TAGLINES: Record<string, { line1: string; line2: string }> = {
+              lindora: {
+                line1: 'Gastronomía · Familia · Bienestar · Comercio',
+                line2: 'Tu rincón favorito en Santa Ana.',
+              },
+              escazu: {
+                line1: 'Bienestar · Salud · Gastronomía · Negocios',
+                line2: 'Calma y experiencia premium en Escazú.',
+              },
+              pinares: {
+                line1: 'Gastronomía · Teatro · Entretenimiento · Cultura',
+                line2: 'El ecosistema más completo del este.',
+              },
+            }
+            const t = SITE_TAGLINES[site.id] ?? { line1: 'Gastronomía · Bienestar · Comercio · Vida', line2: 'Un ecosistema para tu estilo de vida.' }
+            return (
+              <p style={{
+                fontSize: 'clamp(12px, 1.2vw, 14px)',
+                color: 'rgba(255,255,255,0.68)',
+                fontWeight: 400,
+                maxWidth: 380,
+                lineHeight: 2.1,
+                marginTop: 28,
+                letterSpacing: '0.05em',
+              }}>
+                {t.line1}<br />
+                {t.line2}
+              </p>
+            )
+          })()}
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -220,7 +239,7 @@ export default function HeroSection({ site, basePath }: HeroSectionProps) {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
       >
-        <span style={{ fontSize: 8, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.22)', textTransform: 'uppercase' }}>Explorá</span>
+        <span style={{ fontSize: 11, letterSpacing: '0.28em', color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase' }}>Explorá</span>
         <motion.div
           animate={{ y: [0, 7, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
