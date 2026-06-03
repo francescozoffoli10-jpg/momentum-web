@@ -30,6 +30,15 @@ export const TENANTS_BY_SITE = (siteId: string) => `
   }
 `
 
+
+// Featured tenants for homepage — marked featured == true for a given site
+export const FEATURED_TENANTS = (siteId: string) => `
+  *[_type == "tenant" && site == "${siteId}" && featured == true && !(_id in path("drafts.**"))]
+  | order(order asc, name asc) {
+    ${TENANT_FIELDS}
+  }
+`
+
 // Tenants for a specific site + section
 export const TENANTS_BY_SECTION = (siteId: string, section: string) => `
   *[_type == "tenant" && site == "${siteId}" && section == "${section}" && !(_id in path("drafts.**"))] | order(name asc) {
