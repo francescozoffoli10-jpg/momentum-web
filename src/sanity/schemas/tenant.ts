@@ -161,7 +161,15 @@ export const tenant = {
       name: 'website',   title: 'Sitio web (URL completa)', type: 'url', group: 'contact',
     },
     {
-      name: 'menuUrl',   title: 'URL del menú', type: 'url', group: 'contact',
+      name: 'menuUrl',   title: 'URL del menú (link externo)', type: 'url', group: 'contact',
+      description: 'Link externo al menú digital (ej: Google Drive, web del restaurante).',
+    },
+    {
+      name: 'menuPdf',   title: 'Menú PDF',
+      type: 'file',
+      group: 'contact',
+      options: { accept: 'application/pdf' },
+      description: 'Subí el PDF del menú directamente. Aparece como botón "Ver Menú" en la página del local.',
     },
     {
       name: 'instagram', title: 'Instagram (solo el @)', type: 'string', group: 'contact',
