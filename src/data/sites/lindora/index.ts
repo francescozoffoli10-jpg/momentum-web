@@ -13,6 +13,7 @@ export const lindoraSite: SiteConfig = {
   facebook: 'MomentumLindora',
   heroImage: '/sites/lindora/banners/hero-lindora.webp',
   logo: '/brand/lindora-dark.png',
+  hasEvents: true,
   accentColor: '#932D2B',
   sections: ['gastronomia', 'comercios', 'ofiplaza', 'mediplaza'],
 }
