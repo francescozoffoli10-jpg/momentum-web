@@ -240,6 +240,27 @@ html { scroll-behavior: smooth; }
   padding-right: 32px;
 }
 
+
+/* ── Tenant detail — CTA buttons + info strip (mobile) ─────────────────── */
+.tenant-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tenant-info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+/* Huli widget container */
+.huli-container {
+  background: #F0F5F9;
+  border-bottom: 0.5px solid #DDE6ED;
+  padding: 52px 32px;
+}
+
 /* ── Tablet (≤1024px) ────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .grid-cols-4-responsive { grid-template-columns: repeat(2, 1fr) !important; }
@@ -273,6 +294,18 @@ html { scroll-behavior: smooth; }
     margin-left: auto;
     margin-right: auto;
   }
+  /* Center CTA buttons and info strip on mobile */
+  .tenant-cta-row {
+    justify-content: center;
+  }
+  .tenant-info-strip {
+    justify-content: center;
+    text-align: center;
+  }
+  /* Huli widget — tighter padding on mobile */
+  .huli-container {
+    padding: 36px 20px;
+  }
 }
 
 /* ── Tablet footer ───────────────────────────────────────────────────────── */
@@ -292,6 +325,13 @@ html { scroll-behavior: smooth; }
   .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
   .container { padding-left: 20px; padding-right: 20px; }
   .px-8 { padding-left: 20px !important; padding-right: 20px !important; }
+  /* Full-width CTA buttons on very small screens */
+  .tenant-cta-row a,
+  .tenant-cta-row button {
+    flex: 1 1 calc(50% - 5px);
+    justify-content: center;
+    min-width: 130px;
+  }
 }
 
 /* ─── Focus styles ───────────────────────────────────────────────────────────── */
