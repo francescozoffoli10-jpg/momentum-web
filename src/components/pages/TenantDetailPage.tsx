@@ -625,7 +625,7 @@ export default function TenantDetailPage({
               </p>
 
               {/* ── CTAs: Menú → Llamar → Mapa → Compartir → WhatsApp ── */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+              <div className="tenant-cta-row" style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
 
                 {/* 1. Ver Menú — primary accent */}
                 {tenant.menuUrl && (
@@ -700,7 +700,7 @@ export default function TenantDetailPage({
               </div>
 
               {/* ── Quick info strip ── */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginTop: 20, paddingTop: 16, borderTop: '0.5px solid rgba(255,255,255,0.07)', fontSize: 11 }}>
+              <div className="tenant-info-strip" style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginTop: 20, paddingTop: 16, borderTop: '0.5px solid rgba(255,255,255,0.07)', fontSize: 11 }}>
                 {tenant.phone && (
                   <span>
                     <span style={{ color: 'var(--a)', fontWeight: 600, letterSpacing: '0.1em', marginRight: 6 }}>CONTACTO</span>
