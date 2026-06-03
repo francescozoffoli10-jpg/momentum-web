@@ -20,7 +20,7 @@ const SITE_STATS: Record<string, { value: number; suffix: string; label: string;
   pinares: [
     { value: 47, suffix: '+', label: 'Establecimientos', sub: 'en el ecosistema' },
     { value: 16, suffix: '',  label: 'Restaurantes',     sub: 'y opciones gastro' },
-    { value: 2,  suffix: '',  label: 'Zonas',            sub: 'comercio y gastro' },
+    { value: 4,  suffix: '',  label: 'Zonas',            sub: 'Gastro · Comercios · Oficentro · Torre Médica' },
     { value: 1,  suffix: '',  label: 'Destino',          sub: 'todo en un lugar' },
   ],
 }
