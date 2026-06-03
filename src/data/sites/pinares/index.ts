@@ -13,6 +13,7 @@ export const pinaresSite: SiteConfig = {
   facebook: 'MomentumPinares',
   heroImage: '/sites/pinares/banners/hero-pinares.webp',
   logo: '/brand/pinares-dark.png',
+  hasEvents: true,
   accentColor: '#4F5B3E',
   sections: ['gastronomia', 'comercios', 'servicios', 'torre-medica', 'ofiplaza', 'teatro'],
 }
