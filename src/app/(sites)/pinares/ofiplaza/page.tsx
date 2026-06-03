@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import PageHeader from '@/components/directory/PageHeader'
 import LogoGrid from '@/components/directory/LogoGrid'
-import { ofiplaza as staticOfiplaza } from '@/data/sites/pinares/oficentro'
+import { ofiplaza as staticOfiplaza } from '@/data/sites/pinares/ofiplaza'
 import { fetchTenantsBySection } from '@/sanity/lib/fetch'
 import type { Tenant } from '@/data/types'
 
