@@ -140,7 +140,7 @@ function DestinationCard({ d, index }: { d: typeof destinations[0]; index: numbe
             <span style={{
               fontSize: 9, fontWeight: 500,
               letterSpacing: '0.16em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.5)',
+              color: 'rgba(255,255,255,0.72)',
             }}>
               {d.location}
             </span>
@@ -164,7 +164,7 @@ function DestinationCard({ d, index }: { d: typeof destinations[0]; index: numbe
                   </div>
                   <div style={{
                     fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.32)', marginTop: 4,
+                    color: 'rgba(255,255,255,0.52)', marginTop: 4,
                   }}>
                     {s.label}
                   </div>
@@ -189,7 +189,7 @@ function DestinationCard({ d, index }: { d: typeof destinations[0]; index: numbe
               fontSize: 10,
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.32)',
+              color: 'rgba(255,255,255,0.58)',
               margin: '0 0 20px',
               fontWeight: 400,
             }}>
@@ -409,7 +409,7 @@ export default function LandingPage() {
         >
           <p style={{
             fontSize: 9, letterSpacing: '0.20em', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.25)', marginBottom: 14,
+            color: 'rgba(255,255,255,0.45)', marginBottom: 14,
           }}>
             Nuestros destinos
           </p>
