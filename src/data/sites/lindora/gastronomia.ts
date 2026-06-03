@@ -182,6 +182,25 @@ export const gastronomia: Tenant[] = [
     instagram: 'zocalocr',
     featured: true,
   },
+  {
+    slug: 'vinum',
+    name: 'Vinum Store',
+    section: 'gastronomia',
+    category: 'Gastronomía · Vinos & Licores',
+    tagline: 'Vinos nacionales e internacionales',
+    description: 'Una selección cuidadosamente curada de vinos nacionales e internacionales. En Vinum podés sentarte a disfrutar una copa mientras pedís tus platos favoritos de cualquiera de los restaurantes del centro — la perfecta combinación entre una vinoteca premium y la variedad gastronómica de Momentum Lindora.',
+    logo: 'vinum.png',
+    photo: 'vinum.webp',
+    hours: [
+      { days: 'Lunes a Miércoles', hours: '11:00 am – 8:00 pm' },
+      { days: 'Jueves a Sábado', hours: '9:00 am – 2:00 pm' },
+      { days: 'Domingos', hours: '11:00 am – 6:00 pm' },
+    ],
+    phone: '2437-7300',
+    instagram: 'vinumcr',
+    website: 'https://vinumcr.com',
+    local: 'L55',
+  },
 ]
 
 export const regionCards: RegionCard[] = [
@@ -256,24 +275,5 @@ export const regionCards: RegionCard[] = [
     restaurants: ['zocalo'],
     color: '#1A1208',
     image: '/sites/lindora/categories/mexicana.webp',
-  },
-  {
-    slug: 'vinum',
-    name: 'Vinum Store',
-    section: 'gastronomia',
-    category: 'Gastronomía · Vinos & Licores',
-    tagline: 'Vinos nacionales e internacionales',
-    description: 'Una selección cuidadosamente curada de vinos nacionales e internacionales. En Vinum podés sentarte a disfrutar una copa mientras pedís tus platos favoritos de cualquiera de los restaurantes del centro — la perfecta combinación entre una vinoteca premium y la variedad gastronómica de Momentum Lindora.',
-    logo: 'vinum.png',
-    photo: 'vinum.webp',
-    hours: [
-      { days: 'Lunes a Miércoles', hours: '11:00 am – 8:00 pm' },
-      { days: 'Jueves a Sábado', hours: '9:00 am – 2:00 pm' },
-      { days: 'Domingos', hours: '11:00 am – 6:00 pm' },
-    ],
-    phone: '2437-7300',
-    instagram: 'vinumcr',
-    website: 'https://vinumcr.com',
-    local: 'L55',
   },
 ]
