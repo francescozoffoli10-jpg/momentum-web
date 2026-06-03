@@ -7,6 +7,7 @@ import {
   EVENTS_BY_SITE,
   TEATRO_SHOWS_ACTIVE,
   TEATRO_CONFIG,
+  FEATURED_TENANTS,
 } from './queries'
 
 const PROJECT_ID  = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? 'klr3qmou'
@@ -57,6 +58,12 @@ export async function fetchEventsBySite(siteId: string): Promise<SiteEvent[] | n
 }
 
 // ── Teatro helpers ────────────────────────────────────────────────────────────
+
+/** Fetch featured tenants for homepage from Sanity. Returns [] if none or on error. */
+export async function fetchFeaturedTenants(siteId: string): Promise<Tenant[]> {
+  const result = await sanityFetch<Tenant[]>(FEATURED_TENANTS(siteId))
+  return result ?? []
+}
 
 export async function fetchTeatroShows(): Promise<TeatroShow[]> {
   const result = await sanityFetch<TeatroShow[]>(TEATRO_SHOWS_ACTIVE)
