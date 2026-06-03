@@ -1,13 +1,14 @@
 'use client'
 
 import { useRef } from 'react'
+import type { ReactNode } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import type { SiteConfig } from '@/data/types'
 
 interface Feature {
   sites?: string[]
-  icon: JSX.Element
+  icon: ReactNode
   title: string
   desc: string
 }
