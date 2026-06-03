@@ -5,8 +5,9 @@ import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import type { SiteConfig } from '@/data/types'
 
-const FEATURES = [
+const ALL_FEATURES = [
   {
+    sites: ['pinares'],
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -45,15 +46,6 @@ const FEATURES = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-      </svg>
-    ),
-    title: 'Plano del centro',
-    desc: 'Ubicá los locales dentro del centro con el plano por nivel.',
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     ),
@@ -70,6 +62,7 @@ interface AppPageProps {
 export default function AppPage({ site, basePath }: AppPageProps) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const FEATURES = ALL_FEATURES.filter(f => !f.sites || f.sites.includes(site.id))
 
   return (
     <>
@@ -114,7 +107,7 @@ export default function AppPage({ site, basePath }: AppPageProps) {
               transition={{ duration: 0.65, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
               style={{ fontSize: 16, color: 'rgba(255,255,255,0.38)', fontWeight: 300, lineHeight: 1.85, marginBottom: 48 }}
             >
-              Gestioná tu parqueo con código QR, consultá horarios y locales, y mantente al tanto de lo que pasa en el centro.
+              Consultá horarios y locales, accedé a ofertas exclusivas y mantente al tanto de lo que pasa en el centro.
             </motion.p>
 
             <motion.div
@@ -123,18 +116,10 @@ export default function AppPage({ site, basePath }: AppPageProps) {
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               style={{ display: 'flex', gap: 32, flexWrap: 'wrap', alignItems: 'flex-start' }}
             >
-              {/* App Store — badge + QR */}
+              {/* App Store */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
                 <a href="https://apps.apple.com/es/app/momentum/id1524496370?l=en-GB" target="_blank" rel="noopener noreferrer" aria-label="Descargar en App Store"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10,
-                    padding: '13px 22px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '0.5px solid rgba(255,255,255,0.1)',
-                    borderRadius: 6,
-                    color: '#fff', textDecoration: 'none',
-                    transition: 'background 0.2s, border-color 0.2s',
-                  }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: 'rgba(255,255,255,0.06)', border: '0.5px solid rgba(255,255,255,0.1)', borderRadius: 6, color: '#fff', textDecoration: 'none' }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity="0.85">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -145,39 +130,18 @@ export default function AppPage({ site, basePath }: AppPageProps) {
                   </div>
                 </a>
                 <a href="https://apps.apple.com/es/app/momentum/id1524496370?l=en-GB" target="_blank" rel="noopener noreferrer" aria-label="QR App Store"
-                  style={{
-                    display: 'block',
-                    padding: 8,
-                    background: '#fff',
-                    borderRadius: 8,
-                    lineHeight: 0,
-                  }}
+                  style={{ display: 'block', padding: 8, background: '#fff', borderRadius: 8, lineHeight: 0 }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&margin=0&data=https%3A%2F%2Fapps.apple.com%2Fes%2Fapp%2Fmomentum%2Fid1524496370"
-                    alt="QR App Store"
-                    width={108}
-                    height={108}
-                  />
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&margin=0&data=https%3A%2F%2Fapps.apple.com%2Fes%2Fapp%2Fmomentum%2Fid1524496370" alt="QR App Store" width={108} height={108} />
                 </a>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                  Escaneá para iOS
-                </span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Escaneá para iOS</span>
               </div>
 
-              {/* Play Store — badge + QR */}
+              {/* Google Play */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
                 <a href="https://play.google.com/store/apps/details?id=com.baum.loyalty.momemtum&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10,
-                    padding: '13px 22px',
-                    background: 'rgba(255,255,255,0.06)',
-                    border: '0.5px solid rgba(255,255,255,0.1)',
-                    borderRadius: 6,
-                    color: '#fff', textDecoration: 'none',
-                    transition: 'background 0.2s, border-color 0.2s',
-                  }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '13px 22px', background: 'rgba(255,255,255,0.06)', border: '0.5px solid rgba(255,255,255,0.1)', borderRadius: 6, color: '#fff', textDecoration: 'none' }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity="0.85">
                     <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.36.6 1.24 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
@@ -188,25 +152,12 @@ export default function AppPage({ site, basePath }: AppPageProps) {
                   </div>
                 </a>
                 <a href="https://play.google.com/store/apps/details?id=com.baum.loyalty.momemtum&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label="QR Google Play"
-                  style={{
-                    display: 'block',
-                    padding: 8,
-                    background: '#fff',
-                    borderRadius: 8,
-                    lineHeight: 0,
-                  }}
+                  style={{ display: 'block', padding: 8, background: '#fff', borderRadius: 8, lineHeight: 0 }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.baum.loyalty.momemtum"
-                    alt="QR Google Play"
-                    width={108}
-                    height={108}
-                  />
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=108x108&margin=0&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.baum.loyalty.momemtum" alt="QR Google Play" width={108} height={108} />
                 </a>
-                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                  Escaneá para Android
-                </span>
+                <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Escaneá para Android</span>
               </div>
             </motion.div>
           </div>
@@ -216,7 +167,6 @@ export default function AppPage({ site, basePath }: AppPageProps) {
       {/* Features grid */}
       <section ref={ref} style={{ background: 'var(--bg)', padding: '100px 0' }}>
         <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 32px' }}>
-
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -238,43 +188,24 @@ export default function AppPage({ site, basePath }: AppPageProps) {
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                  background: '#fff',
-                  border: '0.5px solid var(--brd)',
-                  borderRadius: 6,
-                  padding: '28px 24px 32px',
-                }}
+                style={{ background: '#fff', border: '0.5px solid var(--brd)', borderRadius: 6, padding: '28px 24px 32px' }}
               >
-                <div style={{
-                  width: 40, height: 40, borderRadius: 8,
-                  background: 'var(--bg)', border: '0.5px solid var(--brd)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--a)', marginBottom: 18,
-                }}>
+                <div style={{ width: 40, height: 40, borderRadius: 8, background: 'var(--bg)', border: '0.5px solid var(--brd)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--a)', marginBottom: 18 }}>
                   {f.icon}
                 </div>
-                <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: 8 }}>
-                  {f.title}
-                </div>
-                <div style={{ fontSize: 13, color: 'var(--mt)', lineHeight: 1.7, fontWeight: 300 }}>
-                  {f.desc}
-                </div>
+                <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text)', letterSpacing: '-0.01em', marginBottom: 8 }}>{f.title}</div>
+                <div style={{ fontSize: 13, color: 'var(--mt)', lineHeight: 1.7, fontWeight: 300 }}>{f.desc}</div>
               </motion.div>
             ))}
           </div>
 
-          {/* Back CTA */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.55 }}
             style={{ marginTop: 64 }}
           >
-            <Link href={basePath} style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              fontSize: 11, color: 'var(--mt)', letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}>
+            <Link href={basePath} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'var(--mt)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
               ← Volver a {site.name}
             </Link>
           </motion.div>
