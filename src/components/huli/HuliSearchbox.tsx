@@ -24,7 +24,7 @@ export default function HuliSearchbox({
   }, [])
 
   return (
-    <div style={{ background: '#F0F5F9', borderBottom: '0.5px solid #DDE6ED', padding: '52px 32px' }}>
+    <div className="huli-container" style={{ borderBottom: '0.5px solid #DDE6ED' }}>
       <div style={{ maxWidth: 860, margin: '0 auto' }}>
 
         {/* Header */}
