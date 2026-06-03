@@ -8,16 +8,20 @@ import RegionGrid from '@/components/home/RegionGrid'
 import { escazuSite } from '@/data/sites/escazu'
 import { allTenants } from '@/data/sites/escazu/all'
 import { regionCards } from '@/data/sites/escazu/gastronomia'
+import { fetchFeaturedTenants } from '@/sanity/lib/fetch'
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Momentum Escazú',
   description: 'Calma, bienestar y experiencia premium en Escazú, San José.',
 }
 
-export default function EscazuHomePage() {
-  // Curated cross-section: food + wellness + medical — 4 strong picks
-  const featured = allTenants.filter((t) => t.featured).slice(0, 4)
-  const featuredTenants = featured.length >= 4 ? featured : allTenants.slice(0, 4)
+export default async function EscazuHomePage() {
+  const cmsFeats = await fetchFeaturedTenants('escazu')
+  // Use CMS featured if available, fall back to static data
+  const featured = cmsFeats.length > 0 ? cmsFeats : allTenants.filter((t) => t.featured)
+  const featuredTenants = featured.length >= 4 ? featured.slice(0, 4) : allTenants.slice(0, 4)
 
   return (
     <>
