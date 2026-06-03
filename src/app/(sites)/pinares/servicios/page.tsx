@@ -29,10 +29,11 @@ export default async function ServiciosPage() {
           { href: '/pinares/servicios',   label: 'Servicios',   active: true  },
           { href: '/pinares/teatro',    label: 'Teatro',      active: false  },
           { href: '/pinares/torre-medica', label: 'Torre Médica', active: false },
-          { href: '/pinares/ofiplaza',    label: 'Ofiplaza',    active: false },
+          { href: '/pinares/oficentro',    label: 'Oficentro',    active: false },
         ]}
       />
       <LogoGrid tenants={tenants} basePath="/pinares" siteId="pinares" />
     </>
   )
 }
+
