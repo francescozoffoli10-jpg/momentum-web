@@ -312,6 +312,18 @@ html { scroll-behavior: smooth; }
   .px-8 { padding-left: 20px !important; padding-right: 20px !important; }
 }
 
+/* Eventos colaboradores grid */
+@media (max-width: 768px) {
+  .eventos-collab-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .eventos-collab-grid a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ─── Focus styles ───────────────────────────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--a);
