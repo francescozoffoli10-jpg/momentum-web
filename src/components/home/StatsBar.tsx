@@ -14,7 +14,7 @@ const SITE_STATS: Record<string, { value: number; suffix: string; label: string;
   escazu: [
     { value: 29, suffix: '+', label: 'Establecimientos', sub: 'en el ecosistema' },
     { value: 8,  suffix: '',  label: 'Restaurantes',     sub: 'y cafés curados' },
-    { value: 11, suffix: '+', label: 'Especialistas',    sub: 'médicos en el centro' },
+    { value: 10, suffix: '+', label: 'Especialidades',   sub: 'médicas disponibles'  },
     { value: 3,  suffix: '',  label: 'Zonas',            sub: 'diferenciadas' },
   ],
   pinares: [
