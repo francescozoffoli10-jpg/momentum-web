@@ -9,6 +9,9 @@ import RegionGrid from '@/components/home/RegionGrid'
 import { escazuSite } from '@/data/sites/escazu'
 import { allTenants } from '@/data/sites/escazu/all'
 import { regionCards } from '@/data/sites/escazu/gastronomia'
+import { fetchFeaturedTenants } from '@/sanity/lib/fetch'
+
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Momentum Escazú',
@@ -21,9 +24,12 @@ const SPECIALTIES = [
   'Reumatología', 'Salud Integral', 'Salud Masculina',
 ]
 
-export default function EscazuHomePage() {
-  const featured = allTenants.filter((t) => t.featured).slice(0, 4)
-  const featuredTenants = featured.length >= 4 ? featured : allTenants.slice(0, 4)
+export default async function EscazuHomePage() {
+  // Try CMS featured tenants first, fall back to static data
+  const cmsFeats = await fetchFeaturedTenants('escazu')
+  const staticFeatured = allTenants.filter((t) => t.featured).slice(0, 4)
+  const cmsOrStatic = cmsFeats.length > 0 ? cmsFeats.slice(0, 4) : staticFeatured
+  const featuredTenants = cmsOrStatic.length >= 4 ? cmsOrStatic : allTenants.slice(0, 4)
 
   return (
     <>
