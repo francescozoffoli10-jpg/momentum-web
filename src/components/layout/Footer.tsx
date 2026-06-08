@@ -185,8 +185,23 @@ export default function Footer({ site, basePath }: FooterProps) {
           </div>
         )}
 
+        {/* Legal links */}
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 20 }}>
+          {([
+            ['Política de Privacidad', '/privacidad'],
+            ['Términos y Condiciones', '/terminos'],
+            ['Política de Cookies',    '/cookies'],
+          ] as [string, string][]).map(function([label, href]) { return (
+            <Link key={href} href={href}
+              style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', fontWeight: 300, letterSpacing: '0.02em', transition: 'color 0.2s' }}
+              onMouseEnter={function(e) { e.currentTarget.style.color='rgba(255,255,255,0.65)' }}
+              onMouseLeave={function(e) { e.currentTarget.style.color='rgba(255,255,255,0.3)' }}
+            >{label}</Link>
+          )})}
+        </div>
+
         {/* Bottom */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.02em' }}>
             © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
           </span>
