@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     url: 'https://momentumcostarica.com',
     type: 'website',
     locale: 'es_CR',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Momentum Costa Rica' }],
   },
   twitter: {
     card: 'summary_large_image',
