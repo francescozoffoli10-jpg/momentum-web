@@ -149,6 +149,20 @@ export default function TorreMedicaFooter() {
             >
               Momentum Pinares →
             </Link>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, color: 'rgba(255,255,255,0.28)', letterSpacing: '0.04em' }}>
+              by
+              <a
+                href="https://www.linkedin.com/company/promark-marketing-cr/posts/?feedView=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="promark — agencia de marketing"
+                style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.6, transition: 'opacity 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '0.6'}
+              >
+                <Image src="/brand/promark-white.png" alt="promark" width={733} height={160} style={{ height: 15, width: 'auto' }} />
+              </a>
+            </span>
           </div>
         </div>
       </div>
