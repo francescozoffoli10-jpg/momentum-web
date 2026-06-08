@@ -190,7 +190,16 @@ export default function Footer({ site, basePath }: FooterProps) {
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.02em' }}>
             © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
           </span>
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.06em' }}>Costa Rica</span> • <a href="https://www.linkedin.com/company/promark-marketing-cr/posts/?feedView=all" target="_blank" rel="noopener noreferrer" style={{color: 'rgba(255,255,255,0.38)', textDecoration: 'none', transition: 'color 0.2s'}} onMouseEnter={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.38)'}}><span>by promark</span></a>
+          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.06em' }}>
+            Costa Rica • <a
+              href="https://www.linkedin.com/company/promark-marketing-cr/posts/?feedView=all"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'rgba(255,255,255,0.38)', textDecoration: 'none', transition: 'color 0.2s' }}
+              onMouseEnter={function(e) { e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
+              onMouseLeave={function(e) { e.currentTarget.style.color = 'rgba(255,255,255,0.38)' }}
+            >by promark</a>
+          </span>
         </div>
       </div>
     </footer>
