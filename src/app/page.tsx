@@ -533,8 +533,17 @@ export default function LandingPage() {
           <Link href="/terminos" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', letterSpacing: '0.06em' }}>Términos</Link>
           <Link href="/cookies" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', letterSpacing: '0.06em' }}>Cookies</Link>
         </div>
-        <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
-          Lindora · Escazú · Pinares
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 10, color: 'rgba(255,255,255,0.22)', letterSpacing: '0.08em' }}>
+          Lindora · Escazú · Pinares · by
+          <a
+            href="https://www.linkedin.com/company/promark-marketing-cr/posts/?feedView=all"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="promark — agencia de marketing"
+            style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.6, transition: 'opacity 0.2s' }}
+          >
+            <Image src="/brand/promark-white.png" alt="promark" width={733} height={160} style={{ height: 14, width: 'auto' }} />
+          </a>
         </span>
       </footer>
     </main>
