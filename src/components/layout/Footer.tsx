@@ -205,15 +205,19 @@ export default function Footer({ site, basePath }: FooterProps) {
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.02em' }}>
             © {new Date().getFullYear()} {site.name}. Todos los derechos reservados.
           </span>
-          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.16)', letterSpacing: '0.06em' }}>
-            Costa Rica • <a
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 10, color: 'rgba(255,255,255,0.28)', letterSpacing: '0.06em' }}>
+            Costa Rica · by
+            <a
               href="https://www.linkedin.com/company/promark-marketing-cr/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: 'rgba(255,255,255,0.38)', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={function(e) { e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
-              onMouseLeave={function(e) { e.currentTarget.style.color = 'rgba(255,255,255,0.38)' }}
-            >by promark</a>
+              aria-label="promark — agencia de marketing"
+              style={{ display: 'inline-flex', alignItems: 'center', opacity: 0.6, transition: 'opacity 0.2s' }}
+              onMouseEnter={function(e) { e.currentTarget.style.opacity = '1' }}
+              onMouseLeave={function(e) { e.currentTarget.style.opacity = '0.6' }}
+            >
+              <Image src="/brand/promark-white.png" alt="promark" width={733} height={160} style={{ height: 15, width: 'auto' }} />
+            </a>
           </span>
         </div>
       </div>
