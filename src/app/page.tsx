@@ -528,6 +528,11 @@ export default function LandingPage() {
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.08em' }}>
           © {new Date().getFullYear()} Momentum Costa Rica
         </span>
+        <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+          <Link href="/privacidad" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', letterSpacing: '0.06em' }}>Privacidad</Link>
+          <Link href="/terminos" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', letterSpacing: '0.06em' }}>Términos</Link>
+          <Link href="/cookies" style={{ fontSize: 10, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', letterSpacing: '0.06em' }}>Cookies</Link>
+        </div>
         <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.1)', letterSpacing: '0.08em' }}>
           Lindora · Escazú · Pinares
         </span>
