@@ -32,6 +32,8 @@ function getSiteFromHostname(hostname: string): 'lindora' | 'escazu' | 'pinares'
 }
 
 // ── Paths that must pass through untouched ────────────────────────────────────
+// Legal pages (/privacidad, /terminos, /cookies) are ecosystem-wide and live at
+// the app root, so they must bypass the per-site rewrite on every domain.
 const BYPASS_PREFIXES = [
   '/_next',
   '/api',
@@ -39,6 +41,9 @@ const BYPASS_PREFIXES = [
   '/sites',
   '/favicon',
   '/vercel',
+  '/privacidad',
+  '/terminos',
+  '/cookies',
 ]
 const BYPASS_EXACT = new Set(['/sitemap.xml', '/robots.txt', '/favicon.ico'])
 
@@ -102,7 +107,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, { status: 301 })
   }
 
-  // ── 3. Bypass static assets and Next.js internals ──────────────────────────
+  // ── 3. Bypass static assets, Next.js internals, and ecosystem-wide legal pages ─
   if (shouldBypass(pathname)) {
     return NextResponse.next()
   }
