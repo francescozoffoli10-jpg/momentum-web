@@ -106,6 +106,25 @@ export default function TorreMedicaFooter() {
           </div>
         </div>
 
+        {/* Legal links */}
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 20 }}>
+          {[
+            { label: 'Política de Privacidad', href: '/privacidad' },
+            { label: 'Términos y Condiciones', href: '/terminos' },
+            { label: 'Política de Cookies', href: '/cookies' },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', textDecoration: 'none', letterSpacing: '0.02em', transition: 'color 0.2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'rgba(255,255,255,0.65)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.3)'}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+
         {/* Bottom bar */}
         <div style={{ borderTop: '0.5px solid rgba(255,255,255,0.07)', paddingTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>
