@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import CookieBanner from '@/components/legal/CookieBanner'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es">
       <body>
         {children}
+        <CookieBanner />
         <Analytics />
         <GoogleAnalytics />
       </body>
