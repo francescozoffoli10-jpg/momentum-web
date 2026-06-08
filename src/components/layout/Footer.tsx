@@ -196,3 +196,4 @@ export default function Footer({ site, basePath }: FooterProps) {
     </footer>
   )
 }
+
