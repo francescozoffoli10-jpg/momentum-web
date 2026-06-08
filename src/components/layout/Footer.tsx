@@ -167,7 +167,7 @@ export default function Footer({ site, basePath }: FooterProps) {
                     e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
                   }}
                 >
-                  <div style={{ width: 4, height: 24, borderRadius: 2, background: s.accent, opacity: 0.7, flexShrink: 0 }} />
+                  <div style={{ width: 4, height: 24, borderRadius: 2, background: s.accent, opacity: 0.7, flexShrink: 0 }}></div>
                   <div>
                     <div style={{ fontSize: 11, fontWeight: 500, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.02em', lineHeight: 1.3 }}>
                       {s.label}
