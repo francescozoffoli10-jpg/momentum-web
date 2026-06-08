@@ -6,7 +6,7 @@ import { lindoraSite } from '@/data/sites/lindora'
 import { escazuSite } from '@/data/sites/escazu'
 import { pinaresSite } from '@/data/sites/pinares'
 
-const BASE = 'https://momentumcr.vercel.app'
+const BASE = 'https://momentumcostarica.com'
 
 const UTILITY_PAGES = ['eventos', 'app', 'como-llegar', 'alquiler', 'contacto'] as const
 
