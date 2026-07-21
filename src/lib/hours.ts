@@ -96,8 +96,8 @@ export function isOpenNow(tenant: Tenant): boolean | null {
     const hoursStr = row.hours.toLowerCase().trim()
     if (/24\s*hora|abierto/.test(hoursStr)) return true
 
-    // Split on em-dash or en-dash (not on letter 'a' to avoid splitting "am")
-    const timeParts = hoursStr.split(/\s*[–—]\s*/)
+    // Split on hyphen, em-dash or en-dash (not on letter 'a' to avoid splitting "am")
+    const timeParts = hoursStr.split(/\s*[-–—]\s*/)
     if (timeParts.length < 2) continue
 
     try {
