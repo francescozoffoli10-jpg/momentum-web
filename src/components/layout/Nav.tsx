@@ -130,6 +130,24 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
                           {SECTION_LABELS[s]}
                         </Link>
                       ))}
+
+                      {site.hasEvents === true && (
+                        <>
+                          <div style={{ height: '0.5px', background: 'rgba(255,255,255,0.06)', margin: '6px 0' }} />
+                          <Link href={`${basePath}/eventos`}
+                            style={{
+                              display: 'block', padding: '9px 18px',
+                              fontSize: 13, fontWeight: 300, letterSpacing: '0.02em',
+                              color: activeSection === 'eventos' ? 'var(--a)' : 'rgba(255,255,255,0.6)',
+                              transition: 'color 0.15s, background 0.15s',
+                            }}
+                            onMouseEnter={e => { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+                            onMouseLeave={e => { e.currentTarget.style.color = activeSection === 'eventos' ? 'var(--a)' : 'rgba(255,255,255,0.6)'; e.currentTarget.style.background = 'transparent' }}
+                          >
+                            Eventos
+                          </Link>
+                        </>
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -137,7 +155,6 @@ export default function Nav({ site, basePath, activeSection }: NavProps) {
             </li>
 
             {(([
-              site.hasEvents === true && ['Eventos', 'eventos'],
               ['App', 'app'],
             ].filter(Boolean)) as [string, string][]).map(([label, slug]) => (
               <li key={label}>
