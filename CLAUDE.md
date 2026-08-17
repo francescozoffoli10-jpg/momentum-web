@@ -6,9 +6,10 @@
 
 ## 1. What This Project Is
 
-A **Next.js 14 App Router** website (not yet launched) replacing three separate Squarespace sites and one Torre Médica sub-site. It is a premium lifestyle commercial ecosystem — NOT a shopping mall.
+A **Next.js 14 App Router** website replacing three separate Squarespace sites and one Torre Médica sub-site. It is a premium lifestyle commercial ecosystem — NOT a shopping mall.
 
-**Live preview URL (Vercel):** https://momentumcr.vercel.app
+**Production URL (live):** https://momentumcostarica.com — custom domain, serves the SAME Vercel deployment as the preview. Use this when sharing links with the user.
+**Preview URL (Vercel):** https://momentumcr.vercel.app — same deployment, Vercel-generated URL.
 **GitHub repo:** https://github.com/francescozoffoli10-jpg/momentum-web
 **GitHub API token:** (see Vercel env vars or ask Francesco — redacted for secret scanning)
 **Vercel project name:** momentum-prototype
@@ -18,17 +19,17 @@ A **Next.js 14 App Router** website (not yet launched) replacing three separate 
 
 ## 2. Sites & URL Structure
 
-All four sites live under a single Next.js app using a path-prefix system at the preview domain:
+All four sites live under a single Next.js app using a path-prefix system, live at **momentumcostarica.com**:
 
-| Site | Preview URL | Future production domain |
-|------|-------------|--------------------------|
-| Landing (ecosystem) | /  | momentumcr.com (TBD) |
-| Momentum Lindora | /lindora | momentumlindora.com |
-| Momentum Escazú | /escazu | momentumescazu.com |
-| Momentum Pinares | /pinares | momentumpinares.com |
-| Torre Médica Momentum | /torre-medica | torremedicamomentum.com |
+| Site | Live URL | Per-site domain (future) |
+|------|----------|--------------------------|
+| Landing (ecosystem) | momentumcostarica.com/ | — |
+| Momentum Lindora | momentumcostarica.com/lindora | momentumlindora.com |
+| Momentum Escazú | momentumcostarica.com/escazu | momentumescazu.com |
+| Momentum Pinares | momentumcostarica.com/pinares | momentumpinares.com |
+| Torre Médica Momentum | momentumcostarica.com/torre-medica | torremedicamomentum.com |
 
-**IMPORTANT:** The live production domains (momentumlindora.com, momentumescazu.com, etc.) currently point to OLD Squarespace sites. The new Next.js site is ONLY on Vercel preview. Never tell the user to go to the production domain — always use momentumcr.vercel.app.
+**IMPORTANT:** `momentumcostarica.com` is LIVE and serves the current Next.js site (verified 2026-07-21). Share this domain with the user, not the raw Vercel URL. The **per-site** domains (momentumlindora.com, momentumescazu.com, etc.) still point to OLD Squarespace sites and have not been flipped yet — the SEO `metadataBase`/sitemap tasks below track that DNS cutover.
 
 **Middleware** (`src/middleware.ts`) handles hostname-based routing: when production domains eventually point here, clean URLs (e.g. momentumlindora.com/gastronomia) work without the site prefix.
 
