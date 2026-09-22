@@ -30,6 +30,13 @@ interface TenantDetailPageProps {
   site: SiteConfig
 }
 
+// Normalize a phone into a wa.me number: digits only, and prepend the
+// Costa Rica country code (506) for local 8-digit numbers so wa.me resolves.
+function waNumber(raw: string): string {
+  const d = raw.replace(/\D/g, '')
+  return d.length === 8 ? `506${d}` : d
+}
+
 // ── Open status pill ──────────────────────────────────────────────────────────
 // Helper: find today's hours string from tenant.hours array
 function getTodayHours(tenant: Tenant): string | null {
@@ -516,7 +523,7 @@ export default function TenantDetailPage({
   if (tenant.website)   links.push({ label: 'Sitio Web',  href: tenant.website })
   if (tenant.instagram) links.push({ label: 'Instagram',  href: `https://instagram.com/${tenant.instagram}` })
   if (tenant.facebook)  links.push({ label: 'Facebook',   href: `https://facebook.com/${tenant.facebook}` })
-  if (tenant.whatsapp)  links.push({ label: 'WhatsApp',   href: `https://wa.me/${tenant.whatsapp}` })
+  if (tenant.whatsapp)  links.push({ label: 'WhatsApp',   href: `https://wa.me/${waNumber(tenant.whatsapp)}` })
   if (tenant.menuUrl)   links.push({ label: 'Menú',       href: tenant.menuUrl })
 
   // Map: prefer coords if available, fall back to name + address query
@@ -686,7 +693,7 @@ export default function TenantDetailPage({
 
                 {/* 6. WhatsApp */}
                 {tenant.whatsapp && (
-                  <a href={`https://wa.me/${tenant.whatsapp.replace(/\D/g, '')}`} target="_blank" rel="noopener noreferrer"
+                  <a href={`https://wa.me/${waNumber(tenant.whatsapp)}`} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '11px 20px', background: '#25D366', color: '#fff', fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', borderRadius: 4, transition: 'opacity 0.18s, transform 0.18s', textDecoration: 'none' }}
                     onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.opacity = '0.88'; el.style.transform = 'translateY(-1px)' }}
                     onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.opacity = '1'; el.style.transform = 'translateY(0)' }}

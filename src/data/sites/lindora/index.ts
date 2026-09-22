@@ -15,5 +15,5 @@ export const lindoraSite: SiteConfig = {
   logo: '/brand/lindora-dark.png',
   hasEvents: true,
   accentColor: '#932D2B',
-  sections: ['gastronomia', 'comercios', 'ofiplaza', 'mediplaza'],
+  sections: ['gastronomia', 'comercios', 'servicios', 'ofiplaza', 'mediplaza'],
 }
