@@ -1,19 +1,22 @@
-import Link from 'next/link'
-
 /**
  * Availability banner for the new Torre B at the Escazú Centro Médico.
  * Tasteful accent strip — noticeable but not invasive. Counts are props
- * so they're easy to update as units sell.
+ * so they're easy to update as units sell. The CTA calls the CME sales
+ * line (a regular line, NOT WhatsApp) and shows the contact email.
  */
 export default function TorreBBanner({
   available = 4,
   total = 16,
-  href = '/escazu/contacto',
+  phone = '+506 8835 8342',
+  email = 'sguillen@d506.cr',
 }: {
   available?: number
   total?: number
-  href?: string
+  phone?: string
+  email?: string
 }) {
+  const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`
+
   return (
     <section style={{ background: 'var(--a)', color: '#fff' }}>
       <div
@@ -70,31 +73,54 @@ export default function TorreBBanner({
           </div>
         </div>
 
-        <Link
-          href={href}
-          className="torreb-cta"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 9,
-            padding: '13px 26px',
-            background: '#fff',
-            color: 'var(--a)',
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            borderRadius: 2,
-            textDecoration: 'none',
-            whiteSpace: 'nowrap',
-            flexShrink: 0,
-          }}
-        >
-          Consultá disponibilidad
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-            <path d="M2 6.5h9M7.5 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </Link>
+        {/* Contact: call the CME sales line + email */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 9 }} className="torreb-cta-col">
+          <a
+            href={telHref}
+            className="torreb-cta"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 9,
+              padding: '13px 26px',
+              background: '#fff',
+              color: 'var(--a)',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              borderRadius: 2,
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 4.5 3 3.95 3.45 3.5 4 3.5h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+            </svg>
+            Llamá al {phone.replace(/^\+506\s*/, '')}
+          </a>
+          <a
+            href={`mailto:${email}`}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              color: '#fff',
+              opacity: 0.9,
+              fontSize: 12,
+              fontWeight: 300,
+              letterSpacing: '0.02em',
+              textDecoration: 'none',
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="M3 7l9 6 9-6" />
+            </svg>
+            {email}
+          </a>
+        </div>
       </div>
 
       <style>{`
@@ -102,6 +128,7 @@ export default function TorreBBanner({
         .torreb-cta:hover { opacity: .9; transform: translateY(-1px); }
         @media (max-width: 720px) {
           .torreb-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+          .torreb-cta-col { align-items: flex-start; width: 100%; }
         }
       `}</style>
     </section>
