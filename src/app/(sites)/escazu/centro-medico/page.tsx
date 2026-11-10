@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import PageHeader from '@/components/directory/PageHeader'
 import LogoGrid from '@/components/directory/LogoGrid'
 import HuliSearchbox from '@/components/huli/HuliSearchbox'
+import TorreBBanner from '@/components/escazu/TorreBBanner'
 import { fetchTenantsBySection } from '@/sanity/lib/fetch'
 import { centroMedico as staticCentroMedico } from '@/data/sites/escazu/centro-medico'
 import type { Tenant } from '@/data/types'
@@ -31,6 +32,8 @@ export default async function CentroMedicoPage() {
           { href: '/escazu/oficentro',     label: 'Oficentro',     active: false },
         ]}
       />
+
+      <TorreBBanner available={4} total={16} />
 
       {/* Prominent Huli CTA */}
       <div style={{ background: '#fff', borderBottom: '0.5px solid var(--brd)', padding: '32px' }}>

@@ -6,6 +6,7 @@ import MarqueeStrip from '@/components/home/MarqueeStrip'
 import FeaturedTenants from '@/components/home/FeaturedTenants'
 import EditorialSection from '@/components/home/EditorialSection'
 import RegionGrid from '@/components/home/RegionGrid'
+import TorreBBanner from '@/components/escazu/TorreBBanner'
 import { escazuSite } from '@/data/sites/escazu'
 import { allTenants } from '@/data/sites/escazu/all'
 import { regionCards } from '@/data/sites/escazu/gastronomia'
@@ -36,6 +37,7 @@ export default async function EscazuHomePage() {
       <HeroSection site={escazuSite} basePath="/escazu" />
       <MarqueeStrip />
       <StatsBar site={escazuSite} />
+      <TorreBBanner available={4} total={16} />
       <FeaturedTenants
         tenants={featuredTenants}
         basePath="/escazu"
